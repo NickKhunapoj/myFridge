@@ -38,8 +38,8 @@ The myFridge Expiry Date Reminder and Notification Web Application is a user-fri
 ## Built With
 
 **Pending Review**
+- Node JS
 - Angular CLI
-- NodeJS
 - Visual Studio Code
 - Microsoft Azure Cloud Services
 
