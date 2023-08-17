@@ -9,7 +9,9 @@
   </p>
 </p>
 
-![Contributors](https://img.shields.io/github/contributors/NickKhunapoj/myFridge?color=dark-green) ![Stargazers](https://img.shields.io/github/stars/NickKhunapoj/myFridge?style=social) ![License](https://img.shields.io/github/license/NickKhunapoj/myFridge) 
+<p align="center">
+    <img src="https://img.shields.io/github/contributors/NickKhunapoj/myFridge?color=dark-green"> <img src="https://img.shields.io/github/stars/NickKhunapoj/myFridge?style=social"> <img src="https://img.shields.io/github/license/NickKhunapoj/myFridge">
+
 
 ## About The Project
 
