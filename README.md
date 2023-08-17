@@ -1,6 +1,6 @@
 <br/>
 <p align="center">
-  <h1 align="center">myFridge</h1>
+  <h1 align="center">myFridge1</h1>
 
   <p align="center">
     Repository for Software Development Practice I project. An ambition to build a web app that can help remind you when your food expires.
