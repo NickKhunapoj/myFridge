@@ -47,7 +47,7 @@ The myFridge Expiry Date Reminder and Notification Web Application is a user-fri
 
 ## Usage
 
-TBA
+<img align="center" src="https://github.com/NickKhunapoj/myFridge/assets/93870412/1af7bab8-7905-476c-bb20-081f09ba23fc">
 
 ## License
 
