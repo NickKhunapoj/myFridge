@@ -12,6 +12,9 @@
 <p align="center">
     <img src="https://img.shields.io/github/contributors/NickKhunapoj/myFridge?color=dark-green"> <img src="https://img.shields.io/github/stars/NickKhunapoj/myFridge?style=social"> <img src="https://img.shields.io/github/license/NickKhunapoj/myFridge">
 
+<p align="center">
+  <h2 align="center">👁️ Sneak Peak 👁️</h2>
+  <img align="center" src="https://github.com/NickKhunapoj/myFridge/assets/93870412/7eba7e2e-4f1d-450b-956f-49f4ee44000e">
 
 ## About The Project
 
