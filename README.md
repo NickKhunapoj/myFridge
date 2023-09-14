@@ -14,7 +14,8 @@
 
 <p align="center">
   <h2 align="center">👁️ Sneak Peak 👁️</h2>
-  <img align="center" src="https://github.com/NickKhunapoj/myFridge/assets/93870412/7eba7e2e-4f1d-450b-956f-49f4ee44000e">
+  <img align="center" src="https://github.com/NickKhunapoj/myFridge/assets/93870412/8e17e6a5-51a9-43ee-9ac2-69b2941dc1bd">
+
 
 ## About The Project
 
