@@ -2,7 +2,7 @@ import { Topmenubar } from "app/topmenubar";
 
 export default function Home() {
   return (
-    <div className="bg-[url(../public/bg.png)] bg-cover bg-center min-h-screen flex flex-col">
+    <div className="bg-[url(../public/bg.png)] bg-cover bg-center flex relative w-full h-full justify-center items-center">
       <Topmenubar/>
       <div className="flex items-center justify-center flex-grow container mx-auto h-screen">
         <div className="bg-[#21253180] rounded-[45px] shadow-lg backdrop-blur-[50px] backdrop-brightness-[100%] -webkit-backdrop-filter:blur(50px)_brightness(100%) px-8">
