@@ -1,19 +1,30 @@
-import { RecRight } from "./recright.jsx"; // Use a relative path
-import { RecLeft } from "./recleft.jsx"; // Use a relative path
-import { Topmenu } from "./topmenunosignup.jsx"; // Use a relative path
+import React from 'react';
+import Sidebar from './sidebar.jsx';
+import MenuBar from './menubar.jsx';
+import DashboardFrame from './dbframe.jsx';
 
 export default function Dashboard() {
     return (
-        <div className="relative w-full h-screen flex justify-center items-center">
-            <img
-                className="absolute inset-0 w-full h-full object-cover"
-                alt="Bg"
-                src="https://media.discordapp.net/attachments/1151835814939078738/1151836795928055898/img-bg.png?width=2182&height=1228"
-            />
-            <Topmenu />
-            <RecLeft />
-            <RecRight />
-
+        <div>
+        <img
+            className="absolute inset-0 w-full h-full object-cover"
+            alt="Bg"
+            src="/bg.png"
+        />
+            <MenuBar />
+            <div className="hidden 2xl:flex">
+                <div className="w-96 2xl:w-1/4 p-10">
+                    <Sidebar />
+                </div>
+                <div className="w-3/4 pt-10 pb-10 pr-10">
+                    <DashboardFrame />
+                </div>
+            </div>
+            <div className="flex 2xl:hidden">
+                <div className="w-full p-10">
+                    <DashboardFrame />
+                </div>
+            </div>
         </div>
     );
 }
