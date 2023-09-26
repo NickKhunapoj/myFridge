@@ -45,7 +45,7 @@ export const Sidebar = () => {
         <div className="pl-11 pr-11 pb-11 divide-gray-700">
           <ul className="pt-2 pb-4 space-y-1 text-base">
             {/* Sidebar links */}
-            <li className="dark:text-red-300">
+            <li>
               <a
                   rel="noopener noreferrer"
                   href="#"
@@ -62,7 +62,7 @@ export const Sidebar = () => {
                 <span className="text-xl">Dashboard</span>
               </a>
             </li>
-            <li>
+            <li className="dark:text-red-300">
               <a
                   rel="noopener noreferrer"
                   href="#"
