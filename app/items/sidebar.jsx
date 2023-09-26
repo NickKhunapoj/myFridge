@@ -7,16 +7,21 @@ export const Sidebar = () => {
 
   const handleLogout = () => {
     // Redirect to the login page
-    router.push('/'); // Replace '/login' with the actual login page route
+    router.push('/');
   };
   const handleDashboard = () => {
-    // Redirect to the login page
-    router.push('/dashboard'); // Replace '/login' with the actual login page route
+    // Redirect to the dashboard page
+    router.push('/dashboard');
   };
   const handleItems = () => {
-    // Redirect to the login page
-    router.push('/items'); // Replace '/login' with the actual login page route
+    // Redirect to the items page
+    router.push('/items');
   };
+  const handleAppSettings = () => {
+    // Redirect to the app-settings page
+    router.push('/app-settings');
+  };
+  
   return (
       <div className="sticky h-[calc(100vh-148px)] overflow-auto bg-[#21253180] rounded-[40px] shadow-[0px_0px_10px_8px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100">
         {/* class picture */}
@@ -84,6 +89,7 @@ export const Sidebar = () => {
                   rel="noopener noreferrer"
                   href="#"
                   className="flex items-center px-2 py-3 space-x-3 rounded-md hover:px-4 hover:bg-gray-700 hover:text-white transition-all duration-300 ease-in-out"
+                  onClick={handleAppSettings} // Add onClick handler for App Settings 
               >
                 <img
                     src="https://cdn.discordapp.com/attachments/1151835814939078738/1151836795366019152/icon-settings.png"

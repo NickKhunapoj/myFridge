@@ -1,6 +1,18 @@
+'use client'
 import React from 'react';
 
 export const ItemsFrame = () => {
+
+    const handleAdd = () => {
+        // Handle future actions
+        // You can implement the logic here
+    };
+
+    const handleEdit = () => {
+        // Handle future actions
+        // You can implement the logic here
+    };
+
     return (
         <div className="sticky h-[calc(100vh-148px)] overflow-auto bg-[#21253180] rounded-[40px] shadow-[0px_0px_10px_8px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100">
             {/* Dashboard Header */}
@@ -39,11 +51,11 @@ export const ItemsFrame = () => {
             </div>
             {/* Add item button */}
             <div className="w-3/4 pt-16 px-16 mt-6 flex justify-end">
-                <div className="w-48 h-14 bg-[#0c420c] hover:bg-[#1a3f50] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center">
+                <button className="w-48 h-14 bg-[#0c420c] hover:bg-[#1a3f50] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center focus:outline-none">
                     <div className="ont-medium text-[#ffffff] font-medium text-[21px]">
-                        Add Item
+                    Add Item
                     </div>
-                </div>
+                </button>
             </div>
         </div>
             {/* Item Lists row 1 */}
@@ -57,9 +69,16 @@ export const ItemsFrame = () => {
                         <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-[#ff8a8a] text-[20px] tracking-[0] leading-[normal]">
                             Expires: 10 Sep 2023
                         </div>
-                        <div className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center">
-                            <img className="w-10 h-10 p-1" alt="Edit" src="https://cdn.discordapp.com/attachments/1151835814939078738/1156153038503952454/0d622ecf015f0b97491b26ed4f4d9e38.png?ex=6513eeec&is=65129d6c&hm=6c3d177f07d4df5e0e8914df198e3b1fdf9cc04e5d16a8926b4428e3c51a4bb7&" />
-                        </div>
+                        <button
+                            className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
+                            onClick={() => handleEdit()}
+                        >
+                            <img
+                                className="w-10 h-10 p-1"
+                                alt="Edit"
+                                src="https://cdn.discordapp.com/attachments/1151835814939078738/1156153038503952454/0d622ecf015f0b97491b26ed4f4d9e38.png?ex=6513eeec&is=65129d6c&hm=6c3d177f07d4df5e0e8914df198e3b1fdf9cc04e5d16a8926b4428e3c51a4bb7&"
+                            />
+                        </button>
                         <div className="absolute top-72 mt-7 ml-10 [font-family:'Manrope-Regular',Helvetica] font-normal text-white text-[20px] tracking-[0] leading-[normal]">
                             Quantities: 3
                         </div>
@@ -79,9 +98,16 @@ export const ItemsFrame = () => {
                         <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-[#ff8a8a] text-[20px] tracking-[0] leading-[normal]">
                             Expires: 10 Sep 2023
                         </div>
-                        <div className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center">
-                            <img className="w-10 h-10 p-1" alt="Edit" src="https://cdn.discordapp.com/attachments/1151835814939078738/1156153038503952454/0d622ecf015f0b97491b26ed4f4d9e38.png?ex=6513eeec&is=65129d6c&hm=6c3d177f07d4df5e0e8914df198e3b1fdf9cc04e5d16a8926b4428e3c51a4bb7&" />
-                        </div>
+                        <button
+                            className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
+                            onClick={() => handleEdit()}
+                        >
+                            <img
+                                className="w-10 h-10 p-1"
+                                alt="Edit"
+                                src="https://cdn.discordapp.com/attachments/1151835814939078738/1156153038503952454/0d622ecf015f0b97491b26ed4f4d9e38.png?ex=6513eeec&is=65129d6c&hm=6c3d177f07d4df5e0e8914df198e3b1fdf9cc04e5d16a8926b4428e3c51a4bb7&"
+                            />
+                        </button>
                         <div className="absolute top-72 mt-7 ml-10 [font-family:'Manrope-Regular',Helvetica] font-normal text-white text-[20px] tracking-[0] leading-[normal]">
                             Quantities: 3
                         </div>
@@ -101,9 +127,16 @@ export const ItemsFrame = () => {
                         <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-[#ff8a8a] text-[20px] tracking-[0] leading-[normal]">
                             Expires: 10 Sep 2023
                         </div>
-                        <div className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center">
-                            <img className="w-10 h-10 p-1" alt="Edit" src="https://cdn.discordapp.com/attachments/1151835814939078738/1156153038503952454/0d622ecf015f0b97491b26ed4f4d9e38.png?ex=6513eeec&is=65129d6c&hm=6c3d177f07d4df5e0e8914df198e3b1fdf9cc04e5d16a8926b4428e3c51a4bb7&" />
-                        </div>
+                        <button
+                            className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
+                            onClick={() => handleEdit()}
+                        >
+                            <img
+                                className="w-10 h-10 p-1"
+                                alt="Edit"
+                                src="https://cdn.discordapp.com/attachments/1151835814939078738/1156153038503952454/0d622ecf015f0b97491b26ed4f4d9e38.png?ex=6513eeec&is=65129d6c&hm=6c3d177f07d4df5e0e8914df198e3b1fdf9cc04e5d16a8926b4428e3c51a4bb7&"
+                            />
+                        </button>
                         <div className="absolute top-72 mt-7 ml-10 [font-family:'Manrope-Regular',Helvetica] font-normal text-white text-[20px] tracking-[0] leading-[normal]">
                             Quantities: 3
                         </div>
@@ -126,9 +159,16 @@ export const ItemsFrame = () => {
                         <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-[#ff8a8a] text-[20px] tracking-[0] leading-[normal]">
                             Expires: 10 Sep 2023
                         </div>
-                        <div className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center">
-                            <img className="w-10 h-10 p-1" alt="Edit" src="https://cdn.discordapp.com/attachments/1151835814939078738/1156153038503952454/0d622ecf015f0b97491b26ed4f4d9e38.png?ex=6513eeec&is=65129d6c&hm=6c3d177f07d4df5e0e8914df198e3b1fdf9cc04e5d16a8926b4428e3c51a4bb7&" />
-                        </div>
+                        <button
+                            className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
+                            onClick={() => handleEdit()}
+                        >
+                            <img
+                                className="w-10 h-10 p-1"
+                                alt="Edit"
+                                src="https://cdn.discordapp.com/attachments/1151835814939078738/1156153038503952454/0d622ecf015f0b97491b26ed4f4d9e38.png?ex=6513eeec&is=65129d6c&hm=6c3d177f07d4df5e0e8914df198e3b1fdf9cc04e5d16a8926b4428e3c51a4bb7&"
+                            />
+                        </button>
                         <div className="absolute top-72 mt-7 ml-10 [font-family:'Manrope-Regular',Helvetica] font-normal text-white text-[20px] tracking-[0] leading-[normal]">
                             Quantities: 3
                         </div>
@@ -148,9 +188,16 @@ export const ItemsFrame = () => {
                         <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-[#ff8a8a] text-[20px] tracking-[0] leading-[normal]">
                             Expires: 10 Sep 2023
                         </div>
-                        <div className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center">
-                            <img className="w-10 h-10 p-1" alt="Edit" src="https://cdn.discordapp.com/attachments/1151835814939078738/1156153038503952454/0d622ecf015f0b97491b26ed4f4d9e38.png?ex=6513eeec&is=65129d6c&hm=6c3d177f07d4df5e0e8914df198e3b1fdf9cc04e5d16a8926b4428e3c51a4bb7&" />
-                        </div>
+                        <button
+                            className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
+                            onClick={() => handleEdit()}
+                        >
+                            <img
+                                className="w-10 h-10 p-1"
+                                alt="Edit"
+                                src="https://cdn.discordapp.com/attachments/1151835814939078738/1156153038503952454/0d622ecf015f0b97491b26ed4f4d9e38.png?ex=6513eeec&is=65129d6c&hm=6c3d177f07d4df5e0e8914df198e3b1fdf9cc04e5d16a8926b4428e3c51a4bb7&"
+                            />
+                        </button>
                         <div className="absolute top-72 mt-7 ml-10 [font-family:'Manrope-Regular',Helvetica] font-normal text-white text-[20px] tracking-[0] leading-[normal]">
                             Quantities: 3
                         </div>
@@ -170,9 +217,16 @@ export const ItemsFrame = () => {
                         <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-[#ff8a8a] text-[20px] tracking-[0] leading-[normal]">
                             Expires: 10 Sep 2023
                         </div>
-                        <div className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center">
-                            <img className="w-10 h-10 p-1" alt="Edit" src="https://cdn.discordapp.com/attachments/1151835814939078738/1156153038503952454/0d622ecf015f0b97491b26ed4f4d9e38.png?ex=6513eeec&is=65129d6c&hm=6c3d177f07d4df5e0e8914df198e3b1fdf9cc04e5d16a8926b4428e3c51a4bb7&" />
-                        </div>
+                        <button
+                            className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
+                            onClick={() => handleEdit()}
+                        >
+                            <img
+                                className="w-10 h-10 p-1"
+                                alt="Edit"
+                                src="https://cdn.discordapp.com/attachments/1151835814939078738/1156153038503952454/0d622ecf015f0b97491b26ed4f4d9e38.png?ex=6513eeec&is=65129d6c&hm=6c3d177f07d4df5e0e8914df198e3b1fdf9cc04e5d16a8926b4428e3c51a4bb7&"
+                            />
+                        </button>
                         <div className="absolute top-72 mt-7 ml-10 [font-family:'Manrope-Regular',Helvetica] font-normal text-white text-[20px] tracking-[0] leading-[normal]">
                             Quantities: 3
                         </div>
@@ -195,9 +249,16 @@ export const ItemsFrame = () => {
                         <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-[#ff8a8a] text-[20px] tracking-[0] leading-[normal]">
                             Expires: 10 Sep 2023
                         </div>
-                        <div className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center">
-                            <img className="w-10 h-10 p-1" alt="Edit" src="https://cdn.discordapp.com/attachments/1151835814939078738/1156153038503952454/0d622ecf015f0b97491b26ed4f4d9e38.png?ex=6513eeec&is=65129d6c&hm=6c3d177f07d4df5e0e8914df198e3b1fdf9cc04e5d16a8926b4428e3c51a4bb7&" />
-                        </div>
+                        <button
+                            className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
+                            onClick={() => handleEdit()}
+                        >
+                            <img
+                                className="w-10 h-10 p-1"
+                                alt="Edit"
+                                src="https://cdn.discordapp.com/attachments/1151835814939078738/1156153038503952454/0d622ecf015f0b97491b26ed4f4d9e38.png?ex=6513eeec&is=65129d6c&hm=6c3d177f07d4df5e0e8914df198e3b1fdf9cc04e5d16a8926b4428e3c51a4bb7&"
+                            />
+                        </button>
                         <div className="absolute top-72 mt-7 ml-10 [font-family:'Manrope-Regular',Helvetica] font-normal text-white text-[20px] tracking-[0] leading-[normal]">
                             Quantities: 3
                         </div>
@@ -217,9 +278,16 @@ export const ItemsFrame = () => {
                         <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-[#ff8a8a] text-[20px] tracking-[0] leading-[normal]">
                             Expires: 10 Sep 2023
                         </div>
-                        <div className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center">
-                            <img className="w-10 h-10 p-1" alt="Edit" src="https://cdn.discordapp.com/attachments/1151835814939078738/1156153038503952454/0d622ecf015f0b97491b26ed4f4d9e38.png?ex=6513eeec&is=65129d6c&hm=6c3d177f07d4df5e0e8914df198e3b1fdf9cc04e5d16a8926b4428e3c51a4bb7&" />
-                        </div>
+                        <button
+                            className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
+                            onClick={() => handleEdit()}
+                        >
+                            <img
+                                className="w-10 h-10 p-1"
+                                alt="Edit"
+                                src="https://cdn.discordapp.com/attachments/1151835814939078738/1156153038503952454/0d622ecf015f0b97491b26ed4f4d9e38.png?ex=6513eeec&is=65129d6c&hm=6c3d177f07d4df5e0e8914df198e3b1fdf9cc04e5d16a8926b4428e3c51a4bb7&"
+                            />
+                        </button>
                         <div className="absolute top-72 mt-7 ml-10 [font-family:'Manrope-Regular',Helvetica] font-normal text-white text-[20px] tracking-[0] leading-[normal]">
                             Quantities: 3
                         </div>
@@ -239,9 +307,16 @@ export const ItemsFrame = () => {
                         <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-[#ff8a8a] text-[20px] tracking-[0] leading-[normal]">
                             Expires: 10 Sep 2023
                         </div>
-                        <div className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center">
-                            <img className="w-10 h-10 p-1" alt="Edit" src="https://cdn.discordapp.com/attachments/1151835814939078738/1156153038503952454/0d622ecf015f0b97491b26ed4f4d9e38.png?ex=6513eeec&is=65129d6c&hm=6c3d177f07d4df5e0e8914df198e3b1fdf9cc04e5d16a8926b4428e3c51a4bb7&" />
-                        </div>
+                        <button
+                            className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
+                            onClick={() => handleEdit()}
+                        >
+                            <img
+                                className="w-10 h-10 p-1"
+                                alt="Edit"
+                                src="https://cdn.discordapp.com/attachments/1151835814939078738/1156153038503952454/0d622ecf015f0b97491b26ed4f4d9e38.png?ex=6513eeec&is=65129d6c&hm=6c3d177f07d4df5e0e8914df198e3b1fdf9cc04e5d16a8926b4428e3c51a4bb7&"
+                            />
+                        </button>
                         <div className="absolute top-72 mt-7 ml-10 [font-family:'Manrope-Regular',Helvetica] font-normal text-white text-[20px] tracking-[0] leading-[normal]">
                             Quantities: 3
                         </div>

@@ -21,7 +21,7 @@ export const Sidebar = () => {
     // Redirect to the app-settings page
     router.push('/app-settings');
   };
-  
+
   return (
       <div className="sticky h-[calc(100vh-148px)] overflow-auto bg-[#21253180] rounded-[40px] shadow-[0px_0px_10px_8px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100">
         {/* class picture */}
@@ -50,7 +50,7 @@ export const Sidebar = () => {
         <div className="pl-11 pr-11 pb-11 divide-gray-700">
           <ul className="pt-2 pb-4 space-y-1 text-base">
             {/* Sidebar links */}
-            <li className="dark:text-red-300">
+            <li>
               <a
                   rel="noopener noreferrer"
                   href="#"
@@ -84,7 +84,7 @@ export const Sidebar = () => {
                 <span className="text-xl">Items</span>
               </a>
             </li>
-            <li>
+            <li className="dark:text-red-300">
               <a
                   rel="noopener noreferrer"
                   href="#"

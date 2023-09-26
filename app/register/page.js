@@ -1,6 +1,16 @@
+'use client'
+import React from "react";
 import { Topmenubar } from "app/topmenubar";
+import { useRouter } from 'next/navigation';
 
 export default function Home() {
+  const router = useRouter();
+  
+  const handleLogin = () => {
+    // Redirect to the login page
+    router.push('/');
+  };
+
   return (
     <div className="bg-[url(../public/bg.png)] bg-cover bg-center flex relative w-full h-full justify-center items-center">
       <Topmenubar/>
@@ -117,6 +127,7 @@ export default function Home() {
             <button
               className="w-full bg-[#1d2387] rounded-md py-2 text-white text-xl font-semibold hover:bg-blue-900 transition duration-300 mt-2"
               type="submit"
+              onClick={handleLogin}
             >
               Continue
             </button>
@@ -125,7 +136,7 @@ export default function Home() {
             By registering, you agree to myFridge’s Terms of service and privacy
           </p>
           <div className="text-[#4950f9] text-sm left ml-5 mt-6 mb-8">
-            Already have an account?
+            Already have an account? <a href="/">Login</a>
           </div>
         </div>
       </div>

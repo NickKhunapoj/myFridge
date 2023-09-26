@@ -1,6 +1,15 @@
+'use client'
 import React from "react";
+import { useRouter } from 'next/navigation';
 
 export const Box = () => {
+  const router = useRouter();
+
+  const handleDashboard = () => {
+    // Redirect to the login page
+    router.push('/dashboard');
+  };
+
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       {/* Text Group */}
@@ -52,15 +61,15 @@ export const Box = () => {
               <button
                 type="button"
                 className="w-full h-full font-family:'Manrope-Regular',Helvetica font-normal text-white text-[30px] text-center tracking-[0] leading-[normal] hover:bg-[#000000] hover:rounded-[15px] transition-colors duration-300"
+                onClick={handleDashboard}
               >
                 Log in
               </button>
             </div>
           </div>
-
           {/* Forgot Password Text */}
           <div className="absolute top-[240px] left-[58px] font-family:'Manrope',Helvetica font-light text-[16px] text-[#4950f9] cursor-pointer">
-            <a href="/forgot-password">Forgot Password?</a>
+            <a href="/">Forgot Password?</a>
           </div>
         </div>
       </div>
