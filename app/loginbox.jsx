@@ -68,7 +68,7 @@ export const Box = () => {
             </div>
           </div>
           {/* Forgot Password Text */}
-          <div className="absolute top-[240px] left-[58px] font-family:'Manrope',Helvetica font-light text-[16px] text-[#4950f9] cursor-pointer">
+          <div className="absolute top-[240px] left-[58px] font-family:'Manrope',Helvetica font-light text-20px] text-[#4950f9] cursor-pointer">
             <a href="/">Forgot Password?</a>
           </div>
         </div>

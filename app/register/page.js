@@ -125,19 +125,19 @@ export default function Home() {
               </div>
             </div>
             <button
-              className="w-full bg-[#1d2387] rounded-md py-2 text-white text-xl font-semibold hover:bg-blue-900 transition duration-300 mt-2"
-              type="submit"
-              onClick={handleLogin}
-            >
-              Continue
-            </button>
+                className="w-full bg-[#1d2387] font-family:'Manrope-Regular',Helvetica font-normal text-white text-[30px] text-center tracking-[0] rounded-md py-2 text-white text-xl font-semibold hover:bg-blue-900 transition duration-300 mt-2"
+                type="button"
+                onClick={handleLogin}
+              >
+                Continue
+              </button>
           </form>
-          <p className="text-[#979fa9] text-sm text-left mb-3 ml-5">
+          <p className="text-[#979fa9] text-[18px] text-left mb-3 ml-5">
             By registering, you agree to myFridge’s Terms of service and privacy
           </p>
-          <div className="text-[#4950f9] text-sm left ml-5 mt-6 mb-8">
-            Already have an account? <a href="/">Login</a>
-          </div>
+          <button className="text-[#4950f9] text-[18px] left ml-5 mt-6 mb-8 hover:underline" onClick={handleLogin}>
+                Don’t have myFridge account?
+          </button>
         </div>
       </div>
     </div>

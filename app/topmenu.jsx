@@ -9,7 +9,7 @@ export const Topmenu = () => {
             <div className="text-white font-Manrope font-semibold text-3xl tracking-[0] leading-[normal]">
               myFridge
             </div>
-            <div className="text-[#d5b7e8] text-[20px] flex items-center ml-auto mr-[35px] font-light">
+            <div className="text-[#d5b7e8] text-[25px] flex items-center ml-auto mr-[35px] font-light">
               <a href="/register" className="text-[#d5b7e8] hover:underline">
                 Don’t have myFridge account?
               </a>

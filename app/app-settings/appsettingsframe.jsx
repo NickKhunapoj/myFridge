@@ -136,6 +136,7 @@ export const AppSettingsFrame = () => {
                             className="w-full px-4 py-2 rounded-lg bg-[#21253180] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
                             value={email}
                             onChange={handleEmailChange}
+                            style={{ color: "white" }} // Set text color to white
                         />
                     </div>
                     <div className="mb-4">
@@ -144,6 +145,7 @@ export const AppSettingsFrame = () => {
                             className="w-full px-4 py-2 rounded-lg h-32 bg-[#21253180] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
                             value={feedback}
                             onChange={handleFeedbackChange}
+                            style={{ color: "white" }} // Set text color to white
                         ></textarea>
                     </div>
                     {/* Send Buttons */}

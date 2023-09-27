@@ -1,4 +1,5 @@
 'use client'
+
 import React from 'react';
 
 export const ItemsFrame = () => {
@@ -27,6 +28,7 @@ export const ItemsFrame = () => {
                         type="text"
                         placeholder="Search Items..."
                         className="w-full h-full py-1 pl-12 pr-7 rounded-xl bg-[#21253180] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
+                        style={{ color: "white" }} // Set text color to white
                     />
                     <img
                         src="https://cdn.discordapp.com/attachments/1151835814939078738/1151837859939102720/1f5f8f3eb04b33df710ea2026ec3e432.png" // Replace with the actual path to your PNG icon
@@ -38,15 +40,16 @@ export const ItemsFrame = () => {
             
             <div className="flex">
             {/* Sort by drop down */}
-            <div className="w-1/4 pt-16 px-16 text-white">
-                <label htmlFor="sortBy" className="block text-white text-xl">Sort by:</label>
+            <div className="w-1/4 pt-16 px-16 text-white text-[20px]">
+                <label htmlFor="sortBy" className="block text-white text-[20px]">Sort by:</label>
                 <select
                 id="sortBy"
-                className="w-full py-3 pl-3 pr-10 mt-1 bg-[#21253180] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] rounded-lg dark:text-gray-100 hover:bg-[#41465680] transition-all duration-300 ease-in-out"
+                className="w-full py-3 pl-3 pr-10 mt-1 bg-[#21253180] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] hover:rounded-[15px] dark:text-gray-100 hover:bg-[#41465680] transition-all duration-300 ease-in-out"
                 >
                 <option value="name">Name</option>
                 <option value="date">Quantity</option>
                 <option value="price">Expiry Date</option>
+                <option value="price">Recently Added</option>
                 </select>
             </div>
             {/* Add item button */}

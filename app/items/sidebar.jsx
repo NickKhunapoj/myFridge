@@ -33,7 +33,7 @@ export const Sidebar = () => {
           />
           {/* class name */}
           <div className='pl-6'>
-            <h2 className="font-medium text-2xl 2xl:text-3xl">
+            <h2 className="font-medium text-2xl 2xl:text-3xl" style={{ color: "white" }}>
               👋 Hello!
             </h2>
             <span className="flex items-center pt-1 space-x-1 uppercase text-base">
@@ -41,8 +41,9 @@ export const Sidebar = () => {
                 rel="noopener noreferrer"
                 href="#"
                 className="hover:underline dark:text-gray-400"
+                style={{ color: "white" }} // Set text color to white
             >
-              khunapoj
+              KHUNAPOJ SUTTENON
             </a>
           </span>
           </div>
@@ -50,7 +51,7 @@ export const Sidebar = () => {
         <div className="pl-11 pr-11 pb-11 divide-gray-700">
           <ul className="pt-2 pb-4 space-y-1 text-base">
             {/* Sidebar links */}
-            <li>
+            <li className="dark:text-red-300">
               <a
                   rel="noopener noreferrer"
                   href="#"
@@ -64,10 +65,10 @@ export const Sidebar = () => {
                 >
                   {/* Your PNG path here for Dashboard */}
                 </img>
-                <span className="text-xl">Dashboard</span>
+                <span className="text-xl" style={{ color: "white" }}> Dashboard</span>
               </a>
             </li>
-            <li className="dark:text-red-300">
+            <li>
               <a
                   rel="noopener noreferrer"
                   href="#"
@@ -81,7 +82,7 @@ export const Sidebar = () => {
                 >
                   {/* Your PNG path here for Items */}
                 </img>
-                <span className="text-xl">Items</span>
+                <span className="text-xl" style={{ color: "#E59393" }}> Items</span>
               </a>
             </li>
             <li>
@@ -98,7 +99,7 @@ export const Sidebar = () => {
                 >
                   {/* Your PNG path here for App Settings*/}
                 </img>
-                <span className="text-xl">
+                <span className="text-xl" style={{ color: "white" }}>
                 App Settings
               </span>
               </a>
@@ -120,7 +121,7 @@ export const Sidebar = () => {
                 >
                   {/* Your PNG path here for Logout */}
                 </img>
-                <span className="text-xl">Sign Out</span>
+                <span className="text-xl" style={{ color: "white" }}> Sign Out</span>
               </a>
             </li>
           </ul>

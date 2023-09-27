@@ -15,6 +15,7 @@ export const DashboardFrame = () => {
                         type="text"
                         placeholder="Search Dashboard..."
                         className="w-full h-full py-1 pl-12 pr-7 rounded-2xl bg-[#21253180] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
+                        style={{ color: "white" }} // Set text color to white
                     />
                     <img
                         src="https://cdn.discordapp.com/attachments/1151835814939078738/1151837859939102720/1f5f8f3eb04b33df710ea2026ec3e432.png" // Replace with the actual path to your PNG icon
