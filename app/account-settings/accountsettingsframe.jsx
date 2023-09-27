@@ -24,6 +24,14 @@ export const AccountSettingsFrame = () => {
         setUsername(e.target.value);
     };
 
+    const handleChangeClick = () => {
+
+    };
+
+    const handlePasswordChangeClick = () => {
+
+    };
+
     const handleSaveClick = () => {
 
     };
@@ -36,8 +44,8 @@ export const AccountSettingsFrame = () => {
 
     };
 
-
     return (
+        // Dashboard Header
         <div className="sticky h-[calc(100vh-148px)] overflow-auto bg-[#21253180] rounded-[40px] shadow-[0px_0px_10px_8px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100">
             {/* Account Settings Header */}
             <div className="flex">
@@ -45,8 +53,28 @@ export const AccountSettingsFrame = () => {
                     Account Settings
                 </div>
             </div>
+            <a style={{ color: "gray", position: "absolute", left: "270px", top: "160px", fontSize: "25px" }}>
+              Display Name
+            </a>
+            <a style={{ color: "white", position: "absolute", left: "270px", top: "200px", fontSize: "32px" }}>
+              KHUNAPOJ SUTTENON
+            </a>
+            <div className="flex items-center p-10">
+            <img
+               src="https://media.discordapp.net/attachments/1151835814939078738/1151836796276199434/imp-profilepic.png?width=412&height=412"
+               alt=""
+               className="rounded-full w-40 h-40 dark:bg-gray-500 ml-5"
+            />
+            </div>
+            <button
+                style={{ position: "absolute", left: "80px", top: "310px" }}
+                className="w-30 h-12 text-[21px] hover:text-[23px] bg-green-950 hover:bg-green-600 text-white py-2 px-4 rounded-lg transition-all duration-300 ease-in-out"
+                onClick={handleChangeClick}
+            >
+            Change
+            </button>
                 {/* Forms */}
-                <div className="w-3/5 pl-14 ml-6 mt-24">
+                <div className="w-3/5 pl-14 ml-6 mt-20">
                 <div className="mb-4">
                     <label className="block text-white text-[21px] mb-2">Email</label>
                     <input
@@ -82,23 +110,36 @@ export const AccountSettingsFrame = () => {
                 </div>
                 {/* Buttons */}
                 <div className="mb-4">
+                    <a style={{ color: "red", position: "absolute", left: "1120px", top: "360px", fontSize: "18px" }}>
+                        Danger Zone
+                    </a>
                     <button
-                        className="w-24 h-12 text-[21px] hover:text-[23px] bg-601F1F-950 hover:bg-601F1F-600 text-white py-2 px-4 rounded-lg transition-all duration-300 ease-in-out"
+                        style={{ position: "absolute", top: "400px", left: "1100px" }}
+                        className="w-50 h-12 text-[21px] hover:text-[23px] bg-red-950 hover:bg-red-600 text-center text-white py-2 px-4 rounded-lg transition-all duration-300 ease-in-out"
                         onClick={handleDeleteClick}
                     >
-                    Delete
+                    Delete Account
                     </button>
                     <button
-                        className="w-24 h-12 text-[21px] hover:text-[23px] bg-blue-950 hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition-all duration-300 ease-in-out"
+                        style={{ position: "absolute", left: "1000px" }}
+                        className="w-40 h-12 text-[21px] hover:text-[23px] bg-blue-950 hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition-all duration-300 ease-in-out"
                         onClick={handleSaveClick}
                     >
                     Save
                     </button>
                     <button
-                        className="w-24 h-12 text-[21px] hover:text-[23px] bg-red-950 hover:bg-red-600 text-white py-2 px-4 rounded-lg transition-all duration-300 ease-in-out"
+                        style={{ position: "absolute", left: "1200px" }}
+                        className="w-40 h-12 text-[21px] hover:text-[23px] bg-red-950 hover:bg-red-600 text-white py-2 px-4 rounded-lg transition-all duration-300 ease-in-out"
                         onClick={handleDiscardClick}
                     >
                     Discard
+                    </button>
+                    <a style={{ color: "white", position: "absolute", left: "80px", top: "690px", fontSize: "21px" }}>
+                        Password
+                    </a>
+                    <button className="text-white text-[20px] mt-8 mb-8 hover:underline" 
+                    onClick={handlePasswordChangeClick}>
+                        Change password?
                     </button>
                 </div>
             </div>
