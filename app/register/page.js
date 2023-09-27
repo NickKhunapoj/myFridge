@@ -136,7 +136,7 @@ export default function Home() {
             By registering, you agree to myFridge’s Terms of service and privacy
           </p>
           <button className="text-[#4950f9] text-[18px] left ml-5 mt-6 mb-8 hover:underline" onClick={handleLogin}>
-                Don’t have myFridge account?
+                Already have myFridge account?
           </button>
         </div>
       </div>

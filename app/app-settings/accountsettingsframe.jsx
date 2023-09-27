@@ -3,13 +3,13 @@
 import React, { useState } from 'react';
 
 export const AccountSettingsFrame = () => {
-    const [selectedOption, setSelectedOption] = useState('');
+    const [selectedOption, setOption] = useState('');
     const [email, setEmail] = useState('');
     const [dpname, setDpname] = useState('');
     const [username, setUsername] = useState('');
 
     const NotiCheckboxChange = (option) => {
-        setSelectedOption(option);
+        setOption(option);
     };
 
     const handleEmailChange = (e) => {
