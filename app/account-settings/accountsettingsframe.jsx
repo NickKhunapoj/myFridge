@@ -125,14 +125,28 @@ export const AccountSettingsFrame = () => {
                         className="w-40 h-12 text-[21px] hover:text-[23px] bg-blue-950 hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition-all duration-300 ease-in-out"
                         onClick={handleSaveClick}
                     >
-                    Save
+                    <div className="flex items-center"> {/* Added this div */}
+                        <img
+                            className="w-10 h-10 p-1"
+                            alt="Add"
+                            src="https://cdn.discordapp.com/attachments/1151835814939078738/1156637223408648332/6960dd4be832615dbf7fc16139c09381.png?ex=6515b1db&is=6514605b&hm=003f0fa2ea16c2b2aaed6d196421e86c8ceac05bda820d8230228fec2d756eb1&"
+                        />
+                        <span className="text-[21px] hover:text-[23px] transition-all duration-300 ease-in-out">Save</span> {/* Added text here */}
+                    </div>
                     </button>
                     <button
                         style={{ position: "absolute", left: "1200px" }}
                         className="w-40 h-12 text-[21px] hover:text-[23px] bg-red-950 hover:bg-red-600 text-white py-2 px-4 rounded-lg transition-all duration-300 ease-in-out"
                         onClick={handleDiscardClick}
                     >
-                    Discard
+                    <div className="flex items-center"> {/* Added this div */}
+                        <img
+                            className="w-10 h-10 p-1"
+                            alt="discard"
+                            src="https://cdn.discordapp.com/attachments/1151835814939078738/1156637223144394792/44030054813dd4a0f69338ff98f91177.png?ex=6515b1db&is=6514605b&hm=5686ab81a99728b67569d45a02294058f1df8e740911d86f58572b774e5993f1&"
+                        />
+                        <span className="text-[21px] hover:text-[23px] transition-all duration-300 ease-in-out">Discard</span> {/* Added text here */}
+                    </div>
                     </button>
                     <a style={{ color: "white", position: "absolute", left: "80px", top: "690px", fontSize: "21px" }}>
                         Password

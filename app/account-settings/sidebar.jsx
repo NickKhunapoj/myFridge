@@ -41,7 +41,7 @@ export const Sidebar = () => {
                 rel="noopener noreferrer"
                 href="#"
                 className="hover:underline dark:text-gray-400"
-                style={{ color: "white" }} // Set text color to white
+                style={{ color: "#E59393" }} // Set text color to white
             >
               KHUNAPOJ SUTTENON
             </a>
@@ -51,7 +51,7 @@ export const Sidebar = () => {
         <div className="pl-11 pr-11 pb-11 divide-gray-700">
           <ul className="pt-2 pb-4 space-y-1 text-base">
             {/* Sidebar links */}
-            <li className="dark:text-red-300">
+            <li className="dark:text-white">
               <a
                   rel="noopener noreferrer"
                   href="#"
@@ -99,7 +99,7 @@ export const Sidebar = () => {
                 >
                   {/* Your PNG path here for App Settings*/}
                 </img>
-                <span className="text-xl" style={{ color: "#E59393" }}>
+                <span className="text-xl" style={{ color: "white" }}>
                 App Settings
               </span>
               </a>
