@@ -1,17 +1,18 @@
 'use client'
 
 import React from 'react';
+import { useRouter } from 'next/navigation';
 
 export const ItemsFrame = () => {
 
+    const router = useRouter();
+
     const handleAdd = () => {
-        // Handle future actions
-        // You can implement the logic here
+        router.push('/add-items');
     };
 
     const handleEdit = () => {
-        // Handle future actions
-        // You can implement the logic here
+        router.push('/edit-items');
     };
 
     return (
@@ -54,8 +55,11 @@ export const ItemsFrame = () => {
             </div>
             {/* Add item button */}
             <div className="w-3/4 pt-16 px-16 mt-6 flex justify-end">
-                <button className="w-48 h-14 bg-[#0c420c] hover:bg-[#1a3f50] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center focus:outline-none">
-                    <div className="ont-medium text-[#ffffff] font-medium text-[21px]">
+                <button
+                    className="w-48 h-14 bg-[#0c420c] hover:bg-[#1a3f50] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center focus:outline-none"
+                    onClick={() => handleAdd()} // Add the onClick attribute here
+                    >
+                    <div className="font-medium text-[#ffffff] text-[21px]">
                     Add Item
                     </div>
                 </button>
