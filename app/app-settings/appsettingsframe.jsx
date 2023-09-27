@@ -37,9 +37,9 @@ export const AppSettingsFrame = () => {
             {/* Expiry Day Toggle */}
             <div className="flex">
                 {/* Descriptions */}
-                <div className="w-2/5 pt-24 pl-16 font-normal text-[29px] text-white">
+                <div className="w-2/5 pt-24 pl-16 font-normal text-[24px] text-white">
                     Expiry Date Notifications
-                    <div className="font-thin text-[23px] text-white">
+                    <div className="font-thin text-[22px] text-white">
                         Adjust settings for notification period before the item expires.
                     </div>
                 </div>
@@ -49,7 +49,7 @@ export const AppSettingsFrame = () => {
                     <div className="flex items-center mb-4">
                         <label
                             htmlFor="option1"
-                            className={`cursor-pointer select-none w-11 h-11 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center transition-transform duration-300 ease-in-out ${
+                            className={`cursor-pointer select-none w-10 h-10 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center transition-transform duration-300 ease-in-out ${
                                 selectedOption === 'Option 1'
                                     ? 'border-red-500 dark:border-red-400 transform scale-110'
                                     : 'hover:border-blue-500 dark:hover:border-blue-400'
@@ -60,14 +60,14 @@ export const AppSettingsFrame = () => {
                                 <div className="w-6 h-6 rounded-full bg-red-500"></div>
                             )}
                         </label>
-                        <div className="ml-7 text-[22px] text-white">3 Days</div>
+                        <div className="ml-7 text-[21px] text-white">3 Days</div>
                     </div>
 
                     {/* Checkbox 2 */}
                     <div className="flex items-center mb-4">
                         <label
                             htmlFor="option2"
-                            className={`cursor-pointer select-none w-11 h-11 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center transition-transform duration-300 ease-in-out ${
+                            className={`cursor-pointer select-none w-10 h-10 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center transition-transform duration-300 ease-in-out ${
                                 selectedOption === 'Option 2'
                                     ? 'border-red-500 dark:border-red-400 transform scale-110'
                                     : 'hover:border-blue-500 dark:hover:border-blue-400'
@@ -78,14 +78,14 @@ export const AppSettingsFrame = () => {
                                 <div className="w-6 h-6 rounded-full bg-red-500"></div>
                             )}
                         </label>
-                        <div className="ml-7 text-[22px] text-white">5 Days</div>
+                        <div className="ml-7 text-[21px] text-white">5 Days</div>
                     </div>
 
                     {/* Checkbox 3 */}
                     <div className="flex items-center mb-4">
                         <label
                             htmlFor="option3"
-                            className={`cursor-pointer select-none w-11 h-11 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center transition-transform duration-300 ease-in-out ${
+                            className={`cursor-pointer select-none w-10 h-10 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center transition-transform duration-300 ease-in-out ${
                                 selectedOption === 'Option 3'
                                     ? 'border-red-500 dark:border-red-400 transform scale-110'
                                     : 'hover:border-blue-500 dark:hover:border-blue-400'
@@ -96,14 +96,14 @@ export const AppSettingsFrame = () => {
                                 <div className="w-6 h-6 rounded-full bg-red-500"></div>
                             )}
                         </label>
-                        <div className="ml-7 text-[22px] text-white">1 Week</div>
+                        <div className="ml-7 text-[21px] text-white">1 Week</div>
                     </div>
 
                     {/* Checkbox 4 */}
                     <div className="flex items-center mb-4">
                         <label
                             htmlFor="option4"
-                            className={`cursor-pointer select-none w-11 h-11 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center transition-transform duration-300 ease-in-out ${
+                            className={`cursor-pointer select-none w-10 h-10 rounded-full border border-gray-300 dark:border-gray-600 flex items-center justify-center transition-transform duration-300 ease-in-out ${
                                 selectedOption === 'Option 4'
                                     ? 'border-red-500 dark:border-red-400 transform scale-110'
                                     : 'hover:border-blue-500 dark:hover:border-blue-400'
@@ -114,16 +114,16 @@ export const AppSettingsFrame = () => {
                                 <div className="w-6 h-6 rounded-full bg-red-500"></div>
                             )}
                         </label>
-                        <div className="ml-7 text-[22px] text-white">No Notifications</div>
+                        <div className="ml-7 text-[21px] text-white">No Notifications</div>
                     </div>
                 </div>
             </div>
             {/* Send Feedback */}
             <div className="flex">
                 {/* Descriptions */}
-                <div className="w-2/5 pt-24 pl-16 font-normal text-[29px] text-white">
+                <div className="w-2/5 pt-24 pl-16 font-normal text-[24px] text-white">
                     Send Feedback
-                    <div className="font-thin text-[23px] text-white">
+                    <div className="font-thin text-[22px] text-white">
                         Please send your complaints and suggestions here. We appreciate all feedback!
                     </div>
                 </div>
@@ -151,7 +151,7 @@ export const AppSettingsFrame = () => {
                     {/* Send Buttons */}
                     <div className="mb-4">
                         <button
-                            className="w-24 h-12 text-[21px] hover:text-[23px] bg-blue-950 hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition-all duration-300 ease-in-out"
+                            className="w-24 h-12 text-[21px] hover:text-[21px] bg-blue-950 hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition-all duration-300 ease-in-out"
                             onClick={handleSendClick}
                         >
                             Send
