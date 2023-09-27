@@ -46,11 +46,12 @@ export const AccountSettingsFrame = () => {
                 </div>
             </div>
                 {/* Forms */}
-            <div className="w-3/5 pl-14 ml-6 mt-24">
+                <div className="w-3/5 pl-14 ml-6 mt-24">
                 <div className="mb-4">
                     <label className="block text-white text-[21px] mb-2">Email</label>
                     <input
                         type="text"
+                        placeholder="s65010126XXXXX@email.kmutnb.ac.th"
                         className="w-full px-4 py-2 rounded-lg bg-[#21253180] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
                         value={email}
                         onChange={handleEmailChange}
@@ -61,6 +62,7 @@ export const AccountSettingsFrame = () => {
                     <label className="block text-white text-[21px] mb-2">Display Name</label>
                     <input
                         type="text"
+                        placeholder="KHUNAPOJ SUTTENON"
                         className="w-full px-4 py-2 rounded-lg bg-[#21253180] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
                         value={dpname}
                         onChange={handleDpnameChange}
@@ -71,6 +73,7 @@ export const AccountSettingsFrame = () => {
                     <label className="block text-white text-[21px] mb-2">Username</label>
                     <input
                         type="text"
+                        placeholder="KHUNAPOJ"
                         className="w-full px-4 py-2 rounded-lg bg-[#21253180] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
                         value={username}
                         onChange={handleUsernameChange}
@@ -92,7 +95,7 @@ export const AccountSettingsFrame = () => {
                     Save
                     </button>
                     <button
-                        className="w-24 h-12 text-[21px] hover:text-[23px] bg-601F1F-950 hover:bg-601F1F-600 text-white py-2 px-4 rounded-lg transition-all duration-300 ease-in-out"
+                        className="w-24 h-12 text-[21px] hover:text-[23px] bg-red-950 hover:bg-red-600 text-white py-2 px-4 rounded-lg transition-all duration-300 ease-in-out"
                         onClick={handleDiscardClick}
                     >
                     Discard
