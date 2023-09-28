@@ -62,6 +62,7 @@ export const EditFrame = () => {
                         <input
                             type="date"
                             className="w-52 mt-4 pl-2 rounded-xl bg-[#21253180] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
+                            style={{ color: "white" }} // Set text color to white
                             placeholder="Select Expiry Date"
                         />
                         <div className="sticky ml-20 pt-6 pb-2 [font-family:'Manrope-normal',Helvetica] font-normal text-[#ffffff] text-[25px] tracking-[0] leading-[normal]">
@@ -71,6 +72,7 @@ export const EditFrame = () => {
                         <input
                             type="file"
                             className="w-1/5 mt-6 ml-8 rounded-xl bg-[#21253180] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100 hover:bg-[#41465680] transition-all duration-300 ease-in-out"
+                            style={{ color: "white" }} // Set text color to white
                             placeholder="Upload Image"
                         />
                     </div>
@@ -85,7 +87,7 @@ export const EditFrame = () => {
                             alt="Add"
                             src="https://cdn.discordapp.com/attachments/1151835814939078738/1156637223408648332/6960dd4be832615dbf7fc16139c09381.png?ex=6515b1db&is=6514605b&hm=003f0fa2ea16c2b2aaed6d196421e86c8ceac05bda820d8230228fec2d756eb1&"
                         />
-                        <span className="text-[21px] hover:text-[23px] transition-all duration-300 ease-in-out">Save</span> {/* Added text here */}
+                        <span className="text-[21px] hover:text-[23px] text-white transition-all duration-300 ease-in-out">Save</span> {/* Added text here */}
                         </div>
                     </button>
                     <button
@@ -98,7 +100,7 @@ export const EditFrame = () => {
                             alt="discard"
                             src="https://cdn.discordapp.com/attachments/1151835814939078738/1156637223144394792/44030054813dd4a0f69338ff98f91177.png?ex=6515b1db&is=6514605b&hm=5686ab81a99728b67569d45a02294058f1df8e740911d86f58572b774e5993f1&"
                         />
-                        <span className="text-[21px] hover:text-[23px] transition-all duration-300 ease-in-out">Discard</span> {/* Added text here */}
+                        <span className="text-[21px] hover:text-[23px] text-white transition-all duration-300 ease-in-out">Discard</span> {/* Added text here */}
                         </div>
                     </button>
                     </div>
