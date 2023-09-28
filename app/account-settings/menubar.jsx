@@ -13,25 +13,35 @@ export const MenuBar = () => {
 
     return (
         <nav className="sticky flex bg-[#21253180]">
-            <div className="container p-4 top-0 w-1/2 z-10 ml-5 flex justify-between items-center">
+            <div className="flex container p-4 top-0 w-1/4 z-10 ml-5 justify-between items-center">
                 <a
                     href="#"
                     className="hover:underline font-Manrope font-semibold text-white text-3xl cursor-pointer"
-                    onClick={backHome} // Add onClick handler for redirection
+                    onClick={backHome}
                 >
                     myFridge
                 </a>
             </div>
-            <button
-                className="2xl:hidden container p-4 justify-end top-0 w-1/2 z-10 mr-5 flex items-center"
-            >
-                <img
-                    src="https://cdn.discordapp.com/attachments/1151835814939078738/1155449006386839643/icons8-menu-96_1.png"
-                    alt="sidebar" // Add an appropriate alt text for accessibility
-                    style={{ width: '30px', height: '30px' }} // Adjust the width and height as needed
-                    className="hover:bg-gray-500 transition-all duration-300 ease-in-out"
-                />
-            </button>
+            {/* nav bar */}
+            <div className="flex w-3/4 justify-end 2xl:hidden">
+                <div className="flex items-center pr-12 font-Manrope font-normal text-white text-[18px]">
+                    <div>
+                        <a href="#" className="text-white hover:underline hover:text-[20px] px-8 transition-all duration-300 ease-in-out" 
+                        onClick={() => router.push('/dashboard')}>Dashboard</a>
+                        <a href="#" className="text-white hover:underline hover:text-[20px] px-8 transition-all duration-300 ease-in-out"
+                        onClick={() => router.push('/items')}>Items</a>
+                        <a href="#" className="text-white hover:underline hover:text-[20px] pl-8 pr-10 transition-all duration-300 ease-in-out"
+                        onClick={() => router.push('/app-settings')}>App Settings</a>
+                    </div>
+                    <a href="#" onClick={() => router.push('/account-settings')}>
+                        <img
+                            src="https://media.discordapp.net/attachments/1151835814939078738/1151836796276199434/imp-profilepic.png?width=412&height=412"
+                            alt="Profile Picture"
+                            className="w-14 h-14 hover:w-12 hover:h-12 rounded-full cursor-pointer transition-all duration-300 ease-in-out"
+                        />
+                    </a>
+                </div>
+            </div>
         </nav>
     );
 };

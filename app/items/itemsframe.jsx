@@ -70,11 +70,11 @@ export const ItemsFrame = () => {
                 {/* Item 1 */}
                 <div className="sticky w-96 xl:w-1/3 pt-14 pl-16">
                     <div className="relative w-full h-96 bg-[#142741] rounded-[33px] shadow-[0px_0px_10px_3px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)]">
-                        <div className="absolute top-56 ml-10 [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-[#ff8a8a] text-[24px] tracking-[0] leading-[normal]">
+                        <div className="absolute top-56 ml-10 [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-white text-[24px] tracking-[0] leading-[normal]">
                             Butter
                         </div>
-                        <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-[#ff8a8a] text-[20px] tracking-[0] leading-[normal]">
-                            Expires: 10 Sep 2023
+                        <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-white text-[20px] tracking-[0] leading-[normal]">
+                            Expires: 23 Oct 2023
                         </div>
                         <button
                             className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
@@ -99,11 +99,11 @@ export const ItemsFrame = () => {
                 {/* Item 2 */}
                 <div className="sticky w-96 xl:w-1/3 pt-14 px-10">
                     <div className="relative w-full h-96 bg-[#142741] rounded-[33px] shadow-[0px_0px_10px_3px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)]">
-                        <div className="absolute top-56 ml-10 [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-[#ff8a8a] text-[24px] tracking-[0] leading-[normal]">
+                        <div className="absolute top-56 ml-10 [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-white text-[24px] tracking-[0] leading-[normal]">
                             Butter
                         </div>
-                        <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-[#ff8a8a] text-[20px] tracking-[0] leading-[normal]">
-                            Expires: 10 Sep 2023
+                        <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-white text-[20px] tracking-[0] leading-[normal]">
+                            Expires: 23 Oct 2023
                         </div>
                         <button
                             className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
@@ -128,11 +128,11 @@ export const ItemsFrame = () => {
                 {/* Item 3 */}
                 <div className="sticky w-96 xl:w-1/3 pt-14 pr-16">
                     <div className="relative w-full h-96 bg-[#142741] rounded-[33px] shadow-[0px_0px_10px_3px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)]">
-                        <div className="absolute top-56 ml-10 [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-[#ff8a8a] text-[24px] tracking-[0] leading-[normal]">
+                        <div className="absolute top-56 ml-10 [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-white text-[24px] tracking-[0] leading-[normal]">
                             Butter
                         </div>
-                        <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-[#ff8a8a] text-[20px] tracking-[0] leading-[normal]">
-                            Expires: 10 Sep 2023
+                        <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-white text-[20px] tracking-[0] leading-[normal]">
+                            Expires: 23 Oct 2023
                         </div>
                         <button
                             className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
@@ -160,11 +160,11 @@ export const ItemsFrame = () => {
                 {/* Item 1 */}
                 <div className="sticky w-96 xl:w-1/3 py-9 pl-16">
                     <div className="relative w-full h-96 bg-[#142741] rounded-[33px] shadow-[0px_0px_10px_3px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)]">
-                        <div className="absolute top-56 ml-10 [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-[#ff8a8a] text-[24px] tracking-[0] leading-[normal]">
+                        <div className="absolute top-56 ml-10 [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-white text-[24px] tracking-[0] leading-[normal]">
                             Butter
                         </div>
-                        <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-[#ff8a8a] text-[20px] tracking-[0] leading-[normal]">
-                            Expires: 10 Sep 2023
+                        <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-white text-[20px] tracking-[0] leading-[normal]">
+                            Expires: 23 Oct 2023
                         </div>
                         <button
                             className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
@@ -189,11 +189,11 @@ export const ItemsFrame = () => {
                 {/* Item 2 */}
                 <div className="sticky w-96 xl:w-1/3 py-9 px-10">
                     <div className="relative w-full h-96 bg-[#142741] rounded-[33px] shadow-[0px_0px_10px_3px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)]">
-                        <div className="absolute top-56 ml-10 [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-[#ff8a8a] text-[24px] tracking-[0] leading-[normal]">
+                        <div className="absolute top-56 ml-10 [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-white text-[24px] tracking-[0] leading-[normal]">
                             Butter
                         </div>
-                        <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-[#ff8a8a] text-[20px] tracking-[0] leading-[normal]">
-                            Expires: 10 Sep 2023
+                        <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-white text-[20px] tracking-[0] leading-[normal]">
+                            Expires: 23 Oct 2023
                         </div>
                         <button
                             className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
@@ -218,11 +218,11 @@ export const ItemsFrame = () => {
                 {/* Item 3 */}
                 <div className="sticky w-96 xl:w-1/3 py-9 pr-16">
                     <div className="relative w-full h-96 bg-[#142741] rounded-[33px] shadow-[0px_0px_10px_3px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)]">
-                        <div className="absolute top-56 ml-10 [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-[#ff8a8a] text-[24px] tracking-[0] leading-[normal]">
+                        <div className="absolute top-56 ml-10 [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-white text-[24px] tracking-[0] leading-[normal]">
                             Butter
                         </div>
-                        <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-[#ff8a8a] text-[20px] tracking-[0] leading-[normal]">
-                            Expires: 10 Sep 2023
+                        <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-white text-[20px] tracking-[0] leading-[normal]">
+                            Expires: 23 Oct 2023
                         </div>
                         <button
                             className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
@@ -250,11 +250,11 @@ export const ItemsFrame = () => {
                 {/* Item 1 */}
                 <div className="sticky w-96 xl:w-1/3 pb-12 pl-16">
                     <div className="relative w-full h-96 bg-[#142741] rounded-[33px] shadow-[0px_0px_10px_3px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)]">
-                        <div className="absolute top-56 ml-10 [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-[#ff8a8a] text-[24px] tracking-[0] leading-[normal]">
+                        <div className="absolute top-56 ml-10 [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-white text-[24px] tracking-[0] leading-[normal]">
                             Butter
                         </div>
-                        <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-[#ff8a8a] text-[20px] tracking-[0] leading-[normal]">
-                            Expires: 10 Sep 2023
+                        <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-white text-[20px] tracking-[0] leading-[normal]">
+                            Expires: 23 Oct 2023
                         </div>
                         <button
                             className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
@@ -279,11 +279,11 @@ export const ItemsFrame = () => {
                 {/* Item 2 */}
                 <div className="sticky w-96 xl:w-1/3 pb-12 px-10">
                     <div className="relative w-full h-96 bg-[#142741] rounded-[33px] shadow-[0px_0px_10px_3px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)]">
-                        <div className="absolute top-56 ml-10 [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-[#ff8a8a] text-[24px] tracking-[0] leading-[normal]">
+                        <div className="absolute top-56 ml-10 [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-white text-[24px] tracking-[0] leading-[normal]">
                             Butter
                         </div>
-                        <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-[#ff8a8a] text-[20px] tracking-[0] leading-[normal]">
-                            Expires: 10 Sep 2023
+                        <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-white text-[20px] tracking-[0] leading-[normal]">
+                            Expires: 23 Oct 2023
                         </div>
                         <button
                             className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
@@ -308,11 +308,11 @@ export const ItemsFrame = () => {
                 {/* Item 3 */}
                 <div className="sticky w-96 xl:w-1/3 pb-12 pr-16">
                     <div className="relative w-full h-96 bg-[#142741] rounded-[33px] shadow-[0px_0px_10px_3px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)]">
-                        <div className="absolute top-56 ml-10 [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-[#ff8a8a] text-[24px] tracking-[0] leading-[normal]">
+                        <div className="absolute top-56 ml-10 [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-white text-[24px] tracking-[0] leading-[normal]">
                             Butter
                         </div>
-                        <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-[#ff8a8a] text-[20px] tracking-[0] leading-[normal]">
-                            Expires: 10 Sep 2023
+                        <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-white text-[20px] tracking-[0] leading-[normal]">
+                            Expires: 23 Oct 2023
                         </div>
                         <button
                             className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"

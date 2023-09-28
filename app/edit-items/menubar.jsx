@@ -33,7 +33,7 @@ export const MenuBar = () => {
                         <a href="#" className="text-white hover:underline hover:text-[20px] pl-8 pr-10 transition-all duration-300 ease-in-out"
                         onClick={() => router.push('/app-settings')}>App Settings</a>
                     </div>
-                    <a href="#" onClick={() => router.push('/dashboard')}>
+                    <a href="#" onClick={() => router.push('/account-settings')}>
                         <img
                             src="https://media.discordapp.net/attachments/1151835814939078738/1151836796276199434/imp-profilepic.png?width=412&height=412"
                             alt="Profile Picture"

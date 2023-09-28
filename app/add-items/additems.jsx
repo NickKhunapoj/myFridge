@@ -3,7 +3,7 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 
-export const EditFrame = () => {
+export const AddFrame = () => {
     const router = useRouter();
 
     const handleAdd = () => {
@@ -23,7 +23,7 @@ export const EditFrame = () => {
                 Items
             </div>
             {/* Add item menu */}
-            <div className="sticky w-full h-[calc(90vh-120px)] p-16">
+            <div className="sticky w-full h-[calc(89vh-120px)] p-16">
                 <div className="sticky w-full h-full bg-[#142741] rounded-[33px] shadow-[0px_0px_10px_3px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)]">
                     <div className="flex relative pt-14 px-14 [font-family:'Manrope-SemiBold',Helvetica] font-SemiBold text-[#ffffff] text-3xl tracking-[0] leading-[normal]">
                     <img
@@ -33,7 +33,7 @@ export const EditFrame = () => {
                         />
                         Adding Item
                     </div>
-                    <div className="flex w-2/4">
+                    <div className="flex">
                         <div className="sticky w-64 px-14 pt-10 [font-family:'Manrope-normal',Helvetica] font-normal text-[#ffffff] text-[25px] tracking-[0] leading-[normal]">
                             Name
                         </div>
@@ -45,7 +45,7 @@ export const EditFrame = () => {
                         />
                     </div>
 
-                    <div className="flex w-2/4">
+                    <div className="flex">
                         <div className="sticky w-64 px-14 pt-8 [font-family:'Manrope-normal',Helvetica] font-normal text-[#ffffff] text-[25px] tracking-[0] leading-[normal]">
                             Quantity
                         </div>
@@ -67,7 +67,7 @@ export const EditFrame = () => {
                             style={{ color: "white" }} // Set text color to white
                             placeholder="Select Expiry Date"
                         />
-                        <div className="sticky ml-20 pt-6 pb-2 [font-family:'Manrope-normal',Helvetica] font-normal text-[#ffffff] text-[25px] tracking-[0] leading-[normal]">
+                        <div className="sticky pl-10 pt-6 pb-2 [font-family:'Manrope-normal',Helvetica] font-normal text-[#ffffff] text-[25px] tracking-[0] leading-[normal]">
                             Image
                         </div>
                         {/* Picture Uploader */}
@@ -112,5 +112,5 @@ export const EditFrame = () => {
     );
 };
 
-export default EditFrame;
+export default AddFrame;
 
