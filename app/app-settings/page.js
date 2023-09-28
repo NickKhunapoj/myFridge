@@ -36,11 +36,7 @@ export default function AppSettings() {
         </div>
       ) : (
         <>
-          <img
-            className="absolute inset-0 w-full h-full object-cover"
-            alt="Bg"
-            src="/bg.png"
-          />
+          <div className="gradient-background">
           <MenuBar />
           <div className="hidden 2xl:flex">
             <div className="w-96 2xl:w-1/4 p-10">
@@ -54,6 +50,7 @@ export default function AppSettings() {
             <div className="w-full p-10">
               <AppSettingsFrame />
             </div>
+          </div>
           </div>
         </>
       )}

@@ -18,6 +18,11 @@
   }
 }
 
+.gradient-background {
+  background: linear-gradient(to bottom right, #063d68, #051b35, #30122e);
+  min-height: 100vh;
+}
+
 body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(

@@ -5,12 +5,7 @@ import 'app/globals.css';
 export default function Home() {
     return (
         <div className="font-Manrope">
-        <div className="relative w-full h-screen flex justify-center items-center">
-            <img
-                className="absolute inset-0 w-full h-full object-cover"
-                alt="Bg"
-                src="/bg.png"
-            />
+        <div className="gradient-background">
             <Box />
             <Topmenu />
         </div>
