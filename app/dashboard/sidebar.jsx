@@ -37,7 +37,7 @@ export const Sidebar = () => {
           />
           {/* class name */}
           <div className='pl-6'>
-            <h2 className="font-medium text-2xl 2xl:text-3xl" style={{ color: "white" }}>
+            <h2 className="font-semibold text-2xl 2xl:text-3xl" style={{ color: "white" }}>
               👋 Hello!
             </h2>
             <span className="flex items-center pt-1 space-x-1 uppercase text-base">

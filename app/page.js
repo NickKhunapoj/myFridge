@@ -3,6 +3,7 @@ import { Topmenu } from "/app/topmenu"; // Use a relative path
 
 export default function Home() {
     return (
+        <div className="font-Manrope">
         <div className="relative w-full h-screen flex justify-center items-center">
             <img
                 className="absolute inset-0 w-full h-full object-cover"
@@ -11,6 +12,7 @@ export default function Home() {
             />
             <Box />
             <Topmenu />
+        </div>
         </div>
     );
 }

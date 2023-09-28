@@ -28,7 +28,7 @@ export const ItemsFrame = () => {
                     <input
                         type="text"
                         placeholder="Search Items..."
-                        className="w-full h-full py-1 pl-12 pr-7 rounded-xl bg-[#21253180] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
+                        className="w-full h-full py-1 pl-12 pr-7 rounded-xl bg-[#40404099] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
                         style={{ color: "white" }} // Set text color to white
                     />
                     <img
@@ -41,11 +41,11 @@ export const ItemsFrame = () => {
             
             <div className="flex">
             {/* Sort by drop down */}
-            <div className="w-1/4 pt-16 px-16 text-white text-[20px]">
+            <div className="w-2/5 pt-16 px-16 text-white text-[20px]">
                 <label htmlFor="sortBy" className="block text-white text-[20px]">Sort by:</label>
                 <select
                 id="sortBy"
-                className="w-full py-3 pl-3 pr-10 mt-1 bg-[#21253180] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] hover:rounded-[15px] dark:text-gray-100 hover:bg-[#41465680] transition-all duration-300 ease-in-out"
+                className="w-full py-3 pl-3 pr-10 mt-1 rounded-xl bg-[#40404099] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] hover:rounded-[15px] dark:text-gray-100 hover:bg-[#41465680] transition-all duration-300 ease-in-out"
                 >
                 <option value="name">Name</option>
                 <option value="date">Quantity</option>
@@ -90,7 +90,7 @@ export const ItemsFrame = () => {
                             Quantities: 3
                         </div>
                         <img
-                            className="absolute object-center px-9 py-4 h-[220px] w-full " //center picture
+                            className="absolute object-cover px-9 py-4 h-[220px] w-full " //center picture
                             alt="butterpic"
                             src="https://cdn.discordapp.com/attachments/1151835814939078738/1156150750003597332/Screenshot_2566-09-06_at_21.18_1.png?ex=6513eccb&is=65129b4b&hm=1066cbe747735931c57408a88a3c4e0ee63f6ec1ee5713fdbf8096547943a965&"
                         />
@@ -119,7 +119,7 @@ export const ItemsFrame = () => {
                             Quantities: 3
                         </div>
                         <img
-                            className="absolute object-center px-9 py-4 h-[220px] w-full " //center picture
+                            className="absolute object-cover px-9 py-4 h-[220px] w-full " //center picture
                             alt="butterpic"
                             src="https://cdn.discordapp.com/attachments/1151835814939078738/1156150750003597332/Screenshot_2566-09-06_at_21.18_1.png?ex=6513eccb&is=65129b4b&hm=1066cbe747735931c57408a88a3c4e0ee63f6ec1ee5713fdbf8096547943a965&"
                         />
@@ -148,7 +148,7 @@ export const ItemsFrame = () => {
                             Quantities: 3
                         </div>
                         <img
-                            className="absolute object-center px-9 py-4 h-[220px] w-full " //center picture
+                            className="absolute object-cover px-9 py-4 h-[220px] w-full " //center picture
                             alt="butterpic"
                             src="https://cdn.discordapp.com/attachments/1151835814939078738/1156150750003597332/Screenshot_2566-09-06_at_21.18_1.png?ex=6513eccb&is=65129b4b&hm=1066cbe747735931c57408a88a3c4e0ee63f6ec1ee5713fdbf8096547943a965&"
                         />
@@ -180,7 +180,7 @@ export const ItemsFrame = () => {
                             Quantities: 3
                         </div>
                         <img
-                            className="absolute object-center px-9 py-4 h-[220px] w-full " //center picture
+                            className="absolute object-cover px-9 py-4 h-[220px] w-full " //center picture
                             alt="butterpic"
                             src="https://cdn.discordapp.com/attachments/1151835814939078738/1156150750003597332/Screenshot_2566-09-06_at_21.18_1.png?ex=6513eccb&is=65129b4b&hm=1066cbe747735931c57408a88a3c4e0ee63f6ec1ee5713fdbf8096547943a965&"
                         />
@@ -209,7 +209,7 @@ export const ItemsFrame = () => {
                             Quantities: 3
                         </div>
                         <img
-                            className="absolute object-center px-9 py-4 h-[220px] w-full " //center picture
+                            className="absolute object-cover px-9 py-4 h-[220px] w-full " //center picture
                             alt="butterpic"
                             src="https://cdn.discordapp.com/attachments/1151835814939078738/1156150750003597332/Screenshot_2566-09-06_at_21.18_1.png?ex=6513eccb&is=65129b4b&hm=1066cbe747735931c57408a88a3c4e0ee63f6ec1ee5713fdbf8096547943a965&"
                         />
@@ -238,7 +238,7 @@ export const ItemsFrame = () => {
                             Quantities: 3
                         </div>
                         <img
-                            className="absolute object-center px-9 py-4 h-[220px] w-full " //center picture
+                            className="absolute object-cover px-9 py-4 h-[220px] w-full " //center picture
                             alt="butterpic"
                             src="https://cdn.discordapp.com/attachments/1151835814939078738/1156150750003597332/Screenshot_2566-09-06_at_21.18_1.png?ex=6513eccb&is=65129b4b&hm=1066cbe747735931c57408a88a3c4e0ee63f6ec1ee5713fdbf8096547943a965&"
                         />
@@ -270,7 +270,7 @@ export const ItemsFrame = () => {
                             Quantities: 3
                         </div>
                         <img
-                            className="absolute object-center px-9 py-4 h-[220px] w-full " //center picture
+                            className="absolute object-cover px-9 py-4 h-[220px] w-full " //center picture
                             alt="butterpic"
                             src="https://cdn.discordapp.com/attachments/1151835814939078738/1156150750003597332/Screenshot_2566-09-06_at_21.18_1.png?ex=6513eccb&is=65129b4b&hm=1066cbe747735931c57408a88a3c4e0ee63f6ec1ee5713fdbf8096547943a965&"
                         />
@@ -299,7 +299,7 @@ export const ItemsFrame = () => {
                             Quantities: 3
                         </div>
                         <img
-                            className="absolute object-center px-9 py-4 h-[220px] w-full " //center picture
+                            className="absolute object-cover px-9 py-4 h-[220px] w-full " //center picture
                             alt="butterpic"
                             src="https://cdn.discordapp.com/attachments/1151835814939078738/1156150750003597332/Screenshot_2566-09-06_at_21.18_1.png?ex=6513eccb&is=65129b4b&hm=1066cbe747735931c57408a88a3c4e0ee63f6ec1ee5713fdbf8096547943a965&"
                         />
@@ -328,7 +328,7 @@ export const ItemsFrame = () => {
                             Quantities: 3
                         </div>
                         <img
-                            className="absolute object-center px-9 py-4 h-[220px] w-full " //center picture
+                            className="absolute object-cover px-9 py-4 h-[220px] w-full " //center picture
                             alt="butterpic"
                             src="https://cdn.discordapp.com/attachments/1151835814939078738/1156150750003597332/Screenshot_2566-09-06_at_21.18_1.png?ex=6513eccb&is=65129b4b&hm=1066cbe747735931c57408a88a3c4e0ee63f6ec1ee5713fdbf8096547943a965&"
                         />

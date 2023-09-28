@@ -27,7 +27,7 @@ export default function AppSettings() {
   }, []);
 
   return (
-    <div>
+    <div className="font-Manrope">
       {isSmallScreen ? (
         <div className="bg-black text-white h-screen flex flex-col items-center justify-center">
           <span role="img" aria-label="Pray" className="text-6xl p-5">🙏</span>

@@ -36,24 +36,24 @@ export const Box = () => {
       <div className="login-box-group">
         <div className="inline-flex flex-col items-start gap-[10px] relative">
           <div className="relative w-[675px] h-[375px] bg-[#21253180] rounded-[55px] shadow-[0px_0px_10px_8px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)]" />
-          <div className="absolute top-[47px] left-[58px] font-family:'Manrope-Regular',Helvetica font-light text-white text-[20px] tracking-[0] leading-[normal]">
+          <div className="absolute top-[47px] left-[58px] font-family:'Manrope-Regular',Helvetica font-normal text-white text-[20px] tracking-[0] leading-[normal]">
             Username or Email
           </div>
           <div className="absolute top-[80px] left-[58px] right-[58px]">
             <input
               type="text"
               placeholder="Enter your username or email"
-              className="w-full h-[50px] bg-[#40404099] rounded-[15px] text-white text-[20px] pl-[10px] font-family:'Manrope-Regular',Helvetica font-light"
+              className="w-full h-[50px] bg-[#40404099] rounded-[15px] text-white text-[20px] pl-[10px] font-family:'Manrope-Regular',Helvetica font-normal"
             />
           </div>
-          <div className="absolute top-[149px] left-[58px] font-family:'Manrope-Regular',Helvetica font-light text-white text-[20px] tracking-[0] leading-[normal]">
+          <div className="absolute top-[149px] left-[58px] font-family:'Manrope-Regular',Helvetica font-normal text-white text-[20px] tracking-[0] leading-[normal]">
             Password
           </div>
           <div className="absolute top-[182px] left-[58px] right-[58px]">
             <input
               type="password"
               placeholder="Enter your password"
-              className="w-full h-[50px] bg-[#40404099] rounded-[15px] text-white text-[20px] pl-[10px] font-family:'Manrope-Regular',Helvetica font-light"
+              className="w-full h-[50px] bg-[#40404099] rounded-[15px] text-white text-[20px] pl-[10px] font-family:'Manrope-Regular',Helvetica font-normal"
             />
           </div>
           <div className="absolute w-[133px] h-[54px] top-[289px] left-[271px]">
@@ -68,7 +68,7 @@ export const Box = () => {
             </div>
           </div>
           {/* Forgot Password Text */}
-          <div className="absolute top-[240px] left-[58px] font-family:'Manrope',Helvetica font-light text-20px] text-[#4950f9] cursor-pointer">
+          <div className="absolute top-[240px] left-[58px] font-family:'Manrope',Helvetica font-normal text-20px] text-[#4950f9] cursor-pointer">
             <a href="/">Forgot Password?</a>
           </div>
         </div>

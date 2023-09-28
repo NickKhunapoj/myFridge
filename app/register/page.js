@@ -12,6 +12,7 @@ export default function Home() {
   };
 
   return (
+    <div className="font-Manrope">
     <div className="bg-[url(../public/bg.png)] bg-cover bg-center flex relative w-full h-full justify-center items-center">
       <Topmenubar/>
       <div className="flex items-center justify-center flex-grow container mx-auto h-screen">
@@ -140,6 +141,7 @@ export default function Home() {
           </button>
         </div>
       </div>
+    </div>
     </div>
   );
 }
