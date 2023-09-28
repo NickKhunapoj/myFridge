@@ -6,13 +6,13 @@ import Sidebar from './sidebar.jsx';
 import MenuBar from './menubar.jsx';
 import AccountSettingsFrame from './accountsettingsframe.jsx';
 
-export default function AddItems() {
+export default function AccountSettings() {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   useEffect(() => {
     // Function to check the screen width and set the state
     function checkScreenWidth() {
-      setIsSmallScreen(window.innerWidth < 768);
+      setIsSmallScreen(window.innerWidth < 977);
     }
 
     // Add an event listener for screen width changes
@@ -36,11 +36,7 @@ export default function AddItems() {
         </div>
       ) : (
         <>
-          <img
-            className="absolute inset-0 w-full h-full object-cover"
-            alt="Bg"
-            src="/bg.png"
-          />
+          <div className="gradient-background">
           <MenuBar />
           <div className="hidden 2xl:flex">
             <div className="w-96 2xl:w-1/4 p-10">
@@ -54,6 +50,7 @@ export default function AddItems() {
             <div className="w-full p-10">
               <AccountSettingsFrame />
             </div>
+          </div>
           </div>
         </>
       )}

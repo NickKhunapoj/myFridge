@@ -40,7 +40,7 @@ export const EditFrame = () => {
                         <input
                             type="text"
                             className=" w-52 mt-5 pl-2 rounded-xl bg-[#40404099] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
-                            placeholder="Enter Item Name"
+                            placeholder="Butter"
                         />
                     </div>
 
@@ -51,7 +51,7 @@ export const EditFrame = () => {
                         <input
                             type="number"
                             className="w-52 mt-4 pl-2 rounded-xl bg-[#40404099] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
-                            placeholder="Enter Quantity"
+                            placeholder="3"
                         />
 
                     </div>
@@ -63,7 +63,7 @@ export const EditFrame = () => {
                             type="date"
                             className="w-52 mt-4 pl-2 rounded-xl bg-[#40404099] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
                             style={{ color: "white" }} // Set text color to white
-                            placeholder="Select Expiry Date"
+                            placeholder="23/10/2023"
                         />
                         <div className="sticky pl-10 pt-6 pb-2 [font-family:'Manrope-normal',Helvetica] font-normal text-[#ffffff] text-[25px] tracking-[0] leading-[normal]">
                             Image
@@ -101,6 +101,19 @@ export const EditFrame = () => {
                             src="https://cdn.discordapp.com/attachments/1151835814939078738/1156637223144394792/44030054813dd4a0f69338ff98f91177.png?ex=6515b1db&is=6514605b&hm=5686ab81a99728b67569d45a02294058f1df8e740911d86f58572b774e5993f1&"
                         />
                         <span className="text-[21px] hover:text-[23px] text-white font-medium transition-all duration-300 ease-in-out">Discard</span> {/* Added text here */}
+                        </div>
+                    </button>
+                    <button
+                        className="sticky mt-12 ml-40 w-40 h-14 bg-[#871d1d] hover:text-[23px] hover:bg-[#b85757] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
+                        onClick={() => handleDiscard()}
+                    >
+                        <div className="flex items-center"> {/* Added this div */}
+                        <img
+                            className="w-10 h-10 p-1"
+                            alt="discard"
+                            src="https://cdn.discordapp.com/attachments/1151835814939078738/1156960383366606961/icons8-delete-96.png?ex=6516ded2&is=65158d52&hm=a714cdffa4347cb4ed922764606a63738abd6f214076325171012cbc24df55ad&"
+                        />
+                        <span className="text-[21px] hover:text-[23px] text-white font-medium transition-all duration-300 ease-in-out">Delete</span> {/* Added text here */}
                         </div>
                     </button>
                     </div>
