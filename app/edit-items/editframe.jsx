@@ -33,7 +33,7 @@ export const EditFrame = () => {
                         />
                         Editing Item
                     </div>
-                    <div className="flex w-2/4">
+                    <div className="flex">
                         <div className="sticky w-64 px-14 pt-10 [font-family:'Manrope-normal',Helvetica] font-normal text-[#ffffff] text-[25px] tracking-[0] leading-[normal]">
                             Name
                         </div>
@@ -44,7 +44,7 @@ export const EditFrame = () => {
                         />
                     </div>
 
-                    <div className="flex w-2/4">
+                    <div className="flex">
                         <div className="sticky w-64 px-14 pt-8 [font-family:'Manrope-normal',Helvetica] font-normal text-[#ffffff] text-[25px] tracking-[0] leading-[normal]">
                             Quantity
                         </div>
@@ -64,7 +64,7 @@ export const EditFrame = () => {
                             className="w-52 mt-4 pl-2 rounded-xl bg-[#21253180] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
                             placeholder="Select Expiry Date"
                         />
-                        <div className="sticky ml-20 pt-6 pb-2 [font-family:'Manrope-normal',Helvetica] font-normal text-[#ffffff] text-[25px] tracking-[0] leading-[normal]">
+                        <div className="sticky pl-10 pt-6 pb-2 [font-family:'Manrope-normal',Helvetica] font-normal text-[#ffffff] text-[25px] tracking-[0] leading-[normal]">
                             Image
                         </div>
                         {/* Picture Uploader */}

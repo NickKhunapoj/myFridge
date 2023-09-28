@@ -110,51 +110,59 @@ export const AccountSettingsFrame = () => {
                 </div>
                 {/* Buttons */}
                 <div className="mb-4">
-                    <a style={{ color: "red", position: "absolute", left: "1120px", top: "360px", fontSize: "18px" }}>
-                        Danger Zone
-                    </a>
-                    <button
-                        style={{ position: "absolute", top: "400px", left: "1100px" }}
-                        className="w-50 h-12 text-[21px] hover:text-[23px] bg-red-950 hover:bg-red-600 text-center text-white py-2 px-4 rounded-lg transition-all duration-300 ease-in-out"
-                        onClick={handleDeleteClick}
-                    >
-                    Delete Account
-                    </button>
-                    <button
-                        style={{ position: "absolute", left: "1000px" }}
-                        className="w-40 h-12 text-[21px] hover:text-[23px] bg-blue-950 hover:bg-blue-600 text-white py-2 px-4 rounded-lg transition-all duration-300 ease-in-out"
-                        onClick={handleSaveClick}
-                    >
-                    <div className="flex items-center"> {/* Added this div */}
-                        <img
-                            className="w-10 h-10 p-1"
-                            alt="Add"
-                            src="https://cdn.discordapp.com/attachments/1151835814939078738/1156637223408648332/6960dd4be832615dbf7fc16139c09381.png?ex=6515b1db&is=6514605b&hm=003f0fa2ea16c2b2aaed6d196421e86c8ceac05bda820d8230228fec2d756eb1&"
-                        />
-                        <span className="text-[21px] hover:text-[23px] transition-all duration-300 ease-in-out">Save</span> {/* Added text here */}
-                    </div>
-                    </button>
-                    <button
-                        style={{ position: "absolute", left: "1200px" }}
-                        className="w-40 h-12 text-[21px] hover:text-[23px] bg-red-950 hover:bg-red-600 text-white py-2 px-4 rounded-lg transition-all duration-300 ease-in-out"
-                        onClick={handleDiscardClick}
-                    >
-                    <div className="flex items-center"> {/* Added this div */}
-                        <img
-                            className="w-10 h-10 p-1"
-                            alt="discard"
-                            src="https://cdn.discordapp.com/attachments/1151835814939078738/1156637223144394792/44030054813dd4a0f69338ff98f91177.png?ex=6515b1db&is=6514605b&hm=5686ab81a99728b67569d45a02294058f1df8e740911d86f58572b774e5993f1&"
-                        />
-                        <span className="text-[21px] hover:text-[23px] transition-all duration-300 ease-in-out">Discard</span> {/* Added text here */}
-                    </div>
-                    </button>
                     <a style={{ color: "white", position: "absolute", left: "80px", top: "690px", fontSize: "21px" }}>
                         Password
                     </a>
-                    <button className="text-white text-[20px] mt-8 mb-8 hover:underline" 
+                    <button className="text-white text-[20px] mt-8 mb-4 hover:underline" 
                     onClick={handlePasswordChangeClick}>
                         Change password?
                     </button>
+                    {/* Save and Discard buttons */}
+                    <div className="flex mt-4 space-x-10">
+                        <button
+                            className="sticky w-44 bg-[#1d2387] text-[20px] hover:bg-[#286fb5] text-white py-2 px-4 transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
+                            onClick={() => handleSaveClick}
+                        >
+                            <div className="flex items-center"> {/* Added this div */}
+                            <img
+                                className="w-10 h-10 p-1"
+                                alt="discard"
+                                src="https://cdn.discordapp.com/attachments/1151835814939078738/1156637223408648332/6960dd4be832615dbf7fc16139c09381.png?ex=6515b1db&is=6514605b&hm=003f0fa2ea16c2b2aaed6d196421e86c8ceac05bda820d8230228fec2d756eb1&"
+                            />
+                            <span className="text-[21px] hover:text-[23px] transition-all duration-300 ease-in-out">Save</span> {/* Added text here */}
+                            </div>
+                        </button>
+                        <button
+                            className="sticky w-44 bg-[#871d1d] text-[20px] hover:bg-[#b85757] text-white py-2 px-4 transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
+                            onClick={() => handleDiscardClick}
+                        >
+                            <div className="flex items-center"> {/* Added this div */}
+                            <img
+                                className="w-10 h-10 p-1"
+                                alt="discard"
+                                src="https://cdn.discordapp.com/attachments/1151835814939078738/1156637223144394792/44030054813dd4a0f69338ff98f91177.png?ex=6515b1db&is=6514605b&hm=5686ab81a99728b67569d45a02294058f1df8e740911d86f58572b774e5993f1&"
+                            />
+                            <span className="text-[21px] hover:text-[23px] transition-all duration-300 ease-in-out">Discard</span> {/* Added text here */}
+                            </div>
+                        </button>
+                    </div>
+                    {/* Danger Zone */}
+                    <div className=" py-8 mt-4">
+                        <p className="text-[#ff7e7e] text-[20px]">Danger Zone</p>
+                        <button
+                            className="sticky w-64 pb- text-white text-[20px] mt-2 bg-[#871d1d] hover:bg-[#b85757] py-2 px-4 transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
+                            onClick={() => handleDeleteClick}
+                        >
+                            <div className="flex items-center"> {/* Added this div */}
+                            <img
+                                className="w-10 h-10 p-1"
+                                alt="discard"
+                                src="https://cdn.discordapp.com/attachments/1151835814939078738/1156809109019054120/icons8-trash-96.png?ex=651651f0&is=65150070&hm=8c16af1e311472535246adc8103d10e6854b848ef586c0e7e186d5d7227a8553&"
+                            />
+                            <span className="text-[20px] hover:text-[22px] transition-all duration-300 ease-in-out">Delete Account</span> {/* Added text here */}
+                            </div>
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
