@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
+import 'app/globals.css';
 import Sidebar from './sidebar.jsx';
 import MenuBar from './menubar.jsx';
 import AddFrame from './additems.jsx';

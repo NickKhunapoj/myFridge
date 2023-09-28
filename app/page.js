@@ -1,5 +1,6 @@
 import { Box } from "/app/loginbox"; // Use a relative path
 import { Topmenu } from "/app/topmenu"; // Use a relative path
+import 'app/globals.css';
 
 export default function Home() {
     return (
