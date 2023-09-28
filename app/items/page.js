@@ -31,7 +31,7 @@ export default function Items() {
       {isSmallScreen ? (
         <div className="bg-black text-white h-screen flex flex-col items-center justify-center">
           <span role="img" aria-label="Pray" className="text-6xl p-5">🙏</span>
-          <p className="text-center px-10 text-[20px]">Sorry, your device is not supported. Please use a tablet or a computer.</p>
+          <p className="text-center px-10 text-[20px]">Sorry, your device is not supported. Please use a tablet or a computer, or change the text size in your web browser.</p>
         </div>
       ) : (
         <>
