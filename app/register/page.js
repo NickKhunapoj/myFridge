@@ -13,7 +13,7 @@ export default function Home() {
   };
 
   return (
-    <div className="font-Manrope">
+    <div className=" font-Manrope">
     <div className="gradient-background">
     <div className="bg-[url(../public/bg.png)] bg-cover bg-center flex relative w-full h-full justify-center items-center">
       <Topmenubar/>

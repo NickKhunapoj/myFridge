@@ -14,7 +14,7 @@ export const DashboardFrame = () => {
                     <input
                         type="text"
                         placeholder="Search Dashboard..."
-                        className="w-full h-full py-1 pl-12 pr-7 rounded-2xl bg-[#21253180] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
+                        className="w-full h-full py-1 pl-12 pr-7 rounded-2xl bg-[#40404099] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
                         style={{ color: "white" }} // Set text color to white
                     />
                     <img
