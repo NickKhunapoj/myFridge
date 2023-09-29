@@ -40,7 +40,7 @@ export const EditFrame = () => {
                         <input
                             type="text"
                             className=" w-52 mt-5 pl-2 rounded-xl bg-[#40404099] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
-                            placeholder="Butter"
+                            placeholder="Milk"
                         />
                     </div>
 
@@ -51,7 +51,7 @@ export const EditFrame = () => {
                         <input
                             type="number"
                             className="w-52 mt-4 pl-2 rounded-xl bg-[#40404099] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
-                            placeholder="3"
+                            placeholder="5"
                         />
 
                     </div>
@@ -63,7 +63,7 @@ export const EditFrame = () => {
                             type="date"
                             className="w-52 mt-4 pl-2 rounded-xl bg-[#40404099] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
                             style={{ color: "white" }} // Set text color to white
-                            placeholder="23/10/2023"
+                            placeholder="31/12/2023"
                         />
                         <div className="sticky pl-10 pt-6 pb-2 [font-family:'Manrope-normal',Helvetica] font-normal text-[#ffffff] text-[25px] tracking-[0] leading-[normal]">
                             Image

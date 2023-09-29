@@ -47,10 +47,12 @@ export const ItemsFrame = () => {
                 id="sortBy"
                 className="w-full py-3 pl-3 pr-10 mt-1 rounded-xl bg-[#40404099] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] hover:rounded-[15px] dark:text-gray-100 hover:bg-[#41465680] transition-all duration-300 ease-in-out"
                 >
+                <option value="recently">Recently Added</option>
                 <option value="name">Name</option>
-                <option value="date">Quantity</option>
-                <option value="price">Expiry Date</option>
-                <option value="price">Recently Added</option>
+                <option value="qtyup">Quantity Ascending</option>
+                <option value="qtydown">Quantity Descending</option>
+                <option value="expireup">Expiry Date Ascending</option>
+                <option value="expiredown">Expiry Date Descending</option>
                 </select>
             </div>
             {/* Add item button */}
@@ -71,10 +73,10 @@ export const ItemsFrame = () => {
                 <div className="sticky w-96 xl:w-1/3 pt-14 pl-16">
                     <div className="relative w-full h-96 bg-[#142741] rounded-[33px] shadow-[0px_0px_10px_3px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)]">
                         <div className="absolute top-56 ml-10 [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-white text-[24px] tracking-[0] leading-[normal]">
-                            Butter
+                            Milk
                         </div>
                         <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-white text-[20px] tracking-[0] leading-[normal]">
-                            Expires: 23 Oct 2023
+                            Expires: 31 Dec 2023
                         </div>
                         <button
                             className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
@@ -87,12 +89,12 @@ export const ItemsFrame = () => {
                             />
                         </button>
                         <div className="absolute top-72 mt-7 ml-10 [font-family:'Manrope-Regular',Helvetica] font-normal text-white text-[20px] tracking-[0] leading-[normal]">
-                            Quantities: 3
+                            Quantities: 5
                         </div>
                         <img
                             className="absolute object-cover px-9 py-4 h-[220px] w-full " //center picture
                             alt="butterpic"
-                            src="https://cdn.discordapp.com/attachments/1151835814939078738/1156150750003597332/Screenshot_2566-09-06_at_21.18_1.png?ex=6513eccb&is=65129b4b&hm=1066cbe747735931c57408a88a3c4e0ee63f6ec1ee5713fdbf8096547943a965&"
+                            src="https://cdn.discordapp.com/attachments/1151835814939078738/1157130085443317760/Screenshot_2566-09-29_at_08.36.45.png?ex=65177cde&is=65162b5e&hm=2414b6965d3cb0985a2b725dde4ebb4c417638fe6e06ec8ee8a0d74c33b9e423&"
                         />
                     </div>
                 </div>
@@ -100,10 +102,10 @@ export const ItemsFrame = () => {
                 <div className="sticky w-96 xl:w-1/3 pt-14 px-10">
                     <div className="relative w-full h-96 bg-[#142741] rounded-[33px] shadow-[0px_0px_10px_3px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)]">
                         <div className="absolute top-56 ml-10 [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-white text-[24px] tracking-[0] leading-[normal]">
-                            Butter
+                            Eggs
                         </div>
                         <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-white text-[20px] tracking-[0] leading-[normal]">
-                            Expires: 23 Oct 2023
+                            Expires: 30 Dec 2023
                         </div>
                         <button
                             className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
@@ -116,12 +118,12 @@ export const ItemsFrame = () => {
                             />
                         </button>
                         <div className="absolute top-72 mt-7 ml-10 [font-family:'Manrope-Regular',Helvetica] font-normal text-white text-[20px] tracking-[0] leading-[normal]">
-                            Quantities: 3
+                            Quantities: 4
                         </div>
                         <img
                             className="absolute object-cover px-9 py-4 h-[220px] w-full " //center picture
                             alt="butterpic"
-                            src="https://cdn.discordapp.com/attachments/1151835814939078738/1156150750003597332/Screenshot_2566-09-06_at_21.18_1.png?ex=6513eccb&is=65129b4b&hm=1066cbe747735931c57408a88a3c4e0ee63f6ec1ee5713fdbf8096547943a965&"
+                            src="https://cdn.discordapp.com/attachments/1151835814939078738/1157130085976002581/Screenshot_2566-09-29_at_08.37.22.png?ex=65177cde&is=65162b5e&hm=70964330e40ec0516427e500ad1b768aa034fe5c3f80d6e5603a15fffdf5f738&"
                         />
                     </div>
                 </div>
@@ -129,10 +131,10 @@ export const ItemsFrame = () => {
                 <div className="sticky w-96 xl:w-1/3 pt-14 pr-16">
                     <div className="relative w-full h-96 bg-[#142741] rounded-[33px] shadow-[0px_0px_10px_3px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)]">
                         <div className="absolute top-56 ml-10 [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-white text-[24px] tracking-[0] leading-[normal]">
-                            Butter
+                            Ketchup
                         </div>
                         <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-white text-[20px] tracking-[0] leading-[normal]">
-                            Expires: 23 Oct 2023
+                            Expires: 29 Nov 2023
                         </div>
                         <button
                             className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
@@ -145,12 +147,12 @@ export const ItemsFrame = () => {
                             />
                         </button>
                         <div className="absolute top-72 mt-7 ml-10 [font-family:'Manrope-Regular',Helvetica] font-normal text-white text-[20px] tracking-[0] leading-[normal]">
-                            Quantities: 3
+                            Quantities: 5
                         </div>
                         <img
                             className="absolute object-cover px-9 py-4 h-[220px] w-full " //center picture
                             alt="butterpic"
-                            src="https://cdn.discordapp.com/attachments/1151835814939078738/1156150750003597332/Screenshot_2566-09-06_at_21.18_1.png?ex=6513eccb&is=65129b4b&hm=1066cbe747735931c57408a88a3c4e0ee63f6ec1ee5713fdbf8096547943a965&"
+                            src="https://cdn.discordapp.com/attachments/1151835814939078738/1157130086210875402/Screenshot_2566-09-29_at_08.37.49.png?ex=65177cde&is=65162b5e&hm=5649e04ea0fc6b2e0eba0f361bef5e447fd57c719a0138d6752afa9ddc12a24c&"
                         />
                     </div>
                 </div>
@@ -161,10 +163,10 @@ export const ItemsFrame = () => {
                 <div className="sticky w-96 xl:w-1/3 py-9 pl-16">
                     <div className="relative w-full h-96 bg-[#142741] rounded-[33px] shadow-[0px_0px_10px_3px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)]">
                         <div className="absolute top-56 ml-10 [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-white text-[24px] tracking-[0] leading-[normal]">
-                            Butter
+                            Chocolate
                         </div>
                         <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-white text-[20px] tracking-[0] leading-[normal]">
-                            Expires: 23 Oct 2023
+                            Expires: 20 Nov 2023
                         </div>
                         <button
                             className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
@@ -182,7 +184,7 @@ export const ItemsFrame = () => {
                         <img
                             className="absolute object-cover px-9 py-4 h-[220px] w-full " //center picture
                             alt="butterpic"
-                            src="https://cdn.discordapp.com/attachments/1151835814939078738/1156150750003597332/Screenshot_2566-09-06_at_21.18_1.png?ex=6513eccb&is=65129b4b&hm=1066cbe747735931c57408a88a3c4e0ee63f6ec1ee5713fdbf8096547943a965&"
+                            src="https://cdn.discordapp.com/attachments/1151835814939078738/1157130086479298570/Screenshot_2566-09-29_at_08.38.15.png?ex=65177cdf&is=65162b5f&hm=2a76b37769b25f0c79951a5dfa3563895ddd5978aa2167c2f63046f1da4a59a8&"
                         />
                     </div>
                 </div>
@@ -193,7 +195,7 @@ export const ItemsFrame = () => {
                             Butter
                         </div>
                         <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-white text-[20px] tracking-[0] leading-[normal]">
-                            Expires: 23 Oct 2023
+                            Expires: 31 Oct 2023
                         </div>
                         <button
                             className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
@@ -219,10 +221,10 @@ export const ItemsFrame = () => {
                 <div className="sticky w-96 xl:w-1/3 py-9 pr-16">
                     <div className="relative w-full h-96 bg-[#142741] rounded-[33px] shadow-[0px_0px_10px_3px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)]">
                         <div className="absolute top-56 ml-10 [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-white text-[24px] tracking-[0] leading-[normal]">
-                            Butter
+                            Apple Juice
                         </div>
                         <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-white text-[20px] tracking-[0] leading-[normal]">
-                            Expires: 23 Oct 2023
+                            Expires: 20 Oct 2023
                         </div>
                         <button
                             className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
@@ -235,12 +237,12 @@ export const ItemsFrame = () => {
                             />
                         </button>
                         <div className="absolute top-72 mt-7 ml-10 [font-family:'Manrope-Regular',Helvetica] font-normal text-white text-[20px] tracking-[0] leading-[normal]">
-                            Quantities: 3
+                            Quantities: 4
                         </div>
                         <img
                             className="absolute object-cover px-9 py-4 h-[220px] w-full " //center picture
                             alt="butterpic"
-                            src="https://cdn.discordapp.com/attachments/1151835814939078738/1156150750003597332/Screenshot_2566-09-06_at_21.18_1.png?ex=6513eccb&is=65129b4b&hm=1066cbe747735931c57408a88a3c4e0ee63f6ec1ee5713fdbf8096547943a965&"
+                            src="https://cdn.discordapp.com/attachments/1151835814939078738/1157130086730977371/Screenshot_2566-09-29_at_08.41.03.png?ex=65177cdf&is=65162b5f&hm=82a6e9b4507eeb07f40bbd37afcae0b3e8bf0e261c68cca4db82574f709a5cbb&"
                         />
                     </div>
                 </div>
@@ -251,10 +253,10 @@ export const ItemsFrame = () => {
                 <div className="sticky w-96 xl:w-1/3 pb-12 pl-16">
                     <div className="relative w-full h-96 bg-[#142741] rounded-[33px] shadow-[0px_0px_10px_3px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)]">
                         <div className="absolute top-56 ml-10 [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-white text-[24px] tracking-[0] leading-[normal]">
-                            Butter
+                            Mayonaise
                         </div>
                         <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-white text-[20px] tracking-[0] leading-[normal]">
-                            Expires: 23 Oct 2023
+                            Expires: 15 Oct 2023
                         </div>
                         <button
                             className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
@@ -267,70 +269,12 @@ export const ItemsFrame = () => {
                             />
                         </button>
                         <div className="absolute top-72 mt-7 ml-10 [font-family:'Manrope-Regular',Helvetica] font-normal text-white text-[20px] tracking-[0] leading-[normal]">
-                            Quantities: 3
+                            Quantities: 1
                         </div>
                         <img
                             className="absolute object-cover px-9 py-4 h-[220px] w-full " //center picture
                             alt="butterpic"
-                            src="https://cdn.discordapp.com/attachments/1151835814939078738/1156150750003597332/Screenshot_2566-09-06_at_21.18_1.png?ex=6513eccb&is=65129b4b&hm=1066cbe747735931c57408a88a3c4e0ee63f6ec1ee5713fdbf8096547943a965&"
-                        />
-                    </div>
-                </div>
-                {/* Item 2 */}
-                <div className="sticky w-96 xl:w-1/3 pb-12 px-10">
-                    <div className="relative w-full h-96 bg-[#142741] rounded-[33px] shadow-[0px_0px_10px_3px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)]">
-                        <div className="absolute top-56 ml-10 [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-white text-[24px] tracking-[0] leading-[normal]">
-                            Butter
-                        </div>
-                        <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-white text-[20px] tracking-[0] leading-[normal]">
-                            Expires: 23 Oct 2023
-                        </div>
-                        <button
-                            className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
-                            onClick={() => handleEdit()}
-                        >
-                            <img
-                                className="w-10 h-10 p-1"
-                                alt="Edit"
-                                src="https://cdn.discordapp.com/attachments/1151835814939078738/1156153038503952454/0d622ecf015f0b97491b26ed4f4d9e38.png?ex=6513eeec&is=65129d6c&hm=6c3d177f07d4df5e0e8914df198e3b1fdf9cc04e5d16a8926b4428e3c51a4bb7&"
-                            />
-                        </button>
-                        <div className="absolute top-72 mt-7 ml-10 [font-family:'Manrope-Regular',Helvetica] font-normal text-white text-[20px] tracking-[0] leading-[normal]">
-                            Quantities: 3
-                        </div>
-                        <img
-                            className="absolute object-cover px-9 py-4 h-[220px] w-full " //center picture
-                            alt="butterpic"
-                            src="https://cdn.discordapp.com/attachments/1151835814939078738/1156150750003597332/Screenshot_2566-09-06_at_21.18_1.png?ex=6513eccb&is=65129b4b&hm=1066cbe747735931c57408a88a3c4e0ee63f6ec1ee5713fdbf8096547943a965&"
-                        />
-                    </div>
-                </div>
-                {/* Item 3 */}
-                <div className="sticky w-96 xl:w-1/3 pb-12 pr-16">
-                    <div className="relative w-full h-96 bg-[#142741] rounded-[33px] shadow-[0px_0px_10px_3px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)]">
-                        <div className="absolute top-56 ml-10 [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-white text-[24px] tracking-[0] leading-[normal]">
-                            Butter
-                        </div>
-                        <div className="absolute top-64 mt-2 ml-10 [font-family:'Manrope-Medium',Helvetica] font-medium text-white text-[20px] tracking-[0] leading-[normal]">
-                            Expires: 23 Oct 2023
-                        </div>
-                        <button
-                            className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
-                            onClick={() => handleEdit()}
-                        >
-                            <img
-                                className="w-10 h-10 p-1"
-                                alt="Edit"
-                                src="https://cdn.discordapp.com/attachments/1151835814939078738/1156153038503952454/0d622ecf015f0b97491b26ed4f4d9e38.png?ex=6513eeec&is=65129d6c&hm=6c3d177f07d4df5e0e8914df198e3b1fdf9cc04e5d16a8926b4428e3c51a4bb7&"
-                            />
-                        </button>
-                        <div className="absolute top-72 mt-7 ml-10 [font-family:'Manrope-Regular',Helvetica] font-normal text-white text-[20px] tracking-[0] leading-[normal]">
-                            Quantities: 3
-                        </div>
-                        <img
-                            className="absolute object-cover px-9 py-4 h-[220px] w-full " //center picture
-                            alt="butterpic"
-                            src="https://cdn.discordapp.com/attachments/1151835814939078738/1156150750003597332/Screenshot_2566-09-06_at_21.18_1.png?ex=6513eccb&is=65129b4b&hm=1066cbe747735931c57408a88a3c4e0ee63f6ec1ee5713fdbf8096547943a965&"
+                            src="https://cdn.discordapp.com/attachments/1151835814939078738/1157130085720129546/Screenshot_2566-09-29_at_08.41.17.png?ex=65177cde&is=65162b5e&hm=ab400ef353f3bdab2e7573814e36e15e9446be7cd7ec5caa4a7a0ed198c584c2&"
                         />
                     </div>
                 </div>

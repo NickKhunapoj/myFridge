@@ -34,7 +34,7 @@ export const DashboardFrame = () => {
                             Total Items
                         </div>
                         <div className="flex w-full h-56 pt-10 justify-center text-medium text-[#a2d7a7] text-[40px] items-center">
-                            18
+                            7
                         </div>
                     </div>
                 </div>
@@ -45,7 +45,7 @@ export const DashboardFrame = () => {
                             Expired Soon
                         </div>
                         <div className="flex w-full h-56 pt-10 justify-center text-medium text-[#ff7f78] text-[40px] items-center">
-                            3
+                            0
                         </div>
                     </div>
                 </div>
@@ -68,39 +68,39 @@ export const DashboardFrame = () => {
                         </thead>
                         <tbody className='text-center'>
                             <tr className="text-[#ffffff] text-[18px]">
-                                <td className="pt-3 pb-1 px-6">Item 1</td>
+                                <td className="pt-3 pb-1 px-6">Milk</td>
                                 <td className="pt-3 pb-1 px-6">31 Dec 2023</td>
-                                <td className="pt-3 pb-1 px-6">10</td>
+                                <td className="pt-3 pb-1 px-6">5</td>
                             </tr>
                             <tr className="text-[#ffffff] text-[18px]">
-                                <td className="py-1 px-6">Item 2</td>
+                                <td className="py-1 px-6">Eggs</td>
                                 <td className="py-1 px-6">30 Dec 2023</td>
-                                <td className="py-1 px-6">15</td>
+                                <td className="py-1 px-6">4</td>
                             </tr>
                             <tr className="text-[#ffffff] text-[18px]">
-                                <td className="py-1 px-6">Item 1</td>
+                                <td className="py-1 px-6">Ketchup</td>
                                 <td className="py-1 px-6">29 Nov 2023</td>
-                                <td className="py-1 px-6">10</td>
+                                <td className="py-1 px-6">5</td>
                             </tr>
                             <tr className="text-[#ffffff] text-[18px]">
-                                <td className="py-1 px-6">Item 2</td>
+                                <td className="py-1 px-6">Chocolate</td>
                                 <td className="py-1 px-6">20 Nov 2023</td>
-                                <td className="py-1 px-6">15</td>
+                                <td className="py-1 px-6">3</td>
                             </tr>
                             <tr className="text-[#ffffff] text-[18px]">
-                                <td className="py-1 px-6">Item 1</td>
+                                <td className="py-1 px-6">Butter</td>
                                 <td className="py-1 px-6">31 Oct 2023</td>
-                                <td className="py-1 px-6">10</td>
+                                <td className="py-1 px-6">3</td>
                             </tr>
                             <tr className="text-[#ffffff] text-[18px]">
-                                <td className="py-1 px-6">Item 2</td>
+                                <td className="py-1 px-6">Apple Juice</td>
                                 <td className="py-1 px-6">20 Oct 2023</td>
-                                <td className="py-1 px-6">15</td>
+                                <td className="py-1 px-6">4</td>
                             </tr>
                             <tr className="text-[#ffffff] text-[18px]">
-                                <td className="pb-3 px-6">Item 1</td>
+                                <td className="pb-3 px-6">Mayonaise</td>
                                 <td className="pb-3 px-6">15 Oct 2023</td>
-                                <td className="pb-3 px-6">10</td>
+                                <td className="pb-3 px-6">1</td>
                             </tr>
                             {/* Add more rows as needed */}
                         </tbody>
