@@ -38,6 +38,11 @@ export default function Home() {
     }
   };
 
+    // Function to bypass form and go to login
+    const bypassForm = () => {
+      router.push('/'); // Replace 'login' with the actual login page URL
+    };
+
   return (
     <div className="font-Manrope">
       <div className="gradient-background flex relative w-full h-full justify-center items-center">
@@ -132,7 +137,7 @@ export default function Home() {
             <p className="text-[#979fa9] text-[18px] text-left mb-3 ml-5">
               By registering, you agree to myFridge’s Terms of service and privacy
             </p>
-            <button className="text-[#4950f9] text-[18px] left ml-5 mt-6 mb-8 hover:underline" onClick={handleLogin}>
+            <button className="text-[#4950f9] text-[18px] left ml-5 mt-6 mb-8 hover:underline" onClick={bypassForm}>
               Already have myFridge account?
             </button>
           </div>

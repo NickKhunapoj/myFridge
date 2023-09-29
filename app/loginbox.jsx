@@ -1,13 +1,31 @@
 'use client'
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from 'next/navigation';
 
 export const Box = () => {
   const router = useRouter();
+  const [formData, setFormData] = useState({
+    emailusername: "",
+    password: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
   const handleDashboard = () => {
-    // Redirect to the login page
-    router.push('/dashboard');
+    // Check if all required fields are filled
+    if (
+      formData.emailusername &&
+      formData.password
+    ) {
+      // All required fields are filled, proceed with login
+      router.push('/dashboard');
+    } else {
+      // Display an error message or take other actions to handle the incomplete form
+      alert("Please fill in all required fields.");
+    }
   };
 
   return (
@@ -42,8 +60,12 @@ export const Box = () => {
           <div className="absolute top-[80px] left-[58px] right-[58px]">
             <input
               type="text"
-              placeholder="Enter your username or email"
+              placeholder="Required"
               className="w-full h-[50px] bg-[#40404099] rounded-[15px] text-white text-[20px] pl-[10px] font-family:'Manrope-Regular',Helvetica font-light"
+              name="emailusername"
+              value={formData.emailusername}
+              onChange={handleInputChange}
+              required // Add the required attribute
             />
           </div>
           <div className="absolute top-[149px] left-[58px] font-family:'Manrope-Regular',Helvetica font-light text-white text-[20px] tracking-[0] leading-[normal]">
@@ -52,8 +74,12 @@ export const Box = () => {
           <div className="absolute top-[182px] left-[58px] right-[58px]">
             <input
               type="password"
-              placeholder="Enter your password"
+              placeholder="Required"
               className="w-full h-[50px] bg-[#40404099] rounded-[15px] text-white text-[20px] pl-[10px] font-family:'Manrope-Regular',Helvetica font-light"
+              name="password"
+              value={formData.password}
+              onChange={handleInputChange}
+              required // Add the required attribute
             />
           </div>
           <div className="absolute w-[133px] h-[54px] top-[289px] left-[271px]">
