@@ -30,22 +30,31 @@ export const Box = () => {
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
-      {/* Text Group */}
-      <div className="text-group">
-        <div className="w-[516px] h-[116px]">
-          <div className="flex flex-col items-start gap-[10px] relative w-[516px] h-[116px]">
-            <p className="relative self-stretch [font-family:'Manrope-Bold',Helvetica] font-bold text-white text-[60px] text-center tracking-[0] leading-[normal]">
-              <span className="[font-family:'Manrope',Helvetica] font-semibold text-white text-[60px] tracking-[0]">
-                myFridge
-                <br />
-              </span>
-            </p>
-            <p className="relative self-stretch [font-family:'Manrope',Helvetica] font-medium text-white text-[25px] text-center tracking-[0] leading-[normal]">
-              <span className="text-[25px]">Your personal fridge management website.</span>
-            </p>
+      {/* Flex Container */}
+        {/* Text Group */}
+        <div className="text-group">
+          <div className="w-[516px] h-[116px]">
+            <div className="flex flex-col items-start gap-[10px] relative w-[516px] h-[116px]">
+              <p className="relative self-stretch [font-family:'Manrope-Bold',Helvetica] font-bold text-white text-[60px] text-center tracking-[0] leading-[normal]">
+              <div className="flex justify-center">
+                {/* Image */}
+                <img
+                  src="https://cdn.discordapp.com/attachments/1151835814939078738/1157157604334784583/image-modified_2.png?ex=6517967f&is=651644ff&hm=e3a9049bb08e459547a253d830725fdf466d7296098f295a5d907b94e76105b1&" // Replace with the actual path to your image
+                  alt="Fridge Image"
+                  className="w-20 h- mr-4" // Adjust the width and height as needed
+                />
+                <span className="[font-family:'Manrope',Helvetica] font-semibold text-white text-[60px] tracking-[0]">
+                  myFridge
+                  <br />
+                </span>
+              </div>
+              </p>
+              <p className="relative self-stretch [font-family:'Manrope',Helvetica] font-medium text-white text-[25px] text-center tracking-[0] leading-[normal]">
+                <span className="text-[25px]">Your personal fridge management website.</span>
+              </p>
+            </div>
           </div>
         </div>
-      </div>
 
       {/* Spacing */}
       <div className="mt-10"></div>
