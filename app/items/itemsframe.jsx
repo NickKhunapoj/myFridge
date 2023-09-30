@@ -47,12 +47,11 @@ export const ItemsFrame = () => {
                 id="sortBy"
                 className="w-full py-3 pl-3 pr-10 mt-1 rounded-xl bg-[#40404099] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] hover:rounded-[15px] dark:text-gray-100 hover:bg-[#41465680] transition-all duration-300 ease-in-out"
                 >
-                <option value="recently">Recently Added</option>
                 <option value="name">Name</option>
+                <option value="expire">Expiry Date</option>
+                <option value="recently">Recently Added</option>
                 <option value="qtyup">Quantity Ascending</option>
                 <option value="qtydown">Quantity Descending</option>
-                <option value="expireup">Expiry Date Ascending</option>
-                <option value="expiredown">Expiry Date Descending</option>
                 </select>
             </div>
             {/* Add item button */}

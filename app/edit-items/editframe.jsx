@@ -1,20 +1,28 @@
 'use client'
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import DiscardPopup from './discardpopup.jsx';
 
-export const EditFrame = () => {
+function EditFrame() {
     const router = useRouter();
-
+    const [isDiscardPopupOpen, setDiscardPopupOpen] = useState(false);
+  
     const handleEdit = () => {
-        // Redirect to the home page
-        router.push('/items');
+      // Redirect to the home page
+      router.push('/items');
+    };
+  
+    const handleDiscard = () => {
+      // Redirect to the home page
+      router.push('/items');
+    };
+  
+    const handleDelete = () => {
+      // Redirect to the home page
+      router.push('/items');
     };
 
-    const handleDiscard = () => {
-        // Redirect to the home page
-        router.push('/items');
-    };
 
     return (
         <div className="sticky h-[calc(100vh-148px)] overflow-auto bg-[#21253180] rounded-[40px] shadow-[0px_0px_10px_8px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100">
@@ -94,18 +102,18 @@ export const EditFrame = () => {
                         className="sticky mt-12 ml-10 w-40 h-14 bg-[#871d1d] hover:text-[23px] hover:bg-[#b85757] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
                         onClick={() => handleDiscard()}
                     >
-                        <div className="flex items-center"> {/* Added this div */}
+                        <div className="flex items-center">
                         <img
                             className="w-10 h-10 p-1"
                             alt="discard"
                             src="https://cdn.discordapp.com/attachments/1151835814939078738/1156637223144394792/44030054813dd4a0f69338ff98f91177.png?ex=6515b1db&is=6514605b&hm=5686ab81a99728b67569d45a02294058f1df8e740911d86f58572b774e5993f1&"
                         />
-                        <span className="text-[21px] hover:text-[23px] text-white font-medium transition-all duration-300 ease-in-out">Discard</span> {/* Added text here */}
+                        <span className="text-[21px] hover:text-[23px] text-white font-medium transition-all duration-300 ease-in-out">Discard</span>
                         </div>
                     </button>
                     <button
                         className="sticky mt-12 ml-40 w-40 h-14 bg-[#871d1d] hover:text-[23px] hover:bg-[#b85757] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
-                        onClick={() => handleDiscard()}
+                        onClick={() => handleDelete()}
                     >
                         <div className="flex items-center"> {/* Added this div */}
                         <img
@@ -116,12 +124,13 @@ export const EditFrame = () => {
                         <span className="text-[21px] hover:text-[23px] text-white font-medium transition-all duration-300 ease-in-out">Delete</span> {/* Added text here */}
                         </div>
                     </button>
-                    </div>
                 </div>
             </div>
         </div>
+    </div>
+
     );
-};
+}
 
 export default EditFrame;
 
