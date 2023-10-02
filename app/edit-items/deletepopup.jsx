@@ -1,9 +1,9 @@
-// components discardpopup.jsx
+// components DeletePopup.jsx
 'use client'
 import React, { useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-const DiscardPopup = ({ onClose }) => {
+const DeletePopup = ({ onClose }) => {
   const router = useRouter();
   const popupRef = useRef(null);
 
@@ -19,7 +19,7 @@ const DiscardPopup = ({ onClose }) => {
     };
   }, []);
 
-  const handleDiscard = () => {
+  const handleDelete = () => {
     // Redirect to the /items page when the "Yes" button is pressed
     router.push('/items');
   };
@@ -37,10 +37,10 @@ const DiscardPopup = ({ onClose }) => {
           alt="Icon"
         />
         <p className="mt-4 mx-3 text-[22px] font-medium">
-          Are you sure you want to discard this change?
+          Are you sure you want to delete this item?
         </p>
         <div className="absolute bottom-5 left-0 right-0 flex justify-center items-center space-x-4">
-          <button onClick={handleDiscard} className="p-2 w-28 h-full bg-[#871d1d] text-white font-medium rounded-md text-[18px] hover:bg-[#b85757] transition-all duration-300 ease-in-out">
+          <button onClick={handleDelete} className="p-2 w-28 h-full bg-[#871d1d] text-white font-medium rounded-md text-[18px] hover:bg-[#b85757] transition-all duration-300 ease-in-out">
             <span className="mb-1">Yes</span>
           </button>
           <button onClick={onClose} className="p-2 w-28 h-full bg-[#1d2387] text-white font-medium rounded-md text-[18px] hover:bg-[#286fb5] transition-all duration-300 ease-in-out">
@@ -52,5 +52,5 @@ const DiscardPopup = ({ onClose }) => {
   );
 };
 
-export default DiscardPopup;
+export default DeletePopup;
 

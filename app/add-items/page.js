@@ -3,14 +3,16 @@
 // pages/main page.js
 import React, { useState, useEffect } from 'react';
 import 'app/globals.css';
-import Popup from './discardpopup.jsx'; // Import the Popup component
+import DiscardPopup from './discardpopup.jsx';
+import AddPopup from './addpopup.jsx';
 import Sidebar from './sidebar.jsx';
 import MenuBar from './menubar.jsx';
 import AddFrame from './additems.jsx';
 
 export default function AddItems() {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
-  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage the popup
+  const [isDiscardPopupOpen, setIsDiscardPopupOpen] = useState(false);
+  const [isAddPopupOpen, setIsAddPopupOpen] = useState(false);
 
   useEffect(() => {
     // Function to check the screen width and set the state
@@ -30,17 +32,28 @@ export default function AddItems() {
     };
   }, []);
 
-  const openPopup = () => {
-    setIsPopupOpen(true);
+  const openDiscardPopup = () => {
+    setIsDiscardPopupOpen(true);
   };
 
-  const closePopup = () => {
-    setIsPopupOpen(false);
+  const closeDiscardPopup = () => {
+    setIsDiscardPopupOpen(false);
+  };
+
+  const openAddPopup = () => {
+    setIsAddPopupOpen(true);
+  };
+
+  const closeAddPopup = () => {
+    setIsAddPopupOpen(false);
   };
 
   const handleDiscardAction = () => {
-    // Trigger the popup when the "discard" action is called
-    openPopup();
+    openDiscardPopup();
+  };
+
+  const handleAddAction = () => {
+    openAddPopup();
   };
 
   return (
@@ -59,17 +72,24 @@ export default function AddItems() {
                 <Sidebar />
               </div>
               <div className="w-3/4 pt-10 pb-10 pr-10">
-                <AddFrame handleDiscardAction={handleDiscardAction} /> {/* Pass handleDiscardAction as a prop */}
+              <AddFrame
+                handleDiscardAction={handleDiscardAction}
+                handleAddAction={handleAddAction}
+              />
               </div>
             </div>
             <div className="flex 2xl:hidden">
               <div className="w-full p-10">
-                <AddFrame handleDiscardAction={handleDiscardAction} /> {/* Pass handleDiscardAction as a prop */}
+              <AddFrame
+                handleDiscardAction={handleDiscardAction}
+                handleAddAction={handleAddAction}
+              />
               </div>
             </div>
           </div>
           {/* Display the popup if isPopupOpen is true */}
-          {isPopupOpen && <Popup onClose={closePopup} />}
+          {isDiscardPopupOpen && <DiscardPopup onClose={closeDiscardPopup} />}
+          {isAddPopupOpen && <AddPopup onClose={closeAddPopup} />}
         </>
       )}
     </div>

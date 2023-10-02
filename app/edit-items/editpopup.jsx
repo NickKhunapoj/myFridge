@@ -1,9 +1,9 @@
-// components discardpopup.jsx
+// components EditPopup.jsx
 'use client'
 import React, { useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-const DiscardPopup = ({ onClose }) => {
+const EditPopup = () => {
   const router = useRouter();
   const popupRef = useRef(null);
 
@@ -19,8 +19,8 @@ const DiscardPopup = ({ onClose }) => {
     };
   }, []);
 
-  const handleDiscard = () => {
-    // Redirect to the /items page when the "Yes" button is pressed
+  const handleEdit = () => {
+    // Redirect to the /items page when the "Save" button is pressed
     router.push('/items');
   };
 
@@ -33,18 +33,15 @@ const DiscardPopup = ({ onClose }) => {
       >
         <img
           className="w-20 h-20 mx-auto mt-4"
-          src="https://cdn.discordapp.com/attachments/1151835814939078738/1158372555258871808/dc65b7d3af0ed3459dd14a91081b78d6.png?ex=651c0202&is=651ab082&hm=1231bbf1ebf9bd4b94b080ee66f9f64267ac87eff2899cbf003fd6ac413cfaee&"
+          src="https://cdn.discordapp.com/attachments/1151835814939078738/1158372554352902194/4a2a20cf6de57d6e91f380bb2b169df2.png?ex=651c0202&is=651ab082&hm=09341d9061b627ff04331f7a2105155686b8958d657c4d4613e785a481850415&"
           alt="Icon"
         />
-        <p className="mt-4 mx-3 text-[22px] font-medium">
-          Are you sure you want to discard this change?
+        <p className="mt-7 mx-3 text-[22px] font-medium">
+          Edited Successfully.
         </p>
         <div className="absolute bottom-5 left-0 right-0 flex justify-center items-center space-x-4">
-          <button onClick={handleDiscard} className="p-2 w-28 h-full bg-[#871d1d] text-white font-medium rounded-md text-[18px] hover:bg-[#b85757] transition-all duration-300 ease-in-out">
-            <span className="mb-1">Yes</span>
-          </button>
-          <button onClick={onClose} className="p-2 w-28 h-full bg-[#1d2387] text-white font-medium rounded-md text-[18px] hover:bg-[#286fb5] transition-all duration-300 ease-in-out">
-            <span className="mb-1">No</span>
+          <button onClick={handleEdit} className="p-2 w-28 h-full bg-[#1d2387] text-white font-medium rounded-md text-[18px] hover:bg-[#286fb5] transition-all duration-300 ease-in-out">
+            <span className="mb-1">Done</span>
           </button>
         </div>
       </div>
@@ -52,5 +49,5 @@ const DiscardPopup = ({ onClose }) => {
   );
 };
 
-export default DiscardPopup;
+export default EditPopup;
 

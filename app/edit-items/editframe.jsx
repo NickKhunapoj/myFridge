@@ -2,25 +2,23 @@
 
 import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import DiscardPopup from './discardpopup.jsx';
 
-function EditFrame() {
+function EditFrame({ handleDiscardAction, handleEditAction, handleDeleteAction }) {
     const router = useRouter();
-    const [isDiscardPopupOpen, setDiscardPopupOpen] = useState(false);
   
     const handleEdit = () => {
-      // Redirect to the home page
-      router.push('/items');
+      // Redirect to the edit page
+      handleEditAction();
     };
   
     const handleDiscard = () => {
-      // Redirect to the home page
-      router.push('/items');
+      // Redirect to the discard page
+      handleDiscardAction();
     };
   
     const handleDelete = () => {
-      // Redirect to the home page
-      router.push('/items');
+      // Redirect to the delete page
+      handleDeleteAction();
     };
 
 

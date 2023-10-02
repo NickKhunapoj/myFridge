@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 
 export const AppSettingsFrame = () => {
-    const [selectedOption, setSelectedOption] = useState('');
+    const [selectedOption, setSelectedOption] = useState('Option 4'); // Set default selection
     const [email, setEmail] = useState('');
     const [feedback, setFeedback] = useState('');
 

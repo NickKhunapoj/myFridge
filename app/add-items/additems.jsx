@@ -1,15 +1,15 @@
 'use client'
 
-import React, {useState} from 'react';
+import React from 'react';
 import { useRouter } from 'next/navigation';
 
 
-export const AddFrame = ({ handleDiscardAction }) => {
+export const AddFrame = ({ handleDiscardAction, handleAddAction }) => {
     const router = useRouter();
 
     const handleAdd = () => {
-        // Redirect to the home page
-        router.push('/items');
+        // Call the handleAddAction function to handle the "Add" action
+        handleAddAction();
     };
 
     const handleDiscard = () => {

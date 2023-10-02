@@ -1,13 +1,20 @@
 'use client'
 
+// pages/main page.js
 import React, { useState, useEffect } from 'react';
 import 'app/globals.css';
+import DiscardPopup from './discardpopup.jsx';
+import EditPopup from './editpopup.jsx';
+import DeletePopup from './deletepopup.jsx';
 import Sidebar from './sidebar.jsx';
 import MenuBar from './menubar.jsx';
 import EditFrame from './editframe.jsx';
 
 export default function EditItems() {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [isDiscardPopupOpen, setIsDiscardPopupOpen] = useState(false);
+  const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
+  const [isDeletePopupOpen, setIsDeletePopupOpen] = useState(false);
 
   useEffect(() => {
     // Function to check the screen width and set the state
@@ -27,6 +34,42 @@ export default function EditItems() {
     };
   }, []);
 
+  const openDiscardPopup = () => {
+    setIsDiscardPopupOpen(true);
+  };
+
+  const closeDiscardPopup = () => {
+    setIsDiscardPopupOpen(false);
+  };
+
+  const openEditPopup = () => {
+    setIsEditPopupOpen(true);
+  };
+
+  const closeEditPopup = () => {
+    setIsEditPopupOpen(false);
+  };
+
+  const openDeletePopup = () => {
+    setIsDeletePopupOpen(true);
+  };
+
+  const closeDeletePopup = () => {
+    setIsDeletePopupOpen(false);
+  };
+
+  const handleDiscardAction = () => {
+    openDiscardPopup();
+  };
+
+  const handleEditAction = () => {
+    openEditPopup();
+  };
+
+  const handleDeleteAction = () => {
+    openDeletePopup();
+  };
+
   return (
     <div className="font-Manrope">
       {isSmallScreen ? (
@@ -43,15 +86,27 @@ export default function EditItems() {
               <Sidebar />
             </div>
             <div className="w-3/4 pt-10 pb-10 pr-10">
-              <EditFrame />
+            <EditFrame
+                handleDiscardAction={handleDiscardAction}
+                handlEditAction={handleEditAction}
+                handleDeleteAction={handleDeleteAction}
+              />
             </div>
           </div>
           <div className="flex 2xl:hidden">
             <div className="w-full p-10">
-              <EditFrame />
+            <EditFrame
+                handleDiscardAction={handleDiscardAction}
+                handleEditAction={handleEditAction}
+                handleDeleteAction={handleDeleteAction}
+              />
             </div>
           </div>
           </div>
+          {/* Display the popup if isPopupOpen is true */}
+          {isDiscardPopupOpen && <DiscardPopup onClose={closeDiscardPopup} />}
+          {isEditPopupOpen && <EditPopup onClose={closeEditPopup} />}
+          {isDeletePopupOpen && <DeletePopup onClose={closeDeletePopup} />}
         </>
       )}
     </div>
