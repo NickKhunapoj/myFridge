@@ -1,9 +1,10 @@
 'use client'
 
-import React from 'react';
+import React, {useState} from 'react';
 import { useRouter } from 'next/navigation';
 
-export const AddFrame = () => {
+
+export const AddFrame = ({ handleDiscardAction }) => {
     const router = useRouter();
 
     const handleAdd = () => {
@@ -12,8 +13,8 @@ export const AddFrame = () => {
     };
 
     const handleDiscard = () => {
-        // Redirect to the home page
-        router.push('items');
+        // Call the handleDiscardAction function to handle the "discard" action
+        handleDiscardAction();
     };
 
     return (
@@ -111,4 +112,6 @@ export const AddFrame = () => {
 };
 
 export default AddFrame;
+
+
 

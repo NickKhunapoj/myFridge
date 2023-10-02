@@ -1,13 +1,16 @@
 'use client'
 
+// pages/main page.js
 import React, { useState, useEffect } from 'react';
 import 'app/globals.css';
+import Popup from './discardpopup.jsx'; // Import the Popup component
 import Sidebar from './sidebar.jsx';
 import MenuBar from './menubar.jsx';
 import AddFrame from './additems.jsx';
 
 export default function AddItems() {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [isPopupOpen, setIsPopupOpen] = useState(false); // State to manage the popup
 
   useEffect(() => {
     // Function to check the screen width and set the state
@@ -27,6 +30,19 @@ export default function AddItems() {
     };
   }, []);
 
+  const openPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setIsPopupOpen(false);
+  };
+
+  const handleDiscardAction = () => {
+    // Trigger the popup when the "discard" action is called
+    openPopup();
+  };
+
   return (
     <div className="font-Manrope">
       {isSmallScreen ? (
@@ -37,21 +53,23 @@ export default function AddItems() {
       ) : (
         <>
           <div className="gradient-background">
-          <MenuBar />
-          <div className="hidden 2xl:flex">
-            <div className="w-96 2xl:w-1/4 p-10">
-              <Sidebar />
+            <MenuBar />
+            <div className="hidden 2xl:flex">
+              <div className="w-96 2xl:w-1/4 p-10">
+                <Sidebar />
+              </div>
+              <div className="w-3/4 pt-10 pb-10 pr-10">
+                <AddFrame handleDiscardAction={handleDiscardAction} /> {/* Pass handleDiscardAction as a prop */}
+              </div>
             </div>
-            <div className="w-3/4 pt-10 pb-10 pr-10">
-              <AddFrame />
+            <div className="flex 2xl:hidden">
+              <div className="w-full p-10">
+                <AddFrame handleDiscardAction={handleDiscardAction} /> {/* Pass handleDiscardAction as a prop */}
+              </div>
             </div>
           </div>
-          <div className="flex 2xl:hidden">
-            <div className="w-full p-10">
-              <AddFrame />
-            </div>
-          </div>
-          </div>
+          {/* Display the popup if isPopupOpen is true */}
+          {isPopupOpen && <Popup onClose={closePopup} />}
         </>
       )}
     </div>
