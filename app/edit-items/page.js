@@ -88,7 +88,7 @@ export default function EditItems() {
             <div className="w-3/4 pt-10 pb-10 pr-10">
             <EditFrame
                 handleDiscardAction={handleDiscardAction}
-                handlEditAction={handleEditAction}
+                handleEditAction={handleEditAction}
                 handleDeleteAction={handleDeleteAction}
               />
             </div>

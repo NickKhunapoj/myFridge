@@ -12,7 +12,7 @@ export default function Items() {
   useEffect(() => {
     // Function to check the screen width and set the state
     function checkScreenWidth() {
-      setIsSmallScreen(window.innerWidth < 1095);
+      setIsSmallScreen(window.innerWidth < 1232);
     }
 
     // Add an event listener for screen width changes
