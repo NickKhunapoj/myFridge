@@ -1,8 +1,10 @@
 'use client'
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
-export const AccountSettingsFrame = () => {
+export const AccountSettingsFrame = ({ handleDiscardAction, handleSaveAction, handleDeleteAction }) => {
+    const router = useRouter();
     const [selectedOption, setOption] = useState('');
     const [email, setEmail] = useState('');
     const [dpname, setDpname] = useState('');
@@ -32,16 +34,16 @@ export const AccountSettingsFrame = () => {
 
     };
 
-    const handleSaveClick = () => {
-
+    const handleSave = () => {
+        handleSaveAction();
     };
 
-    const handleDiscardClick = () => {
-
+    const handleDiscard = () => {
+        handleDiscardAction();
     };
 
-    const handleDeleteClick = () => {
-
+    const handleDelete = () => {
+        handleDeleteAction();
     };
 
     return (
@@ -121,7 +123,7 @@ export const AccountSettingsFrame = () => {
                     <div className="flex mt-4 space-x-10">
                         <button
                             className="sticky w-44 bg-[#1d2387] text-[20px] hover:bg-[#286fb5] text-white py-2 px-4 transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
-                            onClick={() => handleSaveClick}
+                            onClick={() => handleSave()}
                         >
                             <div className="flex items-center"> {/* Added this div */}
                             <img
@@ -134,7 +136,7 @@ export const AccountSettingsFrame = () => {
                         </button>
                         <button
                             className="sticky w-44 bg-[#871d1d] text-[20px] hover:bg-[#b85757] text-white py-2 px-4 transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
-                            onClick={() => handleDiscardClick}
+                            onClick={() => handleDiscard()}
                         >
                             <div className="flex items-center"> {/* Added this div */}
                             <img
@@ -151,7 +153,7 @@ export const AccountSettingsFrame = () => {
                         <p className="text-[#ff7e7e] text-[20px]">Danger Zone</p>
                         <button
                             className="sticky w-64 pb- text-white text-[20px] mt-2 bg-[#871d1d] hover:bg-[#b85757] py-2 px-4 transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
-                            onClick={() => handleDeleteClick}
+                            onClick={() => handleDelete()}
                         >
                             <div className="flex items-center"> {/* Added this div */}
                             <img

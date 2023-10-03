@@ -56,7 +56,7 @@ export const DashboardFrame = () => {
             </div>
 
             {/* Table */}
-            <div className="sticky w-full pt-8 px-16">
+            <div className="sticky w-full py-8 px-16">
                 <div className="sticky h-96 bg-[#142741] rounded-[35px] shadow-[0px_0px_10px_3px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)]">
                     <table className="w-full h-full table-fixed">
                         <thead>

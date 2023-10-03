@@ -6,12 +6,14 @@ import 'app/globals.css';
 import DiscardPopup from './discardpopup.jsx';
 import EditPopup from './editpopup.jsx';
 import DeletePopup from './deletepopup.jsx';
+import LogoutPopup from './logoutpopup.jsx';
 import Sidebar from './sidebar.jsx';
 import MenuBar from './menubar.jsx';
 import EditFrame from './editframe.jsx';
 
 export default function EditItems() {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [isLogoutPopupOpen, setIsLogoutPopupOpen] = useState(false);
   const [isDiscardPopupOpen, setIsDiscardPopupOpen] = useState(false);
   const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
   const [isDeletePopupOpen, setIsDeletePopupOpen] = useState(false);
@@ -70,6 +72,18 @@ export default function EditItems() {
     openDeletePopup();
   };
 
+  const openLogoutPopup = () => {
+    setIsLogoutPopupOpen(true);
+  };
+
+  const closeLogoutPopup = () => {
+    setIsLogoutPopupOpen(false);
+  };
+
+  const handleLogoutAction = () => {
+    openLogoutPopup();
+  };
+
   return (
     <div className="font-Manrope">
       {isSmallScreen ? (
@@ -80,10 +94,14 @@ export default function EditItems() {
       ) : (
         <>
           <div className="gradient-background">
-          <MenuBar />
+            <MenuBar
+              handleLogoutAction={handleLogoutAction}
+            />
           <div className="hidden 2xl:flex">
             <div className="w-96 2xl:w-1/4 p-10">
-              <Sidebar />
+              <Sidebar 
+              handleLogoutAction={handleLogoutAction}
+              />
             </div>
             <div className="w-3/4 pt-10 pb-10 pr-10">
             <EditFrame
@@ -107,6 +125,7 @@ export default function EditItems() {
           {isDiscardPopupOpen && <DiscardPopup onClose={closeDiscardPopup} />}
           {isEditPopupOpen && <EditPopup onClose={closeEditPopup} />}
           {isDeletePopupOpen && <DeletePopup onClose={closeDeletePopup} />}
+          {isLogoutPopupOpen && <LogoutPopup onClose={closeLogoutPopup} />}
         </>
       )}
     </div>

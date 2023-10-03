@@ -2,12 +2,14 @@
 
 import React, { useState, useEffect } from 'react';
 import 'app/globals.css';
+import LogoutPopup from './logoutpopup.jsx';
 import Sidebar from './sidebar.jsx';
 import MenuBar from './menubar.jsx';
 import DashboardFrame from './dbframe.jsx';
 
 export default function Dashboard() {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+  const [isLogoutPopupOpen, setIsLogoutPopupOpen] = useState(false);
 
   useEffect(() => {
     // Function to check the screen width and set the state
@@ -27,6 +29,18 @@ export default function Dashboard() {
     };
   }, []);
 
+  const openLogoutPopup = () => {
+    setIsLogoutPopupOpen(true);
+  };
+
+  const closeLogoutPopup = () => {
+    setIsLogoutPopupOpen(false);
+  };
+
+  const handleLogoutAction = () => {
+    openLogoutPopup();
+  };
+
   return (
     <div className="font-Manrope">
       {isSmallScreen ? (
@@ -37,21 +51,27 @@ export default function Dashboard() {
       ) : (
         <>
           <div className="gradient-background">
-          <MenuBar />
+            <MenuBar
+              handleLogoutAction={handleLogoutAction}
+            />
           <div className="hidden 2xl:flex">
             <div className="w-96 2xl:w-1/4 p-10">
-              <Sidebar />
+              <Sidebar 
+              handleLogoutAction={handleLogoutAction}
+              />
             </div>
             <div className="w-3/4 pt-10 pb-10 pr-10">
-              <DashboardFrame />
+              <DashboardFrame/>
             </div>
           </div>
           <div className="flex 2xl:hidden">
             <div className="w-full p-10">
-              <DashboardFrame />
+              <DashboardFrame/>
             </div>
           </div>
           </div>
+          {/* Display the popup if isPopupOpen is true */}
+          {isLogoutPopupOpen && <LogoutPopup onClose={closeLogoutPopup} />}
         </>
       )}
     </div>
