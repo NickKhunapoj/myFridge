@@ -54,7 +54,7 @@ const LogoutPopup = ({ onClose }) => {
           alt="Icon"
         />
         <p className="mt-7 mx-3 text-[22px] font-medium">
-          Are you sure you want to logout?
+          Are you sure you want to sign out?
         </p>
         <div className="absolute bottom-5 left-0 right-0 flex justify-center items-center space-x-4">
           <button onClick={handleLogout} className="p-2 w-28 h-full bg-[#871d1d] text-white font-medium rounded-md text-[18px] hover:bg-[#b85757] transition-all duration-300 ease-in-out">
