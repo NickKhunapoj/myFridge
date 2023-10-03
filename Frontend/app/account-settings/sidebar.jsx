@@ -21,6 +21,10 @@ export const Sidebar = ({handleLogoutAction}) => {
     // Redirect to the app-settings page
     router.push('/app-settings');
   };
+  const handleAccountSettings = () => {
+    // Redirect to the account-settings page
+    router.push('/account-settings');
+  };
   
   return (
       <div className="sticky h-[calc(100vh-148px)] overflow-auto bg-[#21253180] rounded-[40px] shadow-[0px_0px_10px_8px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100">

@@ -8,7 +8,7 @@ export const Sidebar = ({handleLogoutAction}) => {
   const handleLogout = () => {
     // Call the handleLogoutAction function to handle the "logout" action
     handleLogoutAction();
-};
+  };
   const handleDashboard = () => {
     // Redirect to the dashboard page
     router.push('/dashboard');

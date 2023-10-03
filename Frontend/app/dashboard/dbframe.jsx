@@ -1,6 +1,20 @@
 import React from 'react';
 
 export const DashboardFrame = () => {
+    // Your data source with a maximum of 7 items
+    const data = [
+        { itemName: 'Milk', expiryDate: '31 Dec 2023', quantity: 5 },
+        { itemName: 'Eggs', expiryDate: '30 Dec 2023', quantity: 4 },
+        { itemName: 'Ketchup', expiryDate: '29 Nov 2023', quantity: 5 },
+        { itemName: 'Chocolate', expiryDate: '20 Nov 2023', quantity: 3 },
+        { itemName: 'Butter', expiryDate: '31 Oct 2023', quantity: 3 },
+        { itemName: 'Apple Juice', expiryDate: '20 Oct 2023', quantity: 4 },
+        { itemName: 'Mayonnaise', expiryDate: '15 Oct 2023', quantity: 1 },
+    ];
+
+    // Cap the data to a maximum of 7 items
+    const cappedData = data.slice(0, 7);
+
     return (
         <div className="sticky h-[calc(100vh-148px)] overflow-auto bg-[#21253180] rounded-[40px] shadow-[0px_0px_10px_8px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100">
             {/* Dashboard Header */}
@@ -67,42 +81,13 @@ export const DashboardFrame = () => {
                             </tr>
                         </thead>
                         <tbody className='text-center'>
-                            <tr className="text-[#ffffff] text-[18px]">
-                                <td className="pt-3 pb-1 px-6">Milk</td>
-                                <td className="pt-3 pb-1 px-6">31 Dec 2023</td>
-                                <td className="pt-3 pb-1 px-6">5</td>
-                            </tr>
-                            <tr className="text-[#ffffff] text-[18px]">
-                                <td className="py-1 px-6">Eggs</td>
-                                <td className="py-1 px-6">30 Dec 2023</td>
-                                <td className="py-1 px-6">4</td>
-                            </tr>
-                            <tr className="text-[#ffffff] text-[18px]">
-                                <td className="py-1 px-6">Ketchup</td>
-                                <td className="py-1 px-6">29 Nov 2023</td>
-                                <td className="py-1 px-6">5</td>
-                            </tr>
-                            <tr className="text-[#ffffff] text-[18px]">
-                                <td className="py-1 px-6">Chocolate</td>
-                                <td className="py-1 px-6">20 Nov 2023</td>
-                                <td className="py-1 px-6">3</td>
-                            </tr>
-                            <tr className="text-[#ffffff] text-[18px]">
-                                <td className="py-1 px-6">Butter</td>
-                                <td className="py-1 px-6">31 Oct 2023</td>
-                                <td className="py-1 px-6">3</td>
-                            </tr>
-                            <tr className="text-[#ffffff] text-[18px]">
-                                <td className="py-1 px-6">Apple Juice</td>
-                                <td className="py-1 px-6">20 Oct 2023</td>
-                                <td className="py-1 px-6">4</td>
-                            </tr>
-                            <tr className="text-[#ffffff] text-[18px]">
-                                <td className="pb-3 px-6">Mayonaise</td>
-                                <td className="pb-3 px-6">15 Oct 2023</td>
-                                <td className="pb-3 px-6">1</td>
-                            </tr>
-                            {/* Add more rows as needed */}
+                            {cappedData.map((item, index) => (
+                                <tr className="text-[#ffffff] text-[18px]" key={index}>
+                                    <td className="py-1 px-6">{item.itemName}</td>
+                                    <td className="py-1 px-6">{item.expiryDate}</td>
+                                    <td className="py-1 px-6">{item.quantity}</td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>

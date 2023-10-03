@@ -21,24 +21,12 @@ const LogoutPopup = ({ onClose }) => {
 
   const handleLogout = async (e) => {
     e.preventDefault();
-  
-    try {
-      console.log('Logout clicked!');
-      const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/auth/logout", {
-        credentials: "include"
-      });
-  
-      if (response.ok) {
-        // Logout successful, redirect or perform other actions here
-        router.push('/');
-      } else {
-        console.error('Logout failed:', response.status, response.statusText);
-        // Handle logout failure here, e.g., display an error message
-      }
-    } catch (error) {
-      console.error('An error occurred during logout:', error);
-      // Handle network errors or other exceptions here
-    }
+
+    console.log('Logout clicked!');
+    const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/auth/logout", {
+      credentials: "include"
+    });
+    router.push('/');
   };
 
   return (
@@ -54,7 +42,7 @@ const LogoutPopup = ({ onClose }) => {
           alt="Icon"
         />
         <p className="mt-7 mx-3 text-[22px] font-medium">
-          Are you sure you want to logout?
+          Are you sure you want to sign out?
         </p>
         <div className="absolute bottom-5 left-0 right-0 flex justify-center items-center space-x-4">
           <button onClick={handleLogout} className="p-2 w-28 h-full bg-[#871d1d] text-white font-medium rounded-md text-[18px] hover:bg-[#b85757] transition-all duration-300 ease-in-out">
