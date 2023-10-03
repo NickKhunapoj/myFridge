@@ -1,9 +1,9 @@
-// components SendPopup.jsx
+// components SavePopup.jsx
 'use client'
 import React, { useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-const SendPopup = ({ onClose }) => {
+const RegisPopup = () => {
   const router = useRouter();
   const popupRef = useRef(null);
 
@@ -19,6 +19,11 @@ const SendPopup = ({ onClose }) => {
     };
   }, []);
 
+  const handleLogin = () => {
+    // Redirect to the /items page when the "Save" button is pressed
+    router.push('/');
+  };
+
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50">
       <div className="fixed inset-0 bg-black opacity-50"></div>
@@ -32,10 +37,10 @@ const SendPopup = ({ onClose }) => {
           alt="Icon"
         />
         <p className="mt-7 mx-3 text-[22px] font-medium">
-          Feedback sent.
+          Account Registered.
         </p>
         <div className="absolute bottom-5 left-0 right-0 flex justify-center items-center space-x-4">
-          <button onClick={onClose} className="p-2 w-28 h-full bg-[#1d2387] text-white font-medium rounded-md text-[18px] hover:bg-[#286fb5] transition-all duration-300 ease-in-out">
+          <button onClick={handleLogin} className="p-2 w-28 h-full bg-[#1d2387] text-white font-medium rounded-md text-[18px] hover:bg-[#286fb5] transition-all duration-300 ease-in-out">
             <span className="mb-1">Done</span>
           </button>
         </div>
@@ -44,4 +49,4 @@ const SendPopup = ({ onClose }) => {
   );
 };
 
-export default SendPopup;
+export default RegisPopup;
