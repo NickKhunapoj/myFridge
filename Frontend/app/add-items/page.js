@@ -1,20 +1,13 @@
 'use client'
 
-// pages/main page.js
 import React, { useState, useEffect } from 'react';
 import 'app/globals.css';
-import DiscardPopup from './discardpopup.jsx';
-import AddPopup from './addpopup.jsx';
-import LogoutPopup from './logoutpopup.jsx';
 import Sidebar from './sidebar.jsx';
 import MenuBar from './menubar.jsx';
 import AddFrame from './additems.jsx';
 
 export default function AddItems() {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
-  const [isDiscardPopupOpen, setIsDiscardPopupOpen] = useState(false);
-  const [isAddPopupOpen, setIsAddPopupOpen] = useState(false);
-  const [isLogoutPopupOpen, setIsLogoutPopupOpen] = useState(false);
 
   useEffect(() => {
     // Function to check the screen width and set the state
@@ -34,42 +27,6 @@ export default function AddItems() {
     };
   }, []);
 
-  const openDiscardPopup = () => {
-    setIsDiscardPopupOpen(true);
-  };
-
-  const closeDiscardPopup = () => {
-    setIsDiscardPopupOpen(false);
-  };
-
-  const openAddPopup = () => {
-    setIsAddPopupOpen(true);
-  };
-
-  const closeAddPopup = () => {
-    setIsAddPopupOpen(false);
-  };
-
-  const handleDiscardAction = () => {
-    openDiscardPopup();
-  };
-
-  const handleAddAction = () => {
-    openAddPopup();
-  };
-
-  const openLogoutPopup = () => {
-    setIsLogoutPopupOpen(true);
-  };
-
-  const closeLogoutPopup = () => {
-    setIsLogoutPopupOpen(false);
-  };
-
-  const handleLogoutAction = () => {
-    openLogoutPopup();
-  };
-
   return (
     <div className="font-Manrope">
       {isSmallScreen ? (
@@ -80,35 +37,21 @@ export default function AddItems() {
       ) : (
         <>
           <div className="gradient-background">
-            <MenuBar
-              handleLogoutAction={handleLogoutAction}
-            />
-            <div className="hidden 2xl:flex">
-              <div className="w-96 2xl:w-1/4 p-10">
-                <Sidebar
-                  handleLogoutAction={handleLogoutAction}
-                />
-              </div>
-              <div className="w-3/4 pt-10 pb-10 pr-10">
-              <AddFrame
-                handleDiscardAction={handleDiscardAction}
-                handleAddAction={handleAddAction}
-              />
-              </div>
+          <MenuBar />
+          <div className="hidden 2xl:flex">
+            <div className="w-96 2xl:w-1/4 p-10">
+              <Sidebar />
             </div>
-            <div className="flex 2xl:hidden">
-              <div className="w-full p-10">
-              <AddFrame
-                handleDiscardAction={handleDiscardAction}
-                handleAddAction={handleAddAction}
-              />
-              </div>
+            <div className="w-3/4 pt-10 pb-10 pr-10">
+              <AddFrame />
             </div>
           </div>
-          {/* Display the popup if isPopupOpen is true */}
-          {isDiscardPopupOpen && <DiscardPopup onClose={closeDiscardPopup} />}
-          {isAddPopupOpen && <AddPopup onClose={closeAddPopup} />}
-          {isLogoutPopupOpen && <LogoutPopup onClose={closeLogoutPopup} />}
+          <div className="flex 2xl:hidden">
+            <div className="w-full p-10">
+              <AddFrame />
+            </div>
+          </div>
+          </div>
         </>
       )}
     </div>

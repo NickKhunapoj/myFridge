@@ -2,16 +2,12 @@
 
 import React, { useState, useEffect } from 'react';
 import 'app/globals.css';
-import LogoutPopup from './logoutpopup.jsx';
-import SendPopup from './sendpopup.jsx';
 import Sidebar from './sidebar.jsx';
 import MenuBar from './menubar.jsx';
 import AppSettingsFrame from './appsettingsframe.jsx';
 
 export default function AppSettings() {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
-  const [isLogoutPopupOpen, setIsLogoutPopupOpen] = useState(false);
-  const [isSendPopupOpen, setIsSendPopupOpen] = useState(false);
 
   useEffect(() => {
     // Function to check the screen width and set the state
@@ -31,30 +27,6 @@ export default function AppSettings() {
     };
   }, []);
 
-  const openSendPopup = () => {
-    setIsSendPopupOpen(true);
-  };
-
-  const closeSendPopup = () => {
-    setIsSendPopupOpen(false);
-  };
-
-  const handleSendAction = () => {
-    openSendPopup();
-  };
-
-  const openLogoutPopup = () => {
-    setIsLogoutPopupOpen(true);
-  };
-
-  const closeLogoutPopup = () => {
-    setIsLogoutPopupOpen(false);
-  };
-
-  const handleLogoutAction = () => {
-    openLogoutPopup();
-  };
-
   return (
     <div className="font-Manrope">
       {isSmallScreen ? (
@@ -65,32 +37,21 @@ export default function AppSettings() {
       ) : (
         <>
           <div className="gradient-background">
-            <MenuBar
-              handleLogoutAction={handleLogoutAction}
-            />
+          <MenuBar />
           <div className="hidden 2xl:flex">
             <div className="w-96 2xl:w-1/4 p-10">
-              <Sidebar 
-              handleLogoutAction={handleLogoutAction}
-              />
+              <Sidebar />
             </div>
             <div className="w-3/4 pt-10 pb-10 pr-10">
-              <AppSettingsFrame 
-              handleSendAction={handleSendAction}
-              />
+              <AppSettingsFrame />
             </div>
           </div>
           <div className="flex 2xl:hidden">
             <div className="w-full p-10">
-              <AppSettingsFrame 
-              handleSendAction={handleSendAction}
-              />
+              <AppSettingsFrame />
             </div>
           </div>
           </div>
-          {/* Display the popup if isPopupOpen is true */}
-          {isLogoutPopupOpen && <LogoutPopup onClose={closeLogoutPopup} />}
-          {isSendPopupOpen && <SendPopup onClose={closeSendPopup} />}
         </>
       )}
     </div>

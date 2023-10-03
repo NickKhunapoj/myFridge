@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 
-export const AppSettingsFrame = ({handleSendAction}) => {
-    const [selectedOption, setSelectedOption] = useState('Option 4'); // Set default selection
+export const AppSettingsFrame = () => {
+    const [selectedOption, setSelectedOption] = useState('');
     const [email, setEmail] = useState('');
     const [feedback, setFeedback] = useState('');
 
@@ -20,7 +20,8 @@ export const AppSettingsFrame = ({handleSendAction}) => {
     };
 
     const handleSendClick = () => {
-        handleSendAction();
+        // Handle sending the email and feedback
+        // You can implement the logic here
         console.log('Sending email:', email);
         console.log('Feedback:', feedback);
     };

@@ -1,16 +1,11 @@
 "use client"
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
-export const MenuBar = ({handleLogoutAction}) => {
+export const MenuBar = () => {
     const router = useRouter();
 
-    const handleLogout = () => {
-        // Call the handleLogoutAction function to handle the "logout" action
-        handleLogoutAction();
-      };
-    
     const backHome = () => {
         // Redirect to the home page
         router.push('/dashboard');
@@ -50,13 +45,21 @@ export const MenuBar = ({handleLogoutAction}) => {
                             className="w-12 h-12 hover:w-14 hover:h-14 rounded-full cursor-pointer transition-all duration-300 ease-in-out"
                         />
                     </a>
-                    <a href="#" onClick={handleLogout}>
+                    <button onClick={async (e) => {
+                        e.preventDefault();
+
+                        console.log('Logout clicked!');
+                        const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/auth/logout", {
+                            credentials: "include"
+                        });
+                        router.push('/');
+                    }}>
                         <img
                             src="https://cdn.discordapp.com/attachments/1151835814939078738/1151836795621888080/icon-signout.png?ex=6516b01c&is=65155e9c&hm=eb7b7b75d904b6ea3338fd7ebbf185f68928ce06c611bb9905682c4339adc301&"
                             alt="Profile Picture"
                             className="w-10 h-10 ml-8 hover:w-14 hover:h-14 rounded-full cursor-pointer transition-all duration-300 ease-in-out"
                         />
-                    </a>
+                    </button>
                 </div>
             </div>
         </nav>
@@ -64,4 +67,3 @@ export const MenuBar = ({handleLogoutAction}) => {
 };
 
 export default MenuBar;
-

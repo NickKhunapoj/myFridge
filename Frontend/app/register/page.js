@@ -1,11 +1,12 @@
 'use client'
-import React, { useState } from "react";
 import 'app/globals.css';
+import React, { useState } from "react";
 import { Topmenubar } from "app/topmenubar";
 import { useRouter } from 'next/navigation';
 
 export default function Home() {
   const router = useRouter();
+
   const [formData, setFormData] = useState({
     email: "",
     displayName: "",
@@ -20,7 +21,7 @@ export default function Home() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleLogin = () => {
+  const handleLogin = async() => {
     // Check if all required fields are filled
     if (
       formData.email &&
@@ -30,7 +31,18 @@ export default function Home() {
       formData.confirmPassword &&
       formData.dateOfBirth
     ) {
-      // All required fields are filled, proceed with login
+      // const authHeader = 'Basic ' + btoa(formData.username + ':' + formData.password);
+      // All required fields are filled, proceed with registration
+      const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/auth/register", {
+        headers: {'Content-Type': 'application/json'},
+        method: 'POST',
+        body: JSON.stringify({
+          email: formData.email,
+          dpname: formData.displayName,
+          username: formData.username,
+          password: formData.password,
+          dob: formData.dateOfBirth})
+    });
       router.push('/');
     } else {
       // Display an error message or take other actions to handle the incomplete form
@@ -38,10 +50,10 @@ export default function Home() {
     }
   };
 
-    // Function to bypass form and go to login
-    const bypassForm = () => {
-      router.push('/'); // Replace 'login' with the actual login page URL
-    };
+  // Function to bypass form and go to login
+  const bypassForm = () => {
+    router.push('/'); // Replace 'login' with the actual login page URL
+  };
 
   return (
     <div className="font-Manrope">
@@ -137,7 +149,8 @@ export default function Home() {
             <p className="text-[#979fa9] text-[18px] text-left mb-3 ml-5">
               By registering, you agree to myFridge’s Terms of service and privacy
             </p>
-            <button className="text-[#4950f9] text-[18px] left ml-5 mt-6 mb-8 hover:underline" onClick={bypassForm}>
+            <button className="text-[#4950f9] text-[18px] left ml-5 mt-6 mb-8 hover:underline"
+              onClick={bypassForm}>
               Already have myFridge account?
             </button>
           </div>

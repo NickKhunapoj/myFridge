@@ -2,6 +2,8 @@
 import React, { useState } from "react";
 import { useRouter } from 'next/navigation';
 
+var CryptoJS = require("crypto-js");
+
 export const Box = () => {
   const router = useRouter();
   const [formData, setFormData] = useState({
@@ -14,28 +16,35 @@ export const Box = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleDashboard = () => {
-    // Check if all required fields are filled
-    if (
-      formData.emailusername &&
-      formData.password
-    ) {
-      // All required fields are filled, proceed with login
-      router.push('/dashboard');
-    } else {
-      // Display an error message or take other actions to handle the incomplete form
-      alert("Please fill in all required fields.");
-    }
+  const handleDashboard = async () => {
+    // console.log( {'Authorization': 'Basic' + btoa(`${formData.emailusername}:${formData.password}`)})
+    // const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/auth/login", {
+    //   headers: {'Authorization': 'Basic' + btoa(`${formData.emailusername}:${formData.password}`)},
+    //   credentials: "include"
+    // });
+    var encrypted = CryptoJS.AES.encrypt(formData.password,formData.emailusername).toString()
+    const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/auth/login", {
+      headers: {'Authorization': 'Basic' + btoa(`${formData.emailusername}:${CryptoJS.AES.encrypt(formData.password,formData.emailusername).toString()}`)},
+      credentials: "include"
+    });
+    console.log({'Authorization': 'Basic' + btoa(`${formData.emailusername}:${CryptoJS.AES.encrypt(formData.password,formData.emailusername).toString()}`)})
+    // console.log(CryptoJS.AES.decrypt(encrypted,formData.emailusername).toString(CryptoJS.enc.Utf8))
+    console.log("Key : ",process.env.NEXT_SECRET_AES_KEY)
+    console.log("URL : ",process.env.NEXT_PUBLIC_API_URL)
+    const json = await response.json();
+    if (json.ok == true) router.push('/dashboard');
+    else
+      alert(json.error);
   };
 
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       {/* Flex Container */}
-        {/* Text Group */}
-        <div className="text-group">
-          <div className="w-[516px] h-[116px]">
-            <div className="flex flex-col items-start gap-[10px] relative w-[516px] h-[116px]">
-              <p className="relative self-stretch [font-family:'Manrope-Bold',Helvetica] font-bold text-white text-[60px] text-center tracking-[0] leading-[normal]">
+      {/* Text Group */}
+      <div className="text-group">
+        <div className="w-[516px] h-[116px]">
+          <div className="flex flex-col items-start gap-[10px] relative w-[516px] h-[116px]">
+            <p className="relative self-stretch [font-family:'Manrope-Bold',Helvetica] font-bold text-white text-[60px] text-center tracking-[0] leading-[normal]">
               <div className="flex justify-center">
                 {/* Image */}
                 <img
@@ -48,13 +57,13 @@ export const Box = () => {
                   <br />
                 </span>
               </div>
-              </p>
-              <p className="relative self-stretch [font-family:'Manrope',Helvetica] font-medium text-white text-[25px] text-center tracking-[0] leading-[normal]">
-                <span className="text-[25px]">Your personal fridge management website.</span>
-              </p>
-            </div>
+            </p>
+            <p className="relative self-stretch [font-family:'Manrope',Helvetica] font-medium text-white text-[25px] text-center tracking-[0] leading-[normal]">
+              <span className="text-[25px]">Your personal fridge management website.</span>
+            </p>
           </div>
         </div>
+      </div>
 
       {/* Spacing */}
       <div className="mt-10"></div>
