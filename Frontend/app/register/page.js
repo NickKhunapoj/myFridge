@@ -1,12 +1,13 @@
 'use client'
 import 'app/globals.css';
 import React, { useState } from "react";
-import RegisPopup from "./regispopup";
 import { Topmenubar } from "app/topmenubar";
 import { useRouter } from 'next/navigation';
+import RegisPopup from './regispopup.jsx';
 
 export default function Home() {
   const router = useRouter();
+  const [isRegisPopupOpen, setIsRegisPopupOpen] = useState(false);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -22,10 +23,19 @@ export default function Home() {
     setFormData({ ...formData, [name]: value });
   };
 
-  // State variable to control the visibility of the registration popup
-  const [showRegisPopup, setShowRegisPopup] = useState(false);
+  const openRegisPopup = () => {
+    setIsRegisPopupOpen(true);
+  };
 
-  const handleLogin = async () => {
+  const closeRegisPopup = () => {
+    setIsRegisPopupOpen(false);
+  };
+
+  const handleRegisAction = () => {
+    openRegisPopup();
+  };
+
+  const handleLogin = async() => {
     // Check if all required fields are filled
     if (
       formData.email &&
@@ -36,8 +46,18 @@ export default function Home() {
       formData.dateOfBirth
     ) {
       // const authHeader = 'Basic ' + btoa(formData.username + ':' + formData.password);
-      // All required fields are filled, show the registration popup
-      setShowRegisPopup(true);
+      // All required fields are filled, proceed with registration
+      const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/auth/register", {
+        headers: {'Content-Type': 'application/json'},
+        method: 'POST',
+        body: JSON.stringify({
+          email: formData.email,
+          dpname: formData.displayName,
+          username: formData.username,
+          password: formData.password,
+          dob: formData.dateOfBirth})
+    });
+      handleRegisAction();
     } else {
       // Display an error message or take other actions to handle the incomplete form
       alert("Please fill in all required fields.");
@@ -143,14 +163,15 @@ export default function Home() {
             <p className="text-[#979fa9] text-[18px] text-left mb-3 ml-5">
               By registering, you agree to myFridge’s Terms of service and privacy
             </p>
-            <button className="text-[#4950f9] text-[18px] left ml-5 mt-6 mb-8 hover:underline" onClick={bypassForm}>
+            <button className="text-[#4950f9] text-[18px] left ml-5 mt-6 mb-8 hover:underline"
+              onClick={bypassForm}>
               Already have myFridge account?
             </button>
           </div>
         </div>
-      </div>
-      {/* Render the registration popup when showRegisPopup is true */}
-      {showRegisPopup && <RegisPopup onClose={() => setShowRegisPopup(false)} />}
+        </div>
+          {/* Display the popup if isPopupOpen is true */}
+          {isRegisPopupOpen && <RegisPopup onClose={closeRegisPopup} />}
     </div>
   );
 }
