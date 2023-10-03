@@ -1,9 +1,9 @@
-// components EditPopup.jsx
+// components SavePopup.jsx
 'use client'
 import React, { useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-const EditPopup = () => {
+const SavePopup = () => {
   const router = useRouter();
   const popupRef = useRef(null);
 
@@ -49,5 +49,4 @@ const EditPopup = () => {
   );
 };
 
-export default EditPopup;
-
+export default SavePopup;

@@ -1,11 +1,16 @@
 "use client"
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/navigation';
 
-export const MenuBar = () => {
+export const MenuBar = ({handleLogoutAction}) => {
     const router = useRouter();
 
+    const handleLogout = () => {
+        // Call the handleLogoutAction function to handle the "logout" action
+        handleLogoutAction();
+      };
+    
     const backHome = () => {
         // Redirect to the home page
         router.push('/dashboard');
@@ -31,12 +36,12 @@ export const MenuBar = () => {
             <div className="flex w-3/4 justify-end 2xl:hidden">
                 <div className="flex items-center pr-12 font-Manrope font-normal text-white text-[18px]">
                     <div>
-                        <a href="#" className="text-red-300 hover:underline hover:text-[20px] px-8 transition-all duration-300 ease-in-out"
-                            onClick={() => router.push('/dashboard')}>Dashboard</a>
+                        <a href="#" className="text-red-300 hover:underline hover:text-[20px] px-8 transition-all duration-300 ease-in-out" 
+                        onClick={() => router.push('/dashboard')}>Dashboard</a>
                         <a href="#" className="text-white hover:underline hover:text-[20px] px-8 transition-all duration-300 ease-in-out"
-                            onClick={() => router.push('/items')}>Items</a>
+                        onClick={() => router.push('/items')}>Items</a>
                         <a href="#" className="text-white hover:underline hover:text-[20px] pl-8 pr-10 transition-all duration-300 ease-in-out"
-                            onClick={() => router.push('/app-settings')}>App Settings</a>
+                        onClick={() => router.push('/app-settings')}>App Settings</a>
                     </div>
                     <a href="#" onClick={() => router.push('/account-settings')}>
                         <img
@@ -45,21 +50,13 @@ export const MenuBar = () => {
                             className="w-12 h-12 hover:w-14 hover:h-14 rounded-full cursor-pointer transition-all duration-300 ease-in-out"
                         />
                     </a>
-                    <button onClick={async (e) => {
-                        e.preventDefault();
-
-                        console.log('Logout clicked!');
-                        const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/auth/logout", {
-                            credentials: "include"
-                        });
-                        router.push('/');
-                    }}>
+                    <a href="#" onClick={handleLogout}>
                         <img
                             src="https://cdn.discordapp.com/attachments/1151835814939078738/1151836795621888080/icon-signout.png?ex=6516b01c&is=65155e9c&hm=eb7b7b75d904b6ea3338fd7ebbf185f68928ce06c611bb9905682c4339adc301&"
                             alt="Profile Picture"
                             className="w-10 h-10 ml-8 hover:w-14 hover:h-14 rounded-full cursor-pointer transition-all duration-300 ease-in-out"
                         />
-                    </button>
+                    </a>
                 </div>
             </div>
         </nav>

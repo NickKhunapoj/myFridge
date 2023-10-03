@@ -53,4 +53,3 @@ const DiscardPopup = ({ onClose }) => {
 };
 
 export default DiscardPopup;
-

@@ -19,9 +19,26 @@ const LogoutPopup = ({ onClose }) => {
     };
   }, []);
 
-  const handleLogout = () => {
-    // Redirect to the /items page when the "Yes" button is pressed
-    router.push('/');
+  const handleLogout = async (e) => {
+    e.preventDefault();
+  
+    try {
+      console.log('Logout clicked!');
+      const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/auth/logout", {
+        credentials: "include"
+      });
+  
+      if (response.ok) {
+        // Logout successful, redirect or perform other actions here
+        router.push('/');
+      } else {
+        console.error('Logout failed:', response.status, response.statusText);
+        // Handle logout failure here, e.g., display an error message
+      }
+    } catch (error) {
+      console.error('An error occurred during logout:', error);
+      // Handle network errors or other exceptions here
+    }
   };
 
   return (
@@ -53,4 +70,3 @@ const LogoutPopup = ({ onClose }) => {
 };
 
 export default LogoutPopup;
-

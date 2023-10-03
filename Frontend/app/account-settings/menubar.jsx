@@ -1,10 +1,15 @@
 "use client"
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useRouter } from 'next/navigation';
 
-export const MenuBar = () => {
+export const MenuBar = ({handleLogoutAction}) => {
     const router = useRouter();
+
+    const handleLogout = () => {
+        // Call the handleLogoutAction function to handle the "logout" action
+        handleLogoutAction();
+    };
 
     const backHome = () => {
         // Redirect to the home page
@@ -42,28 +47,21 @@ export const MenuBar = () => {
                         <img
                             src="https://media.discordapp.net/attachments/1151835814939078738/1151836796276199434/imp-profilepic.png?width=412&height=412"
                             alt="Profile Picture"
-                            className="w-14 h-14 hover:w-12 hover:h-12 rounded-full cursor-pointer transition-all duration-300 ease-in-out"
+                            className="w-12 h-12 hover:w-14 hover:h-14 rounded-full cursor-pointer transition-all duration-300 ease-in-out"
                         />
                     </a>
-                    <button onClick={async (e) => {
-                        e.preventDefault();
-
-                        console.log('Logout clicked!');
-                        const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/auth/logout", {
-                            credentials: "include"
-                        });
-                        router.push('/');
-                    }}>
+                    <a href="#" onClick={handleLogout}>
                         <img
                             src="https://cdn.discordapp.com/attachments/1151835814939078738/1151836795621888080/icon-signout.png?ex=6516b01c&is=65155e9c&hm=eb7b7b75d904b6ea3338fd7ebbf185f68928ce06c611bb9905682c4339adc301&"
                             alt="Profile Picture"
                             className="w-10 h-10 ml-8 hover:w-14 hover:h-14 rounded-full cursor-pointer transition-all duration-300 ease-in-out"
                         />
-                    </button>
+                    </a>
                 </div>
             </div>
         </nav>
     );
 };
+
 
 export default MenuBar;

@@ -3,7 +3,7 @@ import React from 'react';
 import { useState } from "react";
 import { useRouter } from 'next/navigation';
 
-export const AccountSettingsFrame = () => {
+export const AccountSettingsFrame = ({ handleDiscardAction, handleSaveAction, handleDeleteAction }) => {
     const router = useRouter();
 
     const [formData, setFormData] = useState({
@@ -27,22 +27,35 @@ export const AccountSettingsFrame = () => {
     const handlePasswordChangeClick = () => {
     };
 
-    const handleSaveClick = async() => {
-        console.log('Change Saved');
-        const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/prof/edit", {
+    const handleSave = async () => {
+        try {
+          console.log('Change Saved');
+          const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/prof/edit", {
             headers: { 'Content-Type': 'application/json' },
-            credentials: "include", method: 'PATCH',
+            credentials: "include",
+            method: 'PATCH',
             body: JSON.stringify({ email: formData.email, display_name: formData.display_name, username: formData.username })
-        });
-        router.push('/dashboard');
+          });
+      
+          if (response.ok) {
+            // Save successful, you can handle the response here if needed
+            handleSaveAction();
+          } else {
+            console.error('Failed to save:', response.status, response.statusText);
+            // Handle save failure here, display an error message, etc.
+          }
+        } catch (error) {
+          console.error('An error occurred during save:', error);
+          // Handle network errors or other exceptions here
+        }
+      };
+
+    const handleDiscard = () => {
+        handleDiscardAction();
     };
 
-    const handleDiscardClick = async() => {
-        router.push('/dashboard');
-    };
-
-    const handleDeleteClick = () => {
-        router.push('/dashboard');
+    const handleDelete = () => {
+        handleDeleteAction();
     };
 
     return (
@@ -122,7 +135,7 @@ export const AccountSettingsFrame = () => {
                     <div className="flex mt-4 space-x-10">
                         <button
                             className="sticky w-44 bg-[#1d2387] text-[20px] hover:bg-[#286fb5] text-white py-2 px-4 transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
-                            onClick = {handleSaveClick}
+                            onClick = {handleSave}
                         >
                             <div className="flex items-center"> {/* Added this div */}
                                 <img
@@ -135,7 +148,7 @@ export const AccountSettingsFrame = () => {
                         </button>
                         <button
                             className="sticky w-44 bg-[#871d1d] text-[20px] hover:bg-[#b85757] text-white py-2 px-4 transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
-                            onClick = {handleDiscardClick}
+                            onClick = {handleDiscard}
                         >
                             <div className="flex items-center"> {/* Added this div */}
                                 <img
@@ -152,7 +165,7 @@ export const AccountSettingsFrame = () => {
                         <p className="text-[#ff7e7e] text-[20px]">Danger Zone</p>
                         <button
                             className="sticky w-64 pb- text-white text-[20px] mt-2 bg-[#871d1d] hover:bg-[#b85757] py-2 px-4 transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
-                            onClick = {handleDeleteClick}
+                            onClick = {handleDelete}
                         >
                             <div className="flex items-center"> {/* Added this div */}
                                 <img

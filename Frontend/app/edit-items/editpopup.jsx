@@ -50,4 +50,3 @@ const EditPopup = () => {
 };
 
 export default EditPopup;
-

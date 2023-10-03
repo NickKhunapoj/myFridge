@@ -83,5 +83,3 @@ const DeletePopup = ({ onClose }) => {
 };
 
 export default DeletePopup;
-
-

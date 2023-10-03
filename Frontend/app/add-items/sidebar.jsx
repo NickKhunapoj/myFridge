@@ -2,7 +2,7 @@
 import React from 'react';
 import { useRouter } from 'next/navigation';
 
-export const Sidebar = () => {
+export const Sidebar = ({handleLogoutAction}) => {
   const router = useRouter();
 
   const handleLogout = async (e) => {
@@ -12,7 +12,7 @@ export const Sidebar = () => {
     const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/auth/logout", {
       credentials: "include"
     });
-    router.push('/');
+    handleLogoutAction();
   };
   const handleDashboard = () => {
     // Redirect to the dashboard page

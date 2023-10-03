@@ -1,31 +1,17 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
-
 import 'app/globals.css';
+import LogoutPopup from './logoutpopup.jsx';
 import Sidebar from './sidebar.jsx';
 import MenuBar from './menubar.jsx';
 import DashboardFrame from './dbframe.jsx';
 
 export default function Dashboard() {
-  const router = useRouter();
   const [isSmallScreen, setIsSmallScreen] = useState(false);
-
-  const checkLogin = async () => {
-    const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/auth/check", {
-      credentials: 'include'
-    });
-
-    const json = await response.json();
-    if (json.ok == false) {
-      router.push('/');
-    }
-  }
+  const [isLogoutPopupOpen, setIsLogoutPopupOpen] = useState(false);
 
   useEffect(() => {
-    checkLogin()
-
     // Function to check the screen width and set the state
     function checkScreenWidth() {
       setIsSmallScreen(window.innerWidth < 768);
@@ -43,6 +29,18 @@ export default function Dashboard() {
     };
   }, []);
 
+  const openLogoutPopup = () => {
+    setIsLogoutPopupOpen(true);
+  };
+
+  const closeLogoutPopup = () => {
+    setIsLogoutPopupOpen(false);
+  };
+
+  const handleLogoutAction = () => {
+    openLogoutPopup();
+  };
+
   return (
     <div className="font-Manrope">
       {isSmallScreen ? (
@@ -53,21 +51,27 @@ export default function Dashboard() {
       ) : (
         <>
           <div className="gradient-background">
-            <MenuBar />
-            <div className="hidden 2xl:flex">
-              <div className="w-96 2xl:w-1/4 p-10">
-                <Sidebar />
-              </div>
-              <div className="w-3/4 pt-10 pb-10 pr-10">
-                <DashboardFrame />
-              </div>
+            <MenuBar
+              handleLogoutAction={handleLogoutAction}
+            />
+          <div className="hidden 2xl:flex">
+            <div className="w-96 2xl:w-1/4 p-10">
+              <Sidebar 
+              handleLogoutAction={handleLogoutAction}
+              />
             </div>
-            <div className="flex 2xl:hidden">
-              <div className="w-full p-10">
-                <DashboardFrame />
-              </div>
+            <div className="w-3/4 pt-10 pb-10 pr-10">
+              <DashboardFrame/>
             </div>
           </div>
+          <div className="flex 2xl:hidden">
+            <div className="w-full p-10">
+              <DashboardFrame/>
+            </div>
+          </div>
+          </div>
+          {/* Display the popup if isPopupOpen is true */}
+          {isLogoutPopupOpen && <LogoutPopup onClose={closeLogoutPopup} />}
         </>
       )}
     </div>

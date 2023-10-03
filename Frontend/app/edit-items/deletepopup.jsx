@@ -19,8 +19,12 @@ const DeletePopup = ({ onClose }) => {
     };
   }, []);
 
-  const handleDelete = () => {
-    // Redirect to the /items page when the "Yes" button is pressed
+  const handleDelete = async () => {
+    console.log('Item Deleted');
+    const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/item/delete", {
+        headers: { 'Content-Type': 'application/json' },
+        credentials: "include", method: 'PUT',
+    });
     router.push('/items');
   };
 
@@ -53,4 +57,3 @@ const DeletePopup = ({ onClose }) => {
 };
 
 export default DeletePopup;
-
