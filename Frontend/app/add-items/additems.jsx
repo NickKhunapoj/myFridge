@@ -2,6 +2,7 @@
 
 import React, {useState} from 'react';
 import { useRouter } from 'next/navigation';
+var cookie = require('js-cookie')
 
 export const AddFrame = ({ handleDiscardAction, handleAddAction }) => {
     const router = useRouter();
@@ -18,14 +19,19 @@ export const AddFrame = ({ handleDiscardAction, handleAddAction }) => {
     };
 
     const handleAdd = async () => {
-        console.log('Item Added');
         const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/item/add", {
-            headers:{'Content-Type':'application/json'} ,
-            credentials: "include", method: 'POST', 
+            headers:{
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + `${cookie.get('token')}`,
+                    'Host': 'api.producthunt.com'
+            } ,
+            method: 'POST', 
             body: JSON.stringify({ item_name:formData.item_name, quantity:formData.quantity, expiry_date:formData.expiry_date })
         });
         // Call the handleAddAction function to handle the "Add" action
         handleAddAction();
+        console.log('Item Added');
     };
 
     const handleDiscard = () => {

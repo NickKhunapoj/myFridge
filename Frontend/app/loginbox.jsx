@@ -2,6 +2,10 @@
 import React, { useState } from "react";
 import { useRouter } from 'next/navigation';
 
+var cookie = require('js-cookie')
+
+require('dotenv').config({ path: __dirname+'../.env' });
+
 var CryptoJS = require("crypto-js");
 
 export const Box = () => {
@@ -17,21 +21,17 @@ export const Box = () => {
   };
 
   const handleDashboard = async () => {
-    // console.log( {'Authorization': 'Basic' + btoa(`${formData.emailusername}:${formData.password}`)})
-    // const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/auth/login", {
-    //   headers: {'Authorization': 'Basic' + btoa(`${formData.emailusername}:${formData.password}`)},
-    //   credentials: "include"
-    // });
     var encrypted = CryptoJS.AES.encrypt(formData.password,formData.emailusername).toString()
+    console.log("URL : ",process.env.NEXT_PUBLIC_API_URL)
     const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/auth/login", {
       headers: {'Authorization': 'Basic' + btoa(`${formData.emailusername}:${CryptoJS.AES.encrypt(formData.password,formData.emailusername).toString()}`)},
       credentials: "include"
     });
-    console.log({'Authorization': 'Basic' + btoa(`${formData.emailusername}:${CryptoJS.AES.encrypt(formData.password,formData.emailusername).toString()}`)})
-    // console.log(CryptoJS.AES.decrypt(encrypted,formData.emailusername).toString(CryptoJS.enc.Utf8))
     console.log("Key : ",process.env.NEXT_SECRET_AES_KEY)
     console.log("URL : ",process.env.NEXT_PUBLIC_API_URL)
     const json = await response.json();
+    // token = json.token
+    cookie.set('token',json.token || "");
     if (json.ok == true) router.push('/dashboard');
     else
       alert(json.error);

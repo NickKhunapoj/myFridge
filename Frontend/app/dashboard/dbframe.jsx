@@ -1,4 +1,5 @@
 import React from 'react';
+var cookie = require('js-cookie')
 
 export const DashboardFrame = () => {
     // Your data source with a maximum of 7 items

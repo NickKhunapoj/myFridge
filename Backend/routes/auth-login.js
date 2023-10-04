@@ -3,8 +3,17 @@ const bcrypt = require('bcrypt');
 
 const database = require('../shared/database');
 
+const redis = require('redis')
+const jwt = require('jsonwebtoken')
+
+require('dotenv').config({ path: __dirname+'../../../.env' });
+
 const router = express.Router();
 var CryptoJS = require("crypto-js");
+
+const redisClient = redis.createClient()  
+    .on('error', err => console.log('Redis Client Error', err))
+    .connect();
 
 router.get('/', async (req, res, next) => {
     try {
@@ -22,6 +31,10 @@ router.get('/', async (req, res, next) => {
             query: 'SELECT * FROM user_info WHERE email = ? or username = ?',
             values: [userId, userId]
         });
+        
+        // console.log("secret : ",process.env.JWT_SIGN_SECRET)
+        // console.log("web : ",process.env.NEXT_PUBLIC_API_URL)
+        // console.log("dir : ",__dirname)
 
         if (userData.length == 0) {
             return res.status(404).send({
@@ -35,12 +48,14 @@ router.get('/', async (req, res, next) => {
         if (match) {
             // remove key from object
             delete userData[0].password;
-
+            var userSigned = jwt.sign(JSON.stringify(userData[0]),process.env.JWT_SIGN_SECRET)
+            console.log(userSigned)
+            ;(await redisClient).set(userId,userSigned)
             // set user session & send result as success
             req.session.userData = userData[0];
             return res.status(200).send({
                 ok: true,
-                data: userData[0],
+                token : userSigned,
                 message: 'Successfully Login!'
             });
         }
