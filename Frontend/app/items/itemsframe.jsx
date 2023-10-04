@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 export const ItemsFrame = () => {
@@ -14,52 +14,33 @@ export const ItemsFrame = () => {
         router.push('/edit-items');
     };
 
-    // Sample list of items with quantity
-    const items = [
-        {
-            name: 'Milk',
-            expires: '31 Dec 2023',
-            quantity: 5,
-            image: 'https://cdn.discordapp.com/attachments/1151835814939078738/1157130085443317760/Screenshot_2566-09-29_at_08.36.45.png?ex=651b715e&is=651a1fde&hm=3be0525dc3d36a533c98710d302b325a31f4f53996c8ff718e0e82d5ee63c244&', // Replace with actual image URL
-        },
-        {
-            name: 'Eggs',
-            expires: '30 Dec 2023',
-            quantity: 4,
-            image: 'https://cdn.discordapp.com/attachments/1151835814939078738/1157130085976002581/Screenshot_2566-09-29_at_08.37.22.png?ex=651b715e&is=651a1fde&hm=1517ec86e3850ab4c36eadb297010df6ff7724d46e5645898fe762b8e95dc9bf&', // Replace with actual image URL
-        },
-        {
-            name: 'Ketchup',
-            expires: '29 Nov 2023',
-            quantity: 3,
-            image: 'https://cdn.discordapp.com/attachments/1151835814939078738/1157130086210875402/Screenshot_2566-09-29_at_08.37.49.png?ex=651b715e&is=651a1fde&hm=ee608a35dacd4c0cf42aa9620c3e49e0aebfeec2cd1967291eb01ba62bd36cb0&', // Replace with actual image URL
-        },
-        {
-            name: 'Chocolate',
-            expires: '20 Nov 2023',
-            quantity: 3,
-            image: 'https://cdn.discordapp.com/attachments/1151835814939078738/1157130086479298570/Screenshot_2566-09-29_at_08.38.15.png?ex=651b715f&is=651a1fdf&hm=2b8f8979b5a39275437c741e83dce853a543d14c62572f3aa927f521507b49ba&', // Replace with actual image URL
-        },
-        {
-            name: 'Butter',
-            expires: '31 Oct 2023',
-            quantity: 3,
-            image: 'https://cdn.discordapp.com/attachments/1151835814939078738/1156150750003597332/Screenshot_2566-09-06_at_21.18_1.png?ex=651bd5cb&is=651a844b&hm=c080a0f4c6f2ca6d1ad2918c43d212f052e4447fd201e01d7ded9dd0f174b68a&', // Replace with actual image URL
-        },
-        {
-            name: 'Apple Juice',
-            expires: '20 Oct 2023',
-            quantity: 4,
-            image: 'https://cdn.discordapp.com/attachments/1151835814939078738/1157130086730977371/Screenshot_2566-09-29_at_08.41.03.png?ex=651b715f&is=651a1fdf&hm=6e8d2e907fe3fa2bcba799e8544886519e43ab58773764a94603c277a665e3c5&', // Replace with actual image URL
-        },
-        {
-            name: 'Mayonaise',
-            expires: '15 Oct 2023',
-            quantity: 1,
-            image: 'https://cdn.discordapp.com/attachments/1151835814939078738/1157130085720129546/Screenshot_2566-09-29_at_08.41.17.png?ex=651b715e&is=651a1fde&hm=ca88bc0c057a79d6185e8ded1dc8b600265c9f3cbc5cca1479ec66f6c7cc9e30&', // Replace with actual image URL
-        },
-        // Add more items here
-    ];
+    const [items, setItems] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const fetchData = async () => {
+        try {
+            const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/item/list");
+            if (!response.ok) {
+                throw new Error('Failed to fetch data');
+            }
+
+            const data = await response.json();
+            if (data.ok) {
+                setItems(data.data);
+                setLoading(false);
+            } else {
+                throw new Error(data.error);
+            }
+        } catch (error) {
+            setError(error.message);
+            setLoading(false);
+        }
+    };
 
     return (
         <div className="font-Manrope">
@@ -120,10 +101,10 @@ export const ItemsFrame = () => {
                     <div key={index} className={`w-1/3 pt-10 pb-6 ${index % 3 === 0 ? 'pl-16' : ''} ${index % 3 === 1 ? 'pr-8 pl-8' : ''} ${index % 3 === 2 ? 'pr-16' : ''}`}>
                         <div className="relative w-full h-96 bg-[#142741] rounded-[33px] shadow-[0px_0px_10px_3px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)]">
                             <div className="absolute top-56 ml-10 [font-family:'Manrope-SemiBold',Helvetica] font-semibold text-white text-[24px] tracking-[0] leading-[normal]">
-                                {item.name}
+                                {item.item_name}
                             </div>
                             <div className="absolute top-64 mt-2 ml-10 font-medium text-white text-[20px] tracking-[0] leading-[normal]">
-                                Expires: {item.expires}
+                                Expires: {item.expiry_date}
                             </div>
                             <button
                                 className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"

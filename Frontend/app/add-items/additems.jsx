@@ -3,7 +3,6 @@
 import React, {useState} from 'react';
 import { useRouter } from 'next/navigation';
 
-
 export const AddFrame = ({ handleDiscardAction, handleAddAction }) => {
     const router = useRouter();
 
@@ -138,6 +137,3 @@ export const AddFrame = ({ handleDiscardAction, handleAddAction }) => {
 };
 
 export default AddFrame;
-
-
-
