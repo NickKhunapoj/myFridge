@@ -24,7 +24,8 @@ export const AccountSettingsFrame = ({ handleDiscardAction, handleSaveAction, ha
     const handleChangeClick = () => {
     };
 
-    const handlePasswordChangeClick = () => {
+    const handleChangePass = () => {
+        router.push('/change-password'); // Redirect to /change-password
     };
 
     const handleSave = async () => {
@@ -128,7 +129,7 @@ export const AccountSettingsFrame = ({ handleDiscardAction, handleSaveAction, ha
                         Password
                     </a>
                     <button className="text-white text-[20px] mt-8 mb-4 hover:underline"
-                        onClick={handlePasswordChangeClick}>
+                        onClick={handleChangePass}>
                         Change password?
                     </button>
                     {/* Save and Discard buttons */}

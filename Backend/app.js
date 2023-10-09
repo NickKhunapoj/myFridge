@@ -15,10 +15,18 @@ const authCheck = require('./routes/auth-check');
 const profEdit = require('./routes/prof-edit');
 const profDelete = require('./routes/prof-delete');
 
+const itemList = require('./routes/item-list');
+const itemCount = require('./routes/item-count');
+const itemRoutes = require('./routes/item-routes');
 const itemAdd = require('./routes/item-add');
 const itemEdit = require('./routes/item-edit');
-const itemList = require('./routes/item-list');
 const itemDelete = require('./routes/item-delete');
+
+const itemListName = require('./routes/item-list-name');        //(Sort by name A-Z)
+const itemListExpD = require('./routes/item-list-expiry');      //(Sort by nearest Expiry Date)
+const itemListRecAdd = require('./routes/item-list-rec-add');   //(Sort by recently add)
+const itemListQtyAsc = require('./routes/item-list-qty-asc');   //(Sort by quantity 1-10)
+const itemListQtyDes = require('./routes/item-list-qty-des');   //(Sort by quantity 10-1)
 
 const app = express();
 const port = 1500;
@@ -59,6 +67,15 @@ app.use('/prof/delete', profDelete);
 
 // Item Routing
 app.use('/item/list', itemList);
+app.use('/item/count', itemCount);
+app.use('/item/routes', itemRoutes);
+
+// Item Showing (Optional)
+app.use('/item/list/name', itemListName);
+app.use('/item/list/expd', itemListExpD);
+app.use('/item/list/recadd', itemListRecAdd);
+app.use('/item/list/qtyasc', itemListQtyAsc);
+app.use('/item/list/qtydes', itemListQtyDes);
 
 // Shopping Cart Routing
 app.use('/item/add', itemAdd);

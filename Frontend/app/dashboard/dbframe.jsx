@@ -1,20 +1,92 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 var cookie = require('js-cookie')
 
 export const DashboardFrame = () => {
-    // Your data source with a maximum of 7 items
-    const data = [
-        { itemName: 'Milk', expiryDate: '31 Dec 2023', quantity: 5 },
-        { itemName: 'Eggs', expiryDate: '30 Dec 2023', quantity: 4 },
-        { itemName: 'Ketchup', expiryDate: '29 Nov 2023', quantity: 5 },
-        { itemName: 'Chocolate', expiryDate: '20 Nov 2023', quantity: 3 },
-        { itemName: 'Butter', expiryDate: '31 Oct 2023', quantity: 3 },
-        { itemName: 'Apple Juice', expiryDate: '20 Oct 2023', quantity: 4 },
-        { itemName: 'Mayonnaise', expiryDate: '15 Oct 2023', quantity: 1 },
-    ];
+    const router = useRouter();
+    const [itemCount, setItemCount] = useState(null);
+    const [data, setData] = useState([]); // State to hold the fetched data
+    const [searchQuery, setSearchQuery] = useState(''); // State to hold the search query
 
-    // Cap the data to a maximum of 7 items
-    const cappedData = data.slice(0, 7);
+    useEffect(() => {
+        fetchData();
+        fetchItemCount(); // Added fetchItemCount here
+    }, [searchQuery]); // Listen for changes in the search query
+
+    // Function to format date as per your requirement
+    const formatDate = (dateString) => {
+        const options = { year: 'numeric', month: '2-digit', day: '2-digit' };
+        return new Date(dateString).toLocaleDateString('en-US', options).replace(',', '');
+    };
+
+    const fetchItemCount = async () => {
+        try {
+            const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/item/count", {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + `${cookie.get('token')}`,
+                    'Host': 'api.producthunt.com'
+                }
+            });
+            if (!response.ok) {
+                throw new Error('Failed to fetch item count');
+            }
+
+            const responseData = await response.json();
+            console.log("Trying to get item count");
+            console.log(responseData);
+
+            if (Array.isArray(responseData) && responseData.length > 0 && responseData[0].itemCount) {
+                // Extract the itemCount value and set it in state
+                setItemCount(responseData[0].itemCount);
+            } else {
+                console.error("Invalid response format for item count");
+            }
+        } catch (error) {
+            console.log("Error while fetching item count");
+            console.error(error);
+        }
+    };
+
+    const fetchData = async () => {
+        try {
+            const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/item/list/recadd", {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + `${cookie.get('token')}`,
+                    'Host': 'api.producthunt.com'
+                }
+            });
+            if (!response.ok) {
+                throw new Error('Failed to fetch data');
+            }
+
+            const responseData = await response.json();
+            console.log("Trying to get item data");
+            console.log(responseData);
+
+            if (responseData.ok && responseData.data) {
+                // Extract the item data and set it in state with formatted dates
+                const filteredData = responseData.data
+                    .filter(item => item.item_name.toLowerCase().includes(searchQuery.toLowerCase()))
+                    .map(item => ({
+                        ...item,
+                        expiry_date: formatDate(item.expiry_date) // Format date here
+                    }))
+                    .slice(0, 7); // Limit to 7 items
+                setData(filteredData);
+            } else {
+                console.error("Invalid response format from API");
+            }
+        } catch (error) {
+            console.log("Error while fetching data");
+            console.error(error);
+        }
+    };
 
     return (
         <div className="sticky h-[calc(100vh-148px)] overflow-auto bg-[#21253180] rounded-[40px] shadow-[0px_0px_10px_8px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100">
@@ -23,7 +95,6 @@ export const DashboardFrame = () => {
                 <div className="sticky w-3/5 pt-12 pl-16 font-medium text-4xl text-white">
                     Dashboard
                 </div>
-                
                 {/* Search box with PNG icons (moved to the left) */}
                 <div className="sticky w-2/5 right-0 pt-12 pr-16 flex items-center">
                     <input
@@ -31,6 +102,8 @@ export const DashboardFrame = () => {
                         placeholder="Search Dashboard..."
                         className="w-full h-full py-1 pl-12 pr-7 rounded-2xl bg-[#40404099] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
                         style={{ color: "white" }} // Set text color to white
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
                     />
                     <img
                         src="https://cdn.discordapp.com/attachments/1151835814939078738/1151837859939102720/1f5f8f3eb04b33df710ea2026ec3e432.png" // Replace with the actual path to your PNG icon
@@ -49,7 +122,7 @@ export const DashboardFrame = () => {
                             Total Items
                         </div>
                         <div className="flex w-full h-56 pt-10 justify-center text-medium text-[#a2d7a7] text-[40px] items-center">
-                            7
+                            {itemCount ?? 'Loading...'}
                         </div>
                     </div>
                 </div>
@@ -65,6 +138,7 @@ export const DashboardFrame = () => {
                     </div>
                 </div>
             </div>
+
             {/* Recently Added */}
             <div className="sticky pt-16 pl-16 font-medium text-[#ffffff] text-3xl">
                 Recently Added
@@ -82,10 +156,10 @@ export const DashboardFrame = () => {
                             </tr>
                         </thead>
                         <tbody className='text-center'>
-                            {cappedData.map((item, index) => (
+                            {data.map((item, index) => (
                                 <tr className="text-[#ffffff] text-[18px]" key={index}>
-                                    <td className="py-1 px-6">{item.itemName}</td>
-                                    <td className="py-1 px-6">{item.expiryDate}</td>
+                                    <td className="py-1 px-6">{item.item_name}</td>
+                                    <td className="py-1 px-6">{item.expiry_date}</td>
                                     <td className="py-1 px-6">{item.quantity}</td>
                                 </tr>
                             ))}

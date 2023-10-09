@@ -68,6 +68,7 @@ export const AddFrame = ({ handleDiscardAction, handleAddAction }) => {
                             name = 'item_name'
                             className=" w-52 mt-5 pl-2 rounded-xl bg-[#40404099] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
                             placeholder="Enter Item Name"
+                            style={{ color: "white" }}
                         />
                     </div>
 
@@ -82,6 +83,7 @@ export const AddFrame = ({ handleDiscardAction, handleAddAction }) => {
                             min = "1"
                             className="w-52 mt-4 pl-2 rounded-xl bg-[#40404099] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
                             placeholder="Enter Quantity"
+                            style={{ color: "white" }}
                         />
 
                     </div>

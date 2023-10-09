@@ -37,6 +37,10 @@ export const Box = () => {
       alert(json.error);
   };
 
+  const handleForgot = () => {
+    router.push('/forgot-password'); // Redirect to /forgot-password
+  };
+
   return (
     <div className="flex flex-col items-center justify-center h-screen">
       {/* Flex Container */}
@@ -112,8 +116,8 @@ export const Box = () => {
             </div>
           </div>
           {/* Forgot Password Text */}
-          <div className="absolute top-[240px] left-[58px] font-family:'Manrope',Helvetica font-light text-20px] text-[#4950f9] cursor-pointer">
-            <a href="/">Forgot Password?</a>
+          <div className="absolute top-[240px] left-[58px] font-family:'Manrope',Helvetica font-light text-[20px] text-[#4950f9] cursor-pointer">
+            <a href="#" onClick={handleForgot}>Forgot Password?</a>
           </div>
         </div>
       </div>
