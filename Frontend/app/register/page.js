@@ -4,10 +4,12 @@ import React, { useState } from "react";
 import { Topmenubar } from "app/topmenubar";
 import { useRouter } from 'next/navigation';
 import RegisPopup from './regispopup.jsx';
+import AlreadyExistedPopup from './alreadyexistedpopup.jsx';
 
 export default function Home() {
   const router = useRouter();
   const [isRegisPopupOpen, setIsRegisPopupOpen] = useState(false);
+  const [isAlreadyExistedPopupOpen, setIsAlreadyExistedPopupOpen] = useState(false);
 
   const [formData, setFormData] = useState({
     email: "",
@@ -35,7 +37,19 @@ export default function Home() {
     openRegisPopup();
   };
 
-  const handleLogin = async() => {
+  const openAlreadyExistedPopup = () => {
+    setIsAlreadyExistedPopupOpen(true);
+  };
+
+  const closeAlreadyExistedPopup = () => {
+    setIsAlreadyExistedPopupOpen(false);
+  };
+
+  const handleAlreadyExistedAction = () => {
+    openAlreadyExistedPopup();
+  };
+
+  const handleLogin = async () => {
     // Check if all required fields are filled
     if (
       formData.email &&
@@ -45,24 +59,31 @@ export default function Home() {
       formData.confirmPassword &&
       formData.dateOfBirth
     ) {
-      // const authHeader = 'Basic ' + btoa(formData.username + ':' + formData.password);
-      // All required fields are filled, proceed with registration
       const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/auth/register", {
-        headers: {'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
         method: 'POST',
         body: JSON.stringify({
           email: formData.email,
           dpname: formData.displayName,
           username: formData.username,
           password: formData.password,
-          dob: formData.dateOfBirth})
-    });
-      handleRegisAction();
+          dob: formData.dateOfBirth
+        })
+      });
+  
+      if (response.ok) {
+        // Registration was successful, call handleRegisAction()
+        handleRegisAction();
+      } else {
+        // Registration failed, call handleAlreadyExistedAction()
+        handleAlreadyExistedAction();
+      }
     } else {
       // Display an error message or take other actions to handle the incomplete form
       alert("Please fill in all required fields.");
     }
   };
+  
 
   // Function to bypass form and go to login
   const bypassForm = () => {
@@ -172,6 +193,7 @@ export default function Home() {
         </div>
           {/* Display the popup if isPopupOpen is true */}
           {isRegisPopupOpen && <RegisPopup onClose={closeRegisPopup} />}
+          {isAlreadyExistedPopupOpen && <AlreadyExistedPopup onClose={closeAlreadyExistedPopup} />}
     </div>
   );
 }

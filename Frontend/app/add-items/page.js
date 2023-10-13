@@ -9,12 +9,14 @@ import LogoutPopup from './logoutpopup.jsx';
 import Sidebar from './sidebar.jsx';
 import MenuBar from './menubar.jsx';
 import AddFrame from './additems.jsx';
+import AlreadyExistedPopup from './alreadyexistedpopup.jsx';
 
 export default function AddItems() {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [isDiscardPopupOpen, setIsDiscardPopupOpen] = useState(false);
   const [isAddPopupOpen, setIsAddPopupOpen] = useState(false);
   const [isLogoutPopupOpen, setIsLogoutPopupOpen] = useState(false);
+  const [isAlreadyExistedPopupOpen, setIsAlreadyExistedPopupOpen] = useState(false);
 
   useEffect(() => {
     // Function to check the screen width and set the state
@@ -70,6 +72,18 @@ export default function AddItems() {
     openLogoutPopup();
   };
 
+  const openAlreadyExistedPopup = () => {
+    setIsAlreadyExistedPopupOpen(true);
+  };
+
+  const closeAlreadyExistedPopup = () => {
+    setIsAlreadyExistedPopupOpen(false);
+  };
+
+  const handleAlreadyExistedAction = () => {
+    openAlreadyExistedPopup();
+  };
+
   return (
     <div className="font-Manrope">
       {isSmallScreen ? (
@@ -93,6 +107,7 @@ export default function AddItems() {
               <AddFrame
                 handleDiscardAction={handleDiscardAction}
                 handleAddAction={handleAddAction}
+                handleAlreadyExistedAction={handleAlreadyExistedAction}
               />
               </div>
             </div>
@@ -101,6 +116,7 @@ export default function AddItems() {
               <AddFrame
                 handleDiscardAction={handleDiscardAction}
                 handleAddAction={handleAddAction}
+                handleAlreadyExistedAction={handleAlreadyExistedAction}
               />
               </div>
             </div>
@@ -109,6 +125,7 @@ export default function AddItems() {
           {isDiscardPopupOpen && <DiscardPopup onClose={closeDiscardPopup} />}
           {isAddPopupOpen && <AddPopup onClose={closeAddPopup} />}
           {isLogoutPopupOpen && <LogoutPopup onClose={closeLogoutPopup} />}
+          {isAlreadyExistedPopupOpen && <AlreadyExistedPopup onClose={closeAlreadyExistedPopup} />}
         </>
       )}
     </div>

@@ -10,6 +10,7 @@ import LogoutPopup from './logoutpopup.jsx';
 import Sidebar from './sidebar.jsx';
 import MenuBar from './menubar.jsx';
 import EditFrame from './editframe.jsx';
+import AlreadyExistedPopup from './alreadyexistedpopup.jsx';
 
 export default function EditItems() {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
@@ -17,6 +18,7 @@ export default function EditItems() {
   const [isDiscardPopupOpen, setIsDiscardPopupOpen] = useState(false);
   const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
   const [isDeletePopupOpen, setIsDeletePopupOpen] = useState(false);
+  const [isAlreadyExistedPopupOpen, setIsAlreadyExistedPopupOpen] = useState(false);
 
   useEffect(() => {
     // Function to check the screen width and set the state
@@ -83,6 +85,17 @@ export default function EditItems() {
   const handleLogoutAction = () => {
     openLogoutPopup();
   };
+  const openAlreadyExistedPopup = () => {
+    setIsAlreadyExistedPopupOpen(true);
+  };
+
+  const closeAlreadyExistedPopup = () => {
+    setIsAlreadyExistedPopupOpen(false);
+  };
+
+  const handleAlreadyExistedAction = () => {
+    openAlreadyExistedPopup();
+  };
 
   return (
     <div className="font-Manrope">
@@ -108,6 +121,7 @@ export default function EditItems() {
                 handleDiscardAction={handleDiscardAction}
                 handleEditAction={handleEditAction}
                 handleDeleteAction={handleDeleteAction}
+                handleAlreadyExistedAction={handleAlreadyExistedAction}
               />
             </div>
           </div>
@@ -117,6 +131,7 @@ export default function EditItems() {
                 handleDiscardAction={handleDiscardAction}
                 handleEditAction={handleEditAction}
                 handleDeleteAction={handleDeleteAction}
+                handleAlreadyExistedAction={handleAlreadyExistedAction}
               />
             </div>
           </div>
@@ -126,6 +141,7 @@ export default function EditItems() {
           {isEditPopupOpen && <EditPopup onClose={closeEditPopup} />}
           {isDeletePopupOpen && <DeletePopup onClose={closeDeletePopup} />}
           {isLogoutPopupOpen && <LogoutPopup onClose={closeLogoutPopup} />}
+          {isAlreadyExistedPopupOpen && <AlreadyExistedPopup onClose={closeAlreadyExistedPopup} />}
         </>
       )}
     </div>

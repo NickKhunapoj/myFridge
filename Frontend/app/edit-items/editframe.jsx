@@ -35,7 +35,14 @@ function EditFrame({ handleDiscardAction, handleEditAction, handleDeleteAction }
       method: 'PUT',
       body: formDataToSend,
     });
-    handleEditAction();
+  
+    if (response.ok) {
+      // Edit was successful, call handleEditAction()
+      handleEditAction();
+    } else {
+      // Registration failed, call handleAlreadyExistedAction()
+      handleAlreadyExistedAction();
+    }
   };
 
   const handleDiscard = () => {

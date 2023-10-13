@@ -29,9 +29,14 @@ export const AddFrame = ({ handleDiscardAction, handleAddAction }) => {
             method: 'POST', 
             body: JSON.stringify({ item_name:formData.item_name, quantity:formData.quantity, expiry_date:formData.expiry_date })
         });
-        // Call the handleAddAction function to handle the "Add" action
+    if (response.ok) {
+        // Add was successful, call handleAddAction()
         handleAddAction();
         console.log('Item Added');
+        } else {
+        // Registration failed, call handleAlreadyExistedAction()
+        handleAlreadyExistedAction();
+        }
     };
 
     const handleDiscard = () => {
