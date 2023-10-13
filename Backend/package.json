@@ -21,7 +21,8 @@
     "jsonwebtoken": "^9.0.2",
     "mysql": "^2.18.1",
     "redis": "^4.6.10",
-    "serverless-mysql": "^1.5.5"
+    "serverless-mysql": "^1.5.5",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "nodemon": "^3.0.1"

@@ -64,11 +64,11 @@ export const DashboardFrame = () => {
             if (!response.ok) {
                 throw new Error('Failed to fetch data');
             }
-
+    
             const responseData = await response.json();
             console.log("Trying to get item data");
             console.log(responseData);
-
+    
             if (responseData.ok && responseData.data) {
                 // Extract the item data and set it in state with formatted dates
                 const filteredData = responseData.data
@@ -76,9 +76,16 @@ export const DashboardFrame = () => {
                     .map(item => ({
                         ...item,
                         expiry_date: formatDate(item.expiry_date) // Format date here
-                    }))
-                    .slice(0, 7); // Limit to 7 items
-                setData(filteredData);
+                    }));
+    
+                // Check if the data length is less than 7, and if so, fill with blank data
+                const dataWithBlankRows = filteredData.concat(Array(Math.max(0, 7 - filteredData.length)).fill({
+                    item_name: '',
+                    expiry_date: '',
+                    quantity: ''
+                }));
+    
+                setData(dataWithBlankRows);
             } else {
                 console.error("Invalid response format from API");
             }
