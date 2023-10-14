@@ -3,38 +3,78 @@ const router = express.Router();
 
 const database = require('../shared/database');
 const jwt = require('jsonwebtoken')
+
+const multer = require('multer')
+const formData = require("express-form-data");
+// const upload = multer({ 
+//     dest: 'uploads/',  
+//     limits: {
+//         fileSize: 50000000,
+//     }
+// })
+
+var storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+      cb(null, 'uploads/');
+    },
+    filename: function(req, file, cb) {
+        cb(null, file.originalname + '-' + Date.now() + '.png');
+    }
+  });
+  
+var upload = multer({ storage: storage });
+
+
 require('dotenv').config({ path: __dirname + '../../../.env' });
 
-router.post('/', async (req, res, next) => {
-    const { item_name, quantity, expiry_date } = req.body;
-
-    const tokenInput = req.headers.authorization;
-    console.log("Request Auth Info: ", tokenInput)
-    var tokenContent = tokenInput.split(" ")[1]
-    jwt.verify(tokenContent, process.env.JWT_SIGN_SECRET, async (err, data) => {
-        if (err){
-            return res.status(401).send({
-                ok: false, error: 'Unauthorized Request'
+router.post('/',upload.single('image'), async (req, res, next) => {
+    // console.log('body',req.body)
+    var fileName = req.file.filename
+    console.log(req.file)
+    if (fileName === undefined) {
+        console.log("No File name")
+        return res.send(500)
+    }
+    // console.log('file ',req.file)
+    // console.log('content ',req.body.itemInfo)
+    const { item_name, quantity, expiry_date } = JSON.parse(req.body.itemInfo);
+    try{
+        const tokenInput = req.headers.authorization;
+        console.log("Request Auth Info: ", tokenInput)
+        var tokenContent = tokenInput.split(" ")[1]
+        jwt.verify(tokenContent, process.env.JWT_SIGN_SECRET, async (err, data) => {
+            if (err){
+                return res.status(401).send({
+                    ok: false, error: 'Unauthorized Request'
+                });
+            }
+            const userId = data.user_id
+            fileName = process.env.NEXT_PUBLIC_API_URL+"/imageData/"+fileName
+            const itemData = await database.executeQuery({
+                query: 'INSERT INTO items_info( user_id, item_name, quantity, expiry_date, item_picture) VALUES (?, ?, ?, ?, ?)',
+                values: [userId, item_name, quantity, expiry_date, fileName]
             });
-        }
-        const userId = data.user_id
-
-        const itemData = await database.executeQuery({
-            query: 'INSERT INTO items_info( user_id, item_name, quantity, expiry_date) VALUES (?, ?, ?, ?)',
-            values: [userId, item_name, quantity, expiry_date]
-        });
-        if ('error' in itemData) {
-            return res.status(500).send({
-                ok: false, error: itemData.error.userError
+            if ('error' in itemData) {
+                return res.status(500).send({
+                    ok: false, error: itemData.error.userError
+                });
+            }
+        
+            return res.status(200).send({
+                ok: true,
+                imgPath : fileName
             });
-        }
-    
-        return res.status(200).send({
-            ok: true
-        });
-    })
+        })
+    }
+    catch (e){
+        console.log("Some Error going on...")
+        console.error(e)
+        res.sendStatus(500)
+    }
 
  
 });
+
+// router.get('/image',express.static('public'))
 
 module.exports = router;

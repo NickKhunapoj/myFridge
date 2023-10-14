@@ -29,6 +29,7 @@ export const ItemsFrame = () => {
     };
 
     const handleSearchChange = (event) => {
+        console.log(event)
         setSearchQuery(event.target.value);
     };
 
@@ -42,24 +43,50 @@ export const ItemsFrame = () => {
 
     const fetchData = async () => {
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/item/routes?sort=${sortingCriterion}&search=${searchQuery}`,
-                {
-                    method: 'GET',
-                    headers: {
-                        'Accept': 'application/json',
-                        'Content-Type': 'application/json',
-                        'Authorization': 'Bearer ' + `${cookie.get('token')}`,
-                        'Host': 'api.producthunt.com'
-                    }
+            const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/item/list/recadd", {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + `${cookie.get('token')}`,
+                    'Host': 'api.producthunt.com'
                 }
-            )
+            });
             if (!response.ok) {
                 throw new Error('Failed to fetch data');
             }
-
-            const data = await response.json();
-            setItems(data.data);
-            setLoading(false);
+            // const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/item/routes?sort=${sortingCriterion}&search=${searchQuery}`,
+            //     {
+            //         method: 'GET',
+            //         headers: {
+            //             'Accept': 'application/json',
+            //             'Content-Type': 'application/json',
+            //             'Authorization': 'Bearer ' + `${cookie.get('token')}`,
+            //             'Host': 'api.producthunt.com'
+            //         }
+            //     }
+            // )
+            // if (!response.ok) {
+            //     throw new Error('Failed to fetch data');
+            // }
+            // const data = await response.json();
+            // console.log(data)
+            // setItems(data.data);
+            // setLoading(false);
+            const responseData = await response.json();
+            if (responseData.ok && responseData.data) {
+                // Extract the item data and set it in state with formatted dates
+                const filteredData = responseData.data
+                    .filter(item => item.item_name.toLowerCase().includes(searchQuery.toLowerCase()))
+                    .map(item => ({
+                        ...item,
+                        expiry_date: formatDate(item.expiry_date) // Format date here
+                    }))
+                    .slice(0, 7); // Limit to 7 items
+                setItems(filteredData);
+            } else {
+                console.error("Invalid response format from API");
+            }
         } catch (error) {
             console.log('It jumps to error');
             console.log(error);

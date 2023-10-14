@@ -7,7 +7,8 @@ export const DashboardFrame = () => {
     const [itemCount, setItemCount] = useState(null);
     const [data, setData] = useState([]); // State to hold the fetched data
     const [searchQuery, setSearchQuery] = useState(''); // State to hold the search query
-
+    // console.log(itemCount)
+    var itemNumber = 0;
     useEffect(() => {
         fetchData();
         fetchItemCount(); // Added fetchItemCount here
@@ -37,13 +38,8 @@ export const DashboardFrame = () => {
             const responseData = await response.json();
             console.log("Trying to get item count");
             console.log(responseData);
+            setItemCount(responseData.itemCount);
 
-            if (Array.isArray(responseData) && responseData.length > 0 && responseData[0].itemCount) {
-                // Extract the itemCount value and set it in state
-                setItemCount(responseData[0].itemCount);
-            } else {
-                console.error("Invalid response format for item count");
-            }
         } catch (error) {
             console.log("Error while fetching item count");
             console.error(error);
@@ -64,11 +60,13 @@ export const DashboardFrame = () => {
             if (!response.ok) {
                 throw new Error('Failed to fetch data');
             }
-    
+
             const responseData = await response.json();
             console.log("Trying to get item data");
             console.log(responseData);
-    
+            // setItemCount(responseData.number);
+
+
             if (responseData.ok && responseData.data) {
                 // Extract the item data and set it in state with formatted dates
                 const filteredData = responseData.data
@@ -76,16 +74,9 @@ export const DashboardFrame = () => {
                     .map(item => ({
                         ...item,
                         expiry_date: formatDate(item.expiry_date) // Format date here
-                    }));
-    
-                // Check if the data length is less than 7, and if so, fill with blank data
-                const dataWithBlankRows = filteredData.concat(Array(Math.max(0, 7 - filteredData.length)).fill({
-                    item_name: '',
-                    expiry_date: '',
-                    quantity: ''
-                }));
-    
-                setData(dataWithBlankRows);
+                    }))
+                    .slice(0, 7); // Limit to 7 items
+                setData(filteredData);
             } else {
                 console.error("Invalid response format from API");
             }
@@ -129,6 +120,7 @@ export const DashboardFrame = () => {
                             Total Items
                         </div>
                         <div className="flex w-full h-56 pt-10 justify-center text-medium text-[#a2d7a7] text-[40px] items-center">
+                            {/* {itemNumber ?? 'Loading...'} */}
                             {itemCount ?? 'Loading...'}
                         </div>
                     </div>

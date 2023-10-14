@@ -37,7 +37,10 @@ app.use('*', cors({
     methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD'],
     credentials: true,
 }));
-app.use(bodyParser.json());
+app.use('/imageData',express.static('uploads'))
+app.use(express.json()); // Used to parse JSON bodies
+app.use(express.urlencoded()); //Parse URL-encoded bodies
+// app.use(bodyParser. text({type: '/'}));
 app.use(session({
     resave: false,
     saveUninitialized: true,
@@ -94,5 +97,5 @@ app.use((err, req, res, next) => {
     });
 });
 app.listen(port, () => {
-    console.log(`Project151 API is listening on port ${port}`)
+    console.log(`Project MyFridge API is listening on port ${port}`)
 });
