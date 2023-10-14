@@ -2,37 +2,109 @@ const express = require('express');
 const router = express.Router();
 
 const database = require('../shared/database');
+const jwt = require('jsonwebtoken');
+const { json } = require('body-parser');
+require('dotenv').config({ path: __dirname + '../../../.env' });
 
-router.put('/:items_id', async (req, res, next) => {
-    const { item_name, quantity, expiry_date } = req.body;
-    const { items_id } = req.params;
+// Fetch item by ID
+router.get('/edit/:id', async (req, res, next) => {
+    const tokenInput = req.headers.authorization;
+    const itemId = req.params.id; // Extract the item ID from the request parameters
 
-    try {
-        if (!req.session.userData) {
+    console.log("Request Auth Info: ", tokenInput);
+    var tokenContent = tokenInput.split(" ")[1];
+
+    jwt.verify(tokenContent, process.env.JWT_SIGN_SECRET, async (err, data) => {
+        if (err) {
             return res.status(401).send({
-                ok: false, error: 'Please login and try again later!'
+                ok: false, error: 'Unauthorized Request'
             });
         }
 
-        const userId = req.session.userData.user_id;
+        console.log(data.user_id);
 
-        const updateData = await database.executeQuery({
-            query: 'UPDATE items_info SET item_name = ?, quantity = ?, expiry_date = ? WHERE items_id = ? AND user_id = ?',
-            values: [item_name, quantity, expiry_date, items_id, userId]
-        });
+        try {
+            // Fetch item data by ID
+            const itemData = await database.executeQuery({
+                query: 'SELECT item_name, expiry_date, quantity, item_picture FROM items_info WHERE user_id = ? AND id = ?',
+                values: [data.user_id, itemId]
+            });
 
-        if ('error' in updateData) {
+            if ('error' in itemData) {
+                return res.status(500).send({
+                    ok: false, error: itemData.error.userError
+                });
+            }
+
+            if (itemData.length === 0) {
+                return res.status(404).send({
+                    ok: false, error: 'Item not found'
+                });
+            }
+
+            console.log(itemData);
+
+            return res.json({
+                ok: true,
+                data: itemData[0], // Return the item data
+            });
+        } catch (error) {
+            console.error(error);
             return res.status(500).send({
-                ok: false, error: updateData.error.userError
+                ok: false, error: 'Internal Server Error'
+            });
+        }
+    });
+});
+
+// Update item by ID
+router.put('/edit/:id', async (req, res, next) => {
+    const tokenInput = req.headers.authorization;
+    const itemId = req.params.id; // Extract the item ID from the request parameters
+    const updatedData = req.body; // Updated item data sent by the user
+
+    console.log("Request Auth Info: ", tokenInput);
+    var tokenContent = tokenInput.split(" ")[1];
+
+    jwt.verify(tokenContent, process.env.JWT_SIGN_SECRET, async (err, data) => {
+        if (err) {
+            return res.status(401).send({
+                ok: false, error: 'Unauthorized Request'
             });
         }
 
-        return res.status(200).send({
-            ok: true
-        });
-    } catch (error) {
-        next(error);
-    }
+        console.log(data.user_id);
+
+        try {
+            // Update item data by ID
+            const updateResult = await database.executeQuery({
+                query: 'UPDATE items_info SET item_name = ?, expiry_date = ?, quantity = ? WHERE user_id = ? AND id = ?',
+                values: [updatedData.item_name, updatedData.expiry_date, updatedData.quantity, data.user_id, itemId]
+            });
+
+            if ('error' in updateResult) {
+                return res.status(500).send({
+                    ok: false, error: updateResult.error.userError
+                });
+            }
+
+            if (updateResult.affectedRows === 0) {
+                return res.status(404).send({
+                    ok: false, error: 'Item not found'
+                });
+            }
+
+            return res.json({
+                ok: true,
+                message: 'Item updated successfully',
+            });
+        } catch (error) {
+            console.error(error);
+            return res.status(500).send({
+                ok: false, error: 'Internal Server Error'
+            });
+        }
+    });
 });
 
 module.exports = router;

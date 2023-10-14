@@ -25,12 +25,17 @@ export const ItemsFrame = () => {
     };
 
     const handleSortChange = (event) => {
-        setSortingCriterion(event.target.value);
+        const newSortingCriterion = event.target.value;
+        setSortingCriterion(newSortingCriterion);
+        // After changing the sorting criterion, re-fetch the data with the new criterion
+        fetchData(newSortingCriterion);
     };
 
     const handleSearchChange = (event) => {
-        console.log(event)
-        setSearchQuery(event.target.value);
+        const newSearchQuery = event.target.value;
+        setSearchQuery(newSearchQuery);
+        // After changing the search query, re-fetch the data with the new query
+        fetchData(sortingCriterion, newSearchQuery);
     };
 
     const [loading, setLoading] = useState(true);
@@ -41,7 +46,7 @@ export const ItemsFrame = () => {
         fetchData();
     }, [sortingCriterion, searchQuery]);
 
-    const fetchData = async () => {
+    const fetchData = async (sortCriterion = sortingCriterion, search = searchQuery) => {
         try {
             const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/item/list/recadd", {
                 method: 'GET',
@@ -55,35 +60,33 @@ export const ItemsFrame = () => {
             if (!response.ok) {
                 throw new Error('Failed to fetch data');
             }
-            // const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/item/routes?sort=${sortingCriterion}&search=${searchQuery}`,
-            //     {
-            //         method: 'GET',
-            //         headers: {
-            //             'Accept': 'application/json',
-            //             'Content-Type': 'application/json',
-            //             'Authorization': 'Bearer ' + `${cookie.get('token')}`,
-            //             'Host': 'api.producthunt.com'
-            //         }
-            //     }
-            // )
-            // if (!response.ok) {
-            //     throw new Error('Failed to fetch data');
-            // }
-            // const data = await response.json();
-            // console.log(data)
-            // setItems(data.data);
-            // setLoading(false);
+
             const responseData = await response.json();
             if (responseData.ok && responseData.data) {
                 // Extract the item data and set it in state with formatted dates
                 const filteredData = responseData.data
-                    .filter(item => item.item_name.toLowerCase().includes(searchQuery.toLowerCase()))
+                    .filter(item => item.item_name.toLowerCase().includes(search.toLowerCase()))
                     .map(item => ({
                         ...item,
                         expiry_date: formatDate(item.expiry_date) // Format date here
                     }))
                     .slice(0, 7); // Limit to 7 items
-                setItems(filteredData);
+
+                // Sort the data based on the sorting criterion
+                let sortedData = [...filteredData];
+                if (sortCriterion === 'expire') {
+                    sortedData = sortedData.sort((a, b) => new Date(a.expiry_date) - new Date(b.expiry_date));
+                } else if (sortCriterion === 'recently') {
+                    sortedData = sortedData.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+                } else if (sortCriterion === 'qtyup') {
+                    sortedData = sortedData.sort((a, b) => a.quantity - b.quantity);
+                } else if (sortCriterion === 'qtydown') {
+                    sortedData = sortedData.sort((a, b) => b.quantity - a.quantity);
+                } else if (sortCriterion === 'name') { // Add this condition for sorting by name
+                    sortedData = sortedData.sort((a, b) => a.item_name.localeCompare(b.item_name));
+                }
+
+                setItems(sortedData);
             } else {
                 console.error("Invalid response format from API");
             }
@@ -94,6 +97,7 @@ export const ItemsFrame = () => {
             setLoading(false);
         }
     };
+
 
     return (
         <div className="font-Manrope">
