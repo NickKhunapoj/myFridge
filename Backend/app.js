@@ -11,6 +11,7 @@ const authLogout = require('./routes/auth-logout');
 const authLogin = require('./routes/auth-login');
 const authCheck = require('./routes/auth-check');
 
+const userInfo = require('./routes/user-info');
 // const picUpload = require('./routes/pic-upload');
 const profEdit = require('./routes/prof-edit');
 const profDelete = require('./routes/prof-delete');
@@ -61,6 +62,7 @@ app.use('/auth/login', authLogin);
 app.use('/auth/check', authCheck);
 
 // Profile info
+app.use('/user/info', userInfo);
 app.use('/prof/edit', profEdit);
 app.use('/prof/delete', profDelete);
 // app.use('/pic/upload', picUpload);
