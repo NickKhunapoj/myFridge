@@ -38,41 +38,57 @@ router.post('/',upload.single('image'), async (req, res, next) => {
     // console.log('file ',req.file)
     // console.log('content ',req.body.itemInfo)
     const { item_name, quantity, expiry_date } = JSON.parse(req.body.itemInfo);
-    try{
+    try {
         const tokenInput = req.headers.authorization;
         console.log("Request Auth Info: ", tokenInput)
         var tokenContent = tokenInput.split(" ")[1]
         jwt.verify(tokenContent, process.env.JWT_SIGN_SECRET, async (err, data) => {
-            if (err){
+            if (err) {
                 return res.status(401).send({
-                    ok: false, error: 'Unauthorized Request'
+                    ok: false,
+                    error: 'Unauthorized Request'
                 });
             }
-            const userId = data.user_id
-            fileName = process.env.NEXT_PUBLIC_API_URL+"/imageData/"+fileName
+            const userId = data.user_id;
+            fileName = process.env.NEXT_PUBLIC_API_URL + "/imageData/" + fileName;
+
+            // Check if the item already exists
+            const existingItem = await database.executeQuery({
+                query: 'SELECT * FROM items_info WHERE item_name = ?',
+                values: [item_name]
+            });
+
+            if (existingItem.length > 0) {
+                // Item with the same name already exists, return a 409 Conflict response.
+                return res.status(409).send({
+                    ok: false,
+                    error: 'Item with the same name already exists'
+                });
+            }
+
+            // Insert the new item into the database.
             const itemData = await database.executeQuery({
                 query: 'INSERT INTO items_info( user_id, item_name, quantity, expiry_date, item_picture) VALUES (?, ?, ?, ?, ?)',
                 values: [userId, item_name, quantity, expiry_date, fileName]
             });
+
             if ('error' in itemData) {
                 return res.status(500).send({
-                    ok: false, error: itemData.error.userError
+                    ok: false,
+                    error: itemData.error.userError
                 });
             }
-        
+
             return res.status(200).send({
                 ok: true,
-                imgPath : fileName
+                imgPath: fileName
             });
-        })
-    }
-    catch (e){
+        });
+    } catch (e) {
         console.log("Some Error going on...")
         console.error(e)
         res.sendStatus(500)
     }
-
- 
 });
 
 // router.get('/image',express.static('public'))

@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 import { useRouter } from 'next/navigation';
 var cookie = require('js-cookie')
 
-export const AddFrame = ({ handleDiscardAction, handleAddAction }) => {
+export const AddFrame = ({ handleDiscardAction, handleAddAction, handleAlreadyExistedAction }) => {
     const router = useRouter();
     const [file, setFile] = useState()
     const [formData, setFormData] = useState({
@@ -39,14 +39,20 @@ export const AddFrame = ({ handleDiscardAction, handleAddAction }) => {
                 // body : data
                 // body: JSON.stringify({ item_name:formData.item_name, quantity:formData.quantity, expiry_date:formData.expiry_date})
             });
-            response = await response.json()
-            console.log(response)
-            // Call the handleAddAction function to handle the "Add" action
-            handleAddAction();
-            console.log('Item Added');
-        }
-        catch (e){
-            console.error(e)
+            // Check the response status code
+            if (response.status === 200) {
+                // Call the handleAddAction function to handle the "Add" action
+                handleAddAction();
+                console.log('Item Added');
+            } else if (response.status === 409) {
+                // Call the handleAlreadyExistedAction function to handle the "Already Existed" action
+                handleAlreadyExistedAction();
+                console.log('Item Already Existed');
+            } else {
+                console.error('An error occurred:', response.status);
+            }
+        } catch (e) {
+            console.error(e);
         }
     };
 

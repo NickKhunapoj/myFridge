@@ -5,6 +5,7 @@ var cookie = require('js-cookie')
 export const DashboardFrame = () => {
     const router = useRouter();
     const [itemCount, setItemCount] = useState(null);
+    const [expireCount, setExpireCount] = useState(null);
     const [data, setData] = useState([]); // State to hold the fetched data
     const [searchQuery, setSearchQuery] = useState(''); // State to hold the search query
     // console.log(itemCount)
@@ -12,6 +13,7 @@ export const DashboardFrame = () => {
     useEffect(() => {
         fetchData();
         fetchItemCount(); // Added fetchItemCount here
+        fetchExpireCount(); // Added fetchExpireCount here
     }, [searchQuery]); // Listen for changes in the search query
 
     // Function to format date as per your requirement
@@ -46,6 +48,32 @@ export const DashboardFrame = () => {
         }
     };
 
+    const fetchExpireCount = async () => {
+        try {
+            const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/item/expire", {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + `${cookie.get('token')}`,
+                    'Host': 'api.producthunt.com'
+                }
+            });
+            if (!response.ok) {
+                throw new Error('Failed to fetch expire count');
+            }
+
+            const responseData = await response.json();
+            console.log("Trying to get expire count");
+            console.log(responseData);
+            setExpireCount(responseData.expireCount);
+
+        } catch (error) {
+            console.log("Error while fetching expire count");
+            console.error(error);
+        }
+    };
+    
     const fetchData = async () => {
         try {
             const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/item/list/recadd", {
@@ -139,7 +167,7 @@ export const DashboardFrame = () => {
                             Expired Soon
                         </div>
                         <div className="flex w-full h-56 pt-10 justify-center text-medium text-[#ff7f78] text-[40px] items-center">
-                            0
+                            {expireCount ?? 'Loading...'}
                         </div>
                     </div>
                 </div>
