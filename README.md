@@ -44,12 +44,12 @@ The myFridge Expiry Date Reminder and Notification Web Application is a user-fri
 ## Built With
 
 - Node JS
-- Next JS
-- Express JS
-- Google Apps Script
-- Vercel
-- Visual Studio Code
-- Azure Database for MySQL
+- Next JS (Frontend Framework)
+- Express JS (Backend Framework)
+- Google Apps Script (Automated Email Sending)
+- Visual Studio Code (Preferred IDE)
+- Azure Database for MySQL (Database)
+- Azure Virtual Machine (Deployment)
 
 ## Usage
 
