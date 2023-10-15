@@ -60,13 +60,11 @@ export const DashboardFrame = () => {
             if (!response.ok) {
                 throw new Error('Failed to fetch data');
             }
-
+    
             const responseData = await response.json();
             console.log("Trying to get item data");
             console.log(responseData);
-            // setItemCount(responseData.number);
-
-
+    
             if (responseData.ok && responseData.data) {
                 // Extract the item data and set it in state with formatted dates
                 const filteredData = responseData.data
@@ -76,7 +74,15 @@ export const DashboardFrame = () => {
                         expiry_date: formatDate(item.expiry_date) // Format date here
                     }))
                     .slice(0, 7); // Limit to 7 items
-                setData(filteredData);
+    
+                // Check if the data length is less than 7, and if so, fill with blank data
+                const dataWithBlankRows = filteredData.concat(Array(Math.max(0, 7 - filteredData.length)).fill({
+                    item_name: '\u00A0',
+                    expiry_date: '\u00A0',
+                    quantity: '\u00A0'
+                }));
+    
+                setData(dataWithBlankRows);
             } else {
                 console.error("Invalid response format from API");
             }
@@ -85,6 +91,7 @@ export const DashboardFrame = () => {
             console.error(error);
         }
     };
+    
 
     return (
         <div className="sticky h-[calc(100vh-148px)] overflow-auto bg-[#21253180] rounded-[40px] shadow-[0px_0px_10px_8px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100">
