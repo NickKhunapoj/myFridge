@@ -70,7 +70,6 @@ export const ItemsFrame = () => {
                         ...item,
                         expiry_date: formatDate(item.expiry_date) // Format date here
                     }))
-                    .slice(0, 7); // Limit to 7 items
 
                 // Sort the data based on the sorting criterion
                 let sortedData = [...filteredData];

@@ -56,10 +56,6 @@ export const AddFrame = ({ handleDiscardAction, handleAddAction, handleAlreadyEx
         }
     };
 
-    const printVal = async ()=>{
-        console.log(formData)
-    }
-
     const handleDiscard = () => {
         // Call the handleDiscardAction function to handle the "discard" action
         handleDiscardAction();
