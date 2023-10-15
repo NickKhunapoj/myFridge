@@ -20,6 +20,19 @@ router.post('/', async (req, res, next) => {
         const {email, dpname, dob} = req.body;
         console.log('pass')
 
+        // Check if the email already exists in the database
+        const existingUser = await database.executeQuery({
+            query: 'SELECT * FROM user_info WHERE email = ?',
+            values: [email]
+        });
+
+        if (existingUser.length > 0) {
+            return res.status(409).send({
+                ok: false,
+                error: 'Email already exists in the database.'
+            });
+        }
+
         // Hash the password using bcrypt
         const hashedPassword = await bcrypt.hash(password, 10);
         console.log(req.body)

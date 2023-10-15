@@ -74,15 +74,19 @@ export default function Home() {
       if (response.ok) {
         // Registration was successful, call handleRegisAction()
         handleRegisAction();
-      } else {
-        // Registration failed, call handleAlreadyExistedAction()
+      } else if (response.status === 409) {
+        // Email already exists, call handleAlreadyExistedAction()
         handleAlreadyExistedAction();
+      } else {
+        // Handle other error cases if needed
+        alert("Registration failed. Please try again later.");
       }
     } else {
       // Display an error message or take other actions to handle the incomplete form
       alert("Please fill in all required fields.");
     }
   };
+  
   
 
   // Function to bypass form and go to login

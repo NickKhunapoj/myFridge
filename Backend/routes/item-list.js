@@ -24,7 +24,7 @@ router.get('/', async (req, res, next) => {
         }
         console.log(data.user_id)
         const itemData = await database.executeQuery({
-            query: 'SELECT item_name, expiry_date, quantity, item_picture FROM items_info WHERE user_id = ?',
+            query: 'SELECT items_id, item_name, expiry_date, quantity, item_picture FROM items_info WHERE user_id = ?',
             values: [data.user_id]
         });
 

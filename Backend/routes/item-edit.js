@@ -7,9 +7,8 @@ const { json } = require('body-parser');
 require('dotenv').config({ path: __dirname + '../../../.env' });
 
 // Fetch item by ID
-router.get('/edit/:id', async (req, res, next) => {
+router.get('/edit/:items_id', async (req, res, next) => {
     const tokenInput = req.headers.authorization;
-    const itemId = req.params.id; // Extract the item ID from the request parameters
 
     console.log("Request Auth Info: ", tokenInput);
     var tokenContent = tokenInput.split(" ")[1];
@@ -21,14 +20,12 @@ router.get('/edit/:id', async (req, res, next) => {
             });
         }
 
-        console.log(data.user_id);
-
         try {
-            // Fetch item data by ID
             const itemData = await database.executeQuery({
-                query: 'SELECT item_name, expiry_date, quantity, item_picture FROM items_info WHERE user_id = ? AND id = ?',
-                values: [data.user_id, itemId]
+                query: 'SELECT items_id, item_name, expiry_date, quantity, item_picture FROM items_info WHERE user_id = ? AND items_id = ?',
+                values: [data.user_id, req.params.items_id]
             });
+            console.log(req.params.items_id)
 
             if ('error' in itemData) {
                 return res.status(500).send({
@@ -42,11 +39,11 @@ router.get('/edit/:id', async (req, res, next) => {
                 });
             }
 
-            console.log(itemData);
+            // console.log(itemData);
 
             return res.json({
                 ok: true,
-                data: itemData[0], // Return the item data
+                data: itemData[0],
             });
         } catch (error) {
             console.error(error);
@@ -60,7 +57,7 @@ router.get('/edit/:id', async (req, res, next) => {
 // Update item by ID
 router.put('/edit/:id', async (req, res, next) => {
     const tokenInput = req.headers.authorization;
-    const itemId = req.params.id; // Extract the item ID from the request parameters
+    const itemId = req.params.items_id; // Extract the item ID from the request parameters
     const updatedData = req.body; // Updated item data sent by the user
 
     console.log("Request Auth Info: ", tokenInput);
@@ -78,8 +75,8 @@ router.put('/edit/:id', async (req, res, next) => {
         try {
             // Update item data by ID
             const updateResult = await database.executeQuery({
-                query: 'UPDATE items_info SET item_name = ?, expiry_date = ?, quantity = ? WHERE user_id = ? AND id = ?',
-                values: [updatedData.item_name, updatedData.expiry_date, updatedData.quantity, data.user_id, itemId]
+                query: 'UPDATE items_info SET item_name = ?, expiry_date = ?, quantity = ? WHERE user_id = ? AND items_id = ?',
+                values: [updatedData.item_name, updatedData.expiry_date, updatedData.quantity, data.user_id, data.items_id]
             });
 
             if ('error' in updateResult) {

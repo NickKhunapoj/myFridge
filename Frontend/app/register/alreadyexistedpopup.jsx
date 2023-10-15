@@ -32,7 +32,7 @@ const AreadyExistedPopup = ({ onClose }) => {
           alt="Icon"
         />
         <p className="mt-7 mx-3 text-[22px] font-medium">
-          Account Already Existed.
+          Email Already Existed.
         </p>
         <div className="absolute bottom-5 left-0 right-0 flex justify-center items-center space-x-4">
           <button onClick={onClose} className="p-2 w-28 h-full bg-[#1d2387] text-white font-medium rounded-md text-[18px] hover:bg-[#286fb5] transition-all duration-300 ease-in-out">

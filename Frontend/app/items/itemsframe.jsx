@@ -20,7 +20,11 @@ export const ItemsFrame = () => {
         router.push('/add-items');
     };
 
-    const handleEdit = () => {
+    const handleEdit = (item) => {
+        const id = item.items_id;
+        // console.log(id)
+        // console.log("Index:::::::::::::::::::::::::::::::::::::::::::::::::::",item)
+        // router.push(`/edit-items:${id}`);
         router.push('/edit-items');
     };
 
@@ -170,7 +174,7 @@ export const ItemsFrame = () => {
                                 </div>
                                 <button
                                     className="absolute mb-7 mr-10 right-0 bottom-0 w-14 h-14 bg-[#1d2387] hover:mb-6 hover:mr-9 hover:w-16 hover:h-16 hover:bg-[#571a56] transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
-                                    onClick={() => handleEdit()}
+                                    onClick={() => handleEdit(item)}
                                 >
                                     <img
                                         className="w-10 h-10 p-1"

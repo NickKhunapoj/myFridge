@@ -6,6 +6,8 @@ import { useRouter } from 'next/navigation';
 function EditFrame({ selectedItem, handleDiscardAction, handleEditAction, handleDeleteAction }) {
   const router = useRouter();
 
+  const id = 'http://localhost:3000/edit-items/#/?items_id={id}';
+
   const [formData, setFormData] = useState({
     item_name: '',
     quantity: '',
@@ -24,9 +26,9 @@ function EditFrame({ selectedItem, handleDiscardAction, handleEditAction, handle
   };
 
   const fetchItemData = async () => {
-    if (selectedItem && selectedItem.items_id) {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/item/edit/${selectedItem.items_id}`);
+        console.log("111111111111111",id)
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/item/edit/${id}`);
         if (response.ok) {
           const itemData = await response.json();
           setFormData({ ...formData, ...itemData.data });
@@ -34,7 +36,6 @@ function EditFrame({ selectedItem, handleDiscardAction, handleEditAction, handle
       } catch (error) {
         console.error('Error fetching item data:', error);
       }
-    }
   };
 
   useEffect(() => {
@@ -43,14 +44,14 @@ function EditFrame({ selectedItem, handleDiscardAction, handleEditAction, handle
 
   const handleEdit = async () => {
     console.log('Item Edited');
-    if (selectedItem && selectedItem.items_id) {
+    if (selectedItem && id) {
       const formDataToSend = new FormData();
       formDataToSend.append('item_name', formData.item_name);
       formDataToSend.append('quantity', formData.quantity);
       formDataToSend.append('expiry_date', formData.expiry_date);
       formDataToSend.append('item_picture', formData.item_picture);
 
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/item/edit/${selectedItem.items_id}`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/item/edit/${id}`, {
         method: 'PUT',
         body: formDataToSend,
       });
