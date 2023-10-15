@@ -32,8 +32,19 @@ const itemListQtyDes = require('./routes/item-list-qty-des');   //(Sort by quant
 const app = express();
 const port = 1500;
 
+var allowlist = ['http://example1.com', 'http://example2.com']
+var corsOptionsDelegate = function (req, callback) {
+  var corsOptions;
+  if (allowlist.indexOf(req.header('Origin')) !== -1) {
+    corsOptions = { origin: true } // reflect (enable) the requested origin in the CORS response
+  } else {
+    corsOptions = { origin: false } // disable CORS for this request
+  }
+  callback(null, corsOptions) // callback expects two parameters: error and options
+}
+
 app.use('*', cors({
-    origin: 'http://localhost:3000',
+    origin: 'http://myfridgevm.southeastasia.cloudapp.azure.com:3000',
     methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD'],
     credentials: true,
 }));
@@ -91,7 +102,6 @@ app.use('/item/delete', itemDelete);
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send({
-
         ok: false,
         error: 'Server Error!'
     });

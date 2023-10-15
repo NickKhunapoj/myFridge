@@ -6,7 +6,7 @@ const database = require('../shared/database');
 const redis = require('redis')
 const jwt = require('jsonwebtoken')
 
-require('dotenv').config({ path: __dirname+'../../../.env' });
+require('dotenv').config({ path: './env' });
 
 const router = express.Router();
 var CryptoJS = require("crypto-js");
@@ -17,6 +17,7 @@ const redisClient = redis.createClient()
 
 router.get('/', async (req, res, next) => {
     try {
+        // console.log("Sign secret : ",process.env.JWT_SIGN_SECRET)
         const auth = req.headers.authorization;
         const decode = atob(auth.slice(5));
         const credentials = decode.split(":");
