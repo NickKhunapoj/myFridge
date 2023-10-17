@@ -1,8 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const database = require('../shared/database');
 
-router.delete('/:itemId', async (req, res, next) => {
+const database = require('../shared/database');
+const jwt = require('jsonwebtoken');
+const { json } = require('body-parser');
+require('dotenv').config({ path: __dirname + '../../../.env' });
+
+router.delete('/', async (req, res, next) => {
+    const tokenInput = req.headers.authorization;
+    var items_id = req.query.items_id
+    console.log("2222222222222222222222222",items_id);
     try {
         if (!req.session.userData) {
             return res.status(401).send({
@@ -11,12 +18,9 @@ router.delete('/:itemId', async (req, res, next) => {
             });
         }
 
-        const userId = req.session.userData.user_id;
-        const itemId = req.params.itemId;
-
         const updateQuery = {
-            query: 'UPDATE item SET is_removed = 1 WHERE user_id = ? AND items_id = ?',
-            values: [userId, itemId]
+            query: 'DELETE FROM items_info WHERE items_id = ?',
+            values: [items_id]
         };
 
         const cartData = await database.executeQuery(updateQuery);

@@ -1,10 +1,14 @@
-'use client'
-import React from 'react';
-import { useState } from "react";
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+var cookie = require('js-cookie')
 
 export const AccountSettingsFrame = ({ handleDiscardAction, handleSaveAction, handleDeleteAction }) => {
     const router = useRouter();
+    const [userData, setUserData] = useState(null);
+
+    useEffect(() => {
+        fetchUserData();
+    });
 
     const [formData, setFormData] = useState({
         email: "",
@@ -59,6 +63,31 @@ export const AccountSettingsFrame = ({ handleDiscardAction, handleSaveAction, ha
         handleDeleteAction();
     };
 
+    const fetchUserData = async () => {
+        try {
+            const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/user/info", {
+                method: 'GET',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': 'Bearer ' + `${cookie.get('token')}`
+                }
+            });
+            if (!response.ok) {
+                throw new Error('Failed to fetch expire count');
+            }
+
+            const responseData = await response.json();
+            console.log("Trying to get expire count");
+            console.log(responseData);
+            setUserData(responseData.userData);
+
+        } catch (error) {
+            console.log("Error while fetching UserData");
+            console.error(error);
+        }
+    };
+
     return (
         // Dashboard Header
         <div className="sticky h-[calc(100vh-148px)] overflow-auto bg-[#21253180] rounded-[40px] shadow-[0px_0px_10px_8px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100">
@@ -72,7 +101,7 @@ export const AccountSettingsFrame = ({ handleDiscardAction, handleSaveAction, ha
                 Display Name
             </a>
             <a style={{ color: "white", position: "absolute", left: "270px", top: "200px", fontSize: "32px" }}>
-                KHUNAPOJ SUTTENON
+                {userData ?? 'Loading...'}
             </a>
             <div className="flex items-center p-10">
                 <img

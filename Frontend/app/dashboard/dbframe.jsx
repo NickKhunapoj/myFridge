@@ -9,6 +9,7 @@ export const DashboardFrame = () => {
     const [data, setData] = useState([]); // State to hold the fetched data
     const [searchQuery, setSearchQuery] = useState(''); // State to hold the search query
     // console.log(itemCount)
+
     var itemNumber = 0;
     useEffect(() => {
         fetchData();
@@ -29,8 +30,7 @@ export const DashboardFrame = () => {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + `${cookie.get('token')}`,
-                    'Host': 'api.producthunt.com'
+                    'Authorization': 'Bearer ' + `${cookie.get('token')}`
                 }
             });
             if (!response.ok) {
@@ -47,7 +47,6 @@ export const DashboardFrame = () => {
             console.error(error);
         }
     };
-
     const fetchExpireCount = async () => {
         try {
             const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/item/expire", {
@@ -55,8 +54,7 @@ export const DashboardFrame = () => {
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + `${cookie.get('token')}`,
-                    'Host': 'api.producthunt.com'
+                    'Authorization': 'Bearer ' + `${cookie.get('token')}`
                 }
             });
             if (!response.ok) {
@@ -69,10 +67,10 @@ export const DashboardFrame = () => {
             setExpireCount(responseData.expireCount);
 
         } catch (error) {
-            console.log("Error while fetching expire count");
+            console.log("Error while fetching expirecount");
             console.error(error);
         }
-    };
+    };    
     
     const fetchData = async () => {
         try {

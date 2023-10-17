@@ -4,13 +4,17 @@ const router = express.Router();
 const database = require('../shared/database');
 const jwt = require('jsonwebtoken');
 const { json } = require('body-parser');
+const multer = require('multer');
+const upload = multer();
 require('dotenv').config({ path: __dirname + '../../../.env' });
 
 // Fetch item by ID
-router.get('/edit/:items_id', async (req, res, next) => {
+router.get('/', async (req, res, next) => {
     const tokenInput = req.headers.authorization;
-
-    console.log("Request Auth Info: ", tokenInput);
+    var items_id = req.query.items_id
+    // res.send(items_id).status(200)
+    console.log(items_id);
+    console.log("Request Auth Info from item edit: ", tokenInput);
     var tokenContent = tokenInput.split(" ")[1];
 
     jwt.verify(tokenContent, process.env.JWT_SIGN_SECRET, async (err, data) => {
@@ -23,9 +27,10 @@ router.get('/edit/:items_id', async (req, res, next) => {
         try {
             const itemData = await database.executeQuery({
                 query: 'SELECT items_id, item_name, expiry_date, quantity, item_picture FROM items_info WHERE user_id = ? AND items_id = ?',
-                values: [data.user_id, req.params.items_id]
+                values: [data.user_id, items_id]
             });
-            console.log(req.params.items_id)
+            console.log(data.user_id)
+            console.log(items_id)
 
             if ('error' in itemData) {
                 return res.status(500).send({
@@ -39,8 +44,6 @@ router.get('/edit/:items_id', async (req, res, next) => {
                 });
             }
 
-            // console.log(itemData);
-
             return res.json({
                 ok: true,
                 data: itemData[0],
@@ -52,16 +55,22 @@ router.get('/edit/:items_id', async (req, res, next) => {
             });
         }
     });
+    // return res.status(500).send({
+    //     ok: false, error: 'How it jumps here'
+    // });
 });
 
 // Update item by ID
-router.put('/edit/:id', async (req, res, next) => {
+router.put('/', upload.none(), async (req, res, next) => {
+    console.log("Put are here...")
     const tokenInput = req.headers.authorization;
-    const itemId = req.params.items_id; // Extract the item ID from the request parameters
+    var itemId = req.query.items_id; // Extract the item ID from the request parameters
     const updatedData = req.body; // Updated item data sent by the user
 
     console.log("Request Auth Info: ", tokenInput);
     var tokenContent = tokenInput.split(" ")[1];
+
+    console.log('updatedData : ',req.body)
 
     jwt.verify(tokenContent, process.env.JWT_SIGN_SECRET, async (err, data) => {
         if (err) {
@@ -76,8 +85,9 @@ router.put('/edit/:id', async (req, res, next) => {
             // Update item data by ID
             const updateResult = await database.executeQuery({
                 query: 'UPDATE items_info SET item_name = ?, expiry_date = ?, quantity = ? WHERE user_id = ? AND items_id = ?',
-                values: [updatedData.item_name, updatedData.expiry_date, updatedData.quantity, data.user_id, data.items_id]
+                values: [updatedData.item_name, updatedData.expiry_date, updatedData.quantity, data.user_id, itemId]
             });
+            console.log(updatedData.item_name, updatedData.expiry_date, updatedData.quantity, data.user_id, itemId)
 
             if ('error' in updateResult) {
                 return res.status(500).send({

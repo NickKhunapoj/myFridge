@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { headers } from '@/next.config';
 var cookie = require('js-cookie')
-
 // Function to format the date
 function formatDate(date) {
     const options = { year: 'numeric', day: 'numeric', month: 'short' };
@@ -22,10 +21,14 @@ export const ItemsFrame = () => {
 
     const handleEdit = (item) => {
         const id = item.items_id;
-        // console.log(id)
+        console.log(id)
         // console.log("Index:::::::::::::::::::::::::::::::::::::::::::::::::::",item)
         // router.push(`/edit-items:${id}`);
-        router.push('/edit-items');
+        router.push(`/edit-items?id=${id}`);
+        // router.push({
+        //     pathname: '/edit-items',
+        //     query: { id: id }
+        // })
     };
 
     const handleSortChange = (event) => {

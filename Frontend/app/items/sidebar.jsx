@@ -1,9 +1,15 @@
-"use client"
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+var cookie = require('js-cookie')
 
 export const Sidebar = ({handleLogoutAction}) => {
   const router = useRouter();
+  const [userData, setUserData] = useState(null);
+
+    useEffect(() => {
+        fetchUserData();
+    });
+
 
   const handleLogout = () => {
     // Call the handleLogoutAction function to handle the "logout" action
@@ -25,6 +31,30 @@ export const Sidebar = ({handleLogoutAction}) => {
     // Redirect to the account-settings page
     router.push('/account-settings');
   };
+  const fetchUserData = async () => {
+    try {
+        const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/user/info", {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + `${cookie.get('token')}`
+            }
+        });
+        if (!response.ok) {
+            throw new Error('Failed to fetch expire count');
+        }
+
+        const responseData = await response.json();
+        console.log("Trying to get expire count");
+        console.log(responseData);
+        setUserData(responseData.userData);
+
+    } catch (error) {
+        console.log("Error while fetching UserData");
+        console.error(error);
+    }
+};
   
   return (
       <div className="sticky h-[calc(100vh-148px)] overflow-auto bg-[#21253180] rounded-[40px] shadow-[0px_0px_10px_8px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100">
@@ -48,7 +78,7 @@ export const Sidebar = ({handleLogoutAction}) => {
                 style={{ color: "white" }} // Set text color to white
                 onClick={handleAccountSettings} // Add onClick handler for Account Settings
             >
-              KHUNAPOJ SUTTENON
+              {userData ?? 'Loading...'}
             </a>
           </span>
           </div>

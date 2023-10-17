@@ -2,12 +2,18 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation'
+import { headers } from '@/next.config';
+var cookie = require('js-cookie');
 
-function EditFrame({ selectedItem, handleDiscardAction, handleEditAction, handleDeleteAction }) {
+
+function EditFrame({ selectedItem, handleDiscardAction, handleEditAction, handleDeleteAction, handleAlreadyExistedAction }) {
   const router = useRouter();
-
-  const id = 'http://localhost:3000/edit-items/#/?items_id={id}';
-
+  console.log(window.location.href)
+  const searchParams = useSearchParams('id')
+  var id = searchParams.get("id")
+  var selectedItemVariable;
+  console.log('patameter ', id)
   const [formData, setFormData] = useState({
     item_name: '',
     quantity: '',
@@ -26,44 +32,78 @@ function EditFrame({ selectedItem, handleDiscardAction, handleEditAction, handle
   };
 
   const fetchItemData = async () => {
-      try {
-        console.log("111111111111111",id)
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/item/edit/${id}`);
-        if (response.ok) {
-          const itemData = await response.json();
-          setFormData({ ...formData, ...itemData.data });
+
+    try {
+      console.log("111111111111111", id)
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/item/edit?items_id=${id}`, {
+        method: "GET",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + `${cookie.get('token')}`,
         }
-      } catch (error) {
-        console.error('Error fetching item data:', error);
+      });
+
+      var returnVal = await response.json();
+      selectedItemVariable = returnVal
+
+      console.log("Return Val ->>>", returnVal);
+      if (response.ok) {
+        var itemData = returnVal
+        console.log("item data : ", itemData)
+        itemData.data.expiry_date = itemData.data.expiry_date.split('T')[0]
+        setFormData({ ...formData, ...itemData.data });
       }
+    } catch (error) {
+      console.error('Error fetching item data:', error);
+    }
   };
 
   useEffect(() => {
     fetchItemData();
+    console.log("Fetched");
   }, [selectedItem]);
 
   const handleEdit = async () => {
-    console.log('Item Edited');
-    if (selectedItem && id) {
-      const formDataToSend = new FormData();
-      formDataToSend.append('item_name', formData.item_name);
-      formDataToSend.append('quantity', formData.quantity);
-      formDataToSend.append('expiry_date', formData.expiry_date);
-      formDataToSend.append('item_picture', formData.item_picture);
-
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/item/edit/${id}`, {
-        method: 'PUT',
-        body: formDataToSend,
-      });
-
-      if (response.ok) {
-        // Edit was successful, call handleEditAction()
-        handleEditAction();
-      } else {
-        // Registration failed, call handleAlreadyExistedAction()
-        handleAlreadyExistedAction();
-      }
+    // selectedItemVariable = JSON.parse(selectedItemVariable)
+    console.log("Selected ", selectedItemVariable, " formdata : ", formData);
+    // if (selectedItemVariable && id) {
+    // var objSend = {
+    //   'item_name': formData.item_name,
+    //   'quantity': formData.quantity,
+    //   'expiry_date': formData.expiry_date,
+    //   'item_picture': formData.item_picture
+    // }
+    const formDataToSend = new FormData();
+    formDataToSend.append('item_name', formData.item_name);
+    formDataToSend.append('quantity', formData.quantity);
+    formDataToSend.append('expiry_date', formData.expiry_date);
+    formDataToSend.append('item_picture', formData.item_picture);
+    const data = new URLSearchParams();
+    for (const pair of formDataToSend) {
+      data.append(pair[0], pair[1]);
     }
+    console.log(formDataToSend)
+    // JSON.stringify(objSend)
+    // console.log('formDataToSend : ', objSend)
+
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/item/edit?items_id=${id}`, {
+      headers: {
+        'Authorization': 'Bearer ' + `${cookie.get('token')}`,
+      },
+      method: 'PUT',
+      body: data
+    });
+    var responseData = await response.json()
+    console.log('responseData : ', responseData)
+    if (response.ok) {
+      // Edit was successful, call handleEditAction()
+      handleEditAction();
+    } else {
+      // Registration failed, call handleAlreadyExistedAction()
+      handleAlreadyExistedAction();
+    }
+    // }
   };
 
   const handleDiscard = () => {
@@ -86,7 +126,7 @@ function EditFrame({ selectedItem, handleDiscardAction, handleEditAction, handle
       <div className="sticky w-full h-[calc(90vh-120px)] p-16">
         <div className="sticky w-full h-full bg-[#142741] rounded-[33px] shadow-[0px_0px_10px_3px_#00000040] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)]">
           <div className="flex relative pt-14 px-14 [font-family:'Manrope-SemiBold',Helvetica] font-SemiBold text-[#ffffff] text-3xl tracking-[0] leading-[normal]">
-          <img
+            <img
               className="w-10 h-10 pl-1 mr-5"
               alt="Edit"
               src="https://cdn.discordapp.com/attachments/1151835814939078738/1156153038503952454/0d622ecf015f0b97491b26ed4f4d9e38.png?ex=6513eeec&is=65129d6c&hm=6c3d177f07d4df5e0e8914df198e3b1fdf9cc04e5d16a8926b4428e3c51a4bb7&"
@@ -102,7 +142,7 @@ function EditFrame({ selectedItem, handleDiscardAction, handleEditAction, handle
               name="item_name"
               value={formData.item_name}
               onChange={handleInputChange}
-              className="w-52 mt-5 pl-2 rounded-xl bg-[#40404099] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover.bg-[#41465680] transition-all duration-300 ease-in-out"
+              className="w-52 mt-5 pl-2 text-white rounded-xl bg-[#40404099] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover.bg-[#41465680] transition-all duration-300 ease-in-out"
               placeholder={formData.item_name}
             />
           </div>
@@ -116,7 +156,7 @@ function EditFrame({ selectedItem, handleDiscardAction, handleEditAction, handle
               name="quantity"
               value={formData.quantity}
               onChange={handleInputChange}
-              className="w-52 mt-4 pl-2 rounded-xl bg-[#40404099] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover.bg-[#41465680] transition-all duration-300 ease-in-out"
+              className="w-52 mt-4 pl-2 text-white rounded-xl bg-[#40404099] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover.bg-[#41465680] transition-all duration-300 ease-in-out"
               placeholder={formData.quantity}
             />
           </div>
@@ -129,7 +169,7 @@ function EditFrame({ selectedItem, handleDiscardAction, handleEditAction, handle
               name="expiry_date"
               value={formData.expiry_date}
               onChange={handleInputChange}
-              className="w-52 mt-4 pl-2 rounded-xl bg-[#40404099] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover.bg-[#41465680] transition-all duration-300 ease-in-out"
+              className="w-52 mt-4 pl-2 text-white rounded-xl bg-[#40404099] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover.bg-[#41465680] transition-all duration-300 ease-in-out"
               style={{ color: 'white' }}
               placeholder={formData.expiry_date}
             />

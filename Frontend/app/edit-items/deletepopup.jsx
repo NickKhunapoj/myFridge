@@ -1,14 +1,19 @@
 // components DeletePopup.jsx
 'use client'
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation';
+var cookie = require('js-cookie');
 
-const DeletePopup = ({ onClose }) => {
+const DeletePopup = ({ onClose, itemId }) => {
   const router = useRouter();
   const popupRef = useRef(null);
+  const searchParams = useSearchParams('id')
+  var id = searchParams.get("id")
 
   useEffect(() => {
     const popupElement = popupRef.current;
+    console.log("ITEM ID:", id);
 
     // Apply the zoom-in effect when the component mounts
     popupElement.classList.add('zoom-in');
@@ -20,12 +25,23 @@ const DeletePopup = ({ onClose }) => {
   }, []);
 
   const handleDelete = async () => {
-    console.log('Item Deleted');
-    const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/item/delete", {
-        headers: { 'Content-Type': 'application/json' },
-        credentials: "include", method: 'PUT',
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/item/delete?items_id=${id}`, {
+      headers: { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer ' + `${cookie.get('token')}`
+      },
+      credentials: "include",
+      method: 'DELETE',
     });
-    router.push('/items');
+    if (response.ok) {
+      // If the delete request is successful, navigate to the items page or perform any other action you need.
+      router.push('/items');
+    } else {
+      // Handle the case where the delete request failed, e.g., show an error message in the console.
+      console.error('Error deleting item:', response.statusText);
+    }
+    console.log('Item Deleted');
   };
 
   return (

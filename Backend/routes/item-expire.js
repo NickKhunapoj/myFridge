@@ -20,29 +20,29 @@ const fetchExpireCount = async (token, res) => {
 
             console.log(data.user_id);
 
-            const itemData = await database.executeQuery({
-                query: 'SELECT COUNT(i.item_name) AS expireCount FROM items_info i INNER JOIN app_settings_info s ON i.user_id = s.user_id WHERE i.user_id = ?  AND i.expiry_date IN (CASE WHEN s.expire_3days = 1 THEN CURRENT_DATE + INTERVAL 3 DAY WHEN s.expire_5days = 1 THEN CURRENT_DATE + INTERVAL 5 DAY WHEN s.expire_1week = 1 THEN CURRENT_DATE + INTERVAL 7 DAY END )',
+            const expireData = await database.executeQuery({
+                query: 'SELECT SUM(CASE WHEN s.expire_3days = 1 AND i.expiry_date BETWEEN CURRENT_DATE AND CURRENT_DATE + INTERVAL 3 DAY THEN 1 WHEN s.expire_5days = 1 AND i.expiry_date BETWEEN CURRENT_DATE AND CURRENT_DATE + INTERVAL 5 DAY THEN 1 WHEN s.expire_1week = 1 AND i.expiry_date BETWEEN CURRENT_DATE AND CURRENT_DATE + INTERVAL 7 DAY THEN 1 ELSE 0 END) AS expireCount FROM items_info i INNER JOIN app_settings_info s ON i.user_id = s.user_id WHERE i.user_id = ?',
                 values: [data.user_id]
             });
 
-            if ('error' in itemData) {
+            if ('error' in expireData) {
                 return res.status(500).send({
-                    ok: false, error: itemData.error.userError
+                    ok: false, error: expireData.error.userError
                 });
             }
 
-            console.log(itemData);
+            console.log(expireData);
 
             return res.json({
                 ok: true,
-                expireCount: itemData[0].expireCount,
-                data: itemData
-            });            
+                expireCount: expireData[0].expireCount,
+                data: expireData
+            });
         });
     } catch (error) {
         console.log(error);
         return res.status(500).send({
-            ok: false, error: 'An error occurred while fetching item count.'
+            ok: false, error: 'An error occurred while fetching expire count.'
         });
     }
 };
@@ -51,7 +51,7 @@ router.get('/', async (req, res, next) => {
     const tokenInput = req.headers.authorization;
     console.log("Request Auth Info: ", tokenInput);
 
-    // Call the fetchExpireCount function to fetch the expire count
+    // Call the fetchExpireCount function to fetch the item count
     fetchExpireCount(tokenInput, res);
 });
 

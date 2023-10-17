@@ -11,13 +11,14 @@ const authLogout = require('./routes/auth-logout');
 const authLogin = require('./routes/auth-login');
 const authCheck = require('./routes/auth-check');
 
-const userInfo = require('./routes/user-info');
+const userData = require('./routes/user-info');
 // const picUpload = require('./routes/pic-upload');
 const profEdit = require('./routes/prof-edit');
 const profDelete = require('./routes/prof-delete');
 
 const itemList = require('./routes/item-list');
 const itemCount = require('./routes/item-count');
+const expireCount = require('./routes/item-expire');
 const itemRoutes = require('./routes/item-routes');
 const itemAdd = require('./routes/item-add');
 const itemEdit = require('./routes/item-edit');
@@ -45,12 +46,12 @@ var corsOptionsDelegate = function (req, callback) {
 
 app.use('*', cors({
     origin: 'http://myfridgevm.southeastasia.cloudapp.azure.com:3000',
-    methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD'],
+    methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD', 'DELETE'],
     credentials: true,
 }));
 app.use('/imageData',express.static('uploads'))
 app.use(express.json()); // Used to parse JSON bodies
-app.use(express.urlencoded()); //Parse URL-encoded bodies
+app.use(express.urlencoded({extended:true})); //Parse URL-encoded bodies
 // app.use(bodyParser. text({type: '/'}));
 app.use(session({
     resave: false,
@@ -76,7 +77,7 @@ app.use('/auth/login', authLogin);
 app.use('/auth/check', authCheck);
 
 // Profile info
-app.use('/user/info', userInfo);
+app.use('/user/info', userData);
 app.use('/prof/edit', profEdit);
 app.use('/prof/delete', profDelete);
 // app.use('/pic/upload', picUpload);
@@ -84,6 +85,7 @@ app.use('/prof/delete', profDelete);
 // Item Routing
 app.use('/item/list', itemList);
 app.use('/item/count', itemCount);
+app.use('/item/expire', expireCount);
 app.use('/item/routes', itemRoutes);
 
 // Item Showing (Optional)
