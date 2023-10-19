@@ -33,25 +33,28 @@ The myFridge Expiry Date Reminder and Notification Web Application is a user-fri
    The application will calculate the remaining time until the expiration date for each product entered. This information will be displayed prominently in the user's dashboard.
 
 3. **Automated Reminders:**
-   The core feature of the application is the automated reminder system. Users will receive notifications via email or SMS in advance of a product's expiration date. These reminders will include relevant details like the name of the product and the number of days remaining until expiration.
+   The core feature of the application is the automated reminder system. Users will receive notifications via email or SMS for 5 days in advance of a product's expiration date. These reminders will include relevant details like the name of the product and the number of days remaining until expiration.
 
-4. **Customizable Notifications:**
-   Users can customize their notification preferences, such as choosing whether to receive reminders daily, every few days, or weekly. They can also set the specific time of day they would like to receive reminders.
-
-5. **Search and Filtering:**
+4. **Search and Filtering:**
    Users can easily search for specific products within their inventory and apply filters based on categories, expiration dates, or other attributes.
+
+5. **(Coming Soon) Customizable Notifications:**
+   Users can customize their notification preferences, such as choosing whether to receive reminders daily, every few days, or weekly. They can also set the specific time of day they would like to receive reminders.
 
 ## Built With
 
 - Node JS
 - Next JS (Frontend Framework)
 - Express JS (Backend Framework)
-- Google Apps Script (Automated Email Sending)
-- Visual Studio Code (Preferred IDE)
 - Azure Database for MySQL (Database)
 - Azure Virtual Machine (Deployment)
+- Google Apps Script (Automated Email Sending)
+- Visual Studio Code (Preferred IDE)
+- Beekeeper (Preferred MySQL Workbench)
 
 ## Usage
+
+Users can read our user manual in Thai [here]([https://kmutnbacth-my.sharepoint.com/:b:/g/personal/s6501012630034_kmutnb_ac_th/EYvtqLk4DQRFv-_01YBCDDIBDRUUMFn85sZgED1hineHHw?e=WcrNo6])
 
 <img align="center" src="https://github.com/NickKhunapoj/myFridge/assets/93870412/1af7bab8-7905-476c-bb20-081f09ba23fc">
 
