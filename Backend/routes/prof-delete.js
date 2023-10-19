@@ -1,32 +1,48 @@
 const express = require('express');
-const router = express.Router();
+const router = express.Router();  
 
 const database = require('../shared/database');
+const jwt = require('jsonwebtoken');
+const { json } = require('body-parser');
+require('dotenv').config({ path: __dirname + '../../../.env' });
 
 // DELETE endpoint to delete a user profile
-router.delete('/:user_id', async (req, res, next) => {
+router.delete('/', async (req, res, next) => {
+  const tokenInput = req.headers.authorization;
+  var user_id = req.query.user_id
+  console.log("3333333333333333333333333333333", user_id);
   try {
-    const { email } = req.params;
-
-    // Check if the user exists
-    const user = await database.executeQuery({
-      query: 'SELECT * FROM user_info WHERE email = ?',
-      values: [email],
-    });
-
-    if (user.length === 0) {
-      return res.status(404).json({ error: 'User not found' });
+    if (!req.session.userData) {
+      return res.status(401).send({
+        ok: false,
+        error: 'Please login and try again later!'
+      });
     }
 
-    // Delete the user profile
-    const deleteUser = await database.executeQuery({
-      query: 'DELETE FROM user_info WHERE email = ?',
-      values: [email],
-    });
+    const updateQuery = {
+      query: 'DELETE FROM user_info WHERE user_id = ?',
+      values: [user_id]
+    };
 
-    return res.status(200).json({ message: 'User profile deleted successfully' });
+    const userData = await database.executeQuery(updateQuery);
+
+    if ('error' in userData) {
+      return res.status(500).send({
+        ok: false,
+        error: 'An error occurred while deleting the account.'
+      });
+    }
+
+    return res.status(200).send({
+      ok: true,
+      data: userData
+    });
   } catch (error) {
-    next(error);
+    console.error('Error deleting account:', error);
+    return res.status(500).send({
+      ok: false,
+      error: 'An error occurred while deleting the account.'
+    });
   }
 });
 

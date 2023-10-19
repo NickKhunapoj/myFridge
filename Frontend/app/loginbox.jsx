@@ -111,7 +111,7 @@ export const Box = () => {
                 className="w-full h-full font-family:'Manrope-Regular',Helvetica font-normal text-white text-[30px] text-center tracking-[0] leading-[normal] hover:bg-[#000000] hover:rounded-[15px] transition-colors duration-300"
                 onClick={handleDashboard}
               >
-                Log in
+                Sign in
               </button>
             </div>
           </div>

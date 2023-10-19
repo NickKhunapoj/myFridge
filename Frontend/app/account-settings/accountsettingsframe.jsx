@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { headers } from '@/next.config';
 var cookie = require('js-cookie')
 
 export const AccountSettingsFrame = ({ handleDiscardAction, handleSaveAction, handleDeleteAction }) => {
@@ -7,7 +8,7 @@ export const AccountSettingsFrame = ({ handleDiscardAction, handleSaveAction, ha
     const [userData, setUserData] = useState(null);
 
     useEffect(() => {
-        fetchUserData();
+        fetchUserData()
     });
 
     const [formData, setFormData] = useState({
@@ -70,20 +71,21 @@ export const AccountSettingsFrame = ({ handleDiscardAction, handleSaveAction, ha
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + `${cookie.get('token')}`
+                    'Authorization': 'Bearer ' + `${cookie.get('token')}`,
+                    'Host': 'api.producthunt.com'
                 }
             });
             if (!response.ok) {
-                throw new Error('Failed to fetch expire count');
+                throw new Error('Failed to fetch profile data');
             }
 
             const responseData = await response.json();
-            console.log("Trying to get expire count");
+            console.log("Trying to get user data");
             console.log(responseData);
             setUserData(responseData.userData);
 
         } catch (error) {
-            console.log("Error while fetching UserData");
+            console.log("Error while fetching userData");
             console.error(error);
         }
     };
@@ -124,7 +126,7 @@ export const AccountSettingsFrame = ({ handleDiscardAction, handleSaveAction, ha
                     <input
                         type="text"
                         onChange={handleInputChange}
-                        placeholder="s65010126XXXXX@email.kmutnb.ac.th"
+                        placeholder='example@email.com'
                         className="w-full px-4 py-2 rounded-lg bg-[#40404099] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
                         email = 'email'
                         style={{ color: "white" }} // Set text color to white
@@ -135,7 +137,7 @@ export const AccountSettingsFrame = ({ handleDiscardAction, handleSaveAction, ha
                     <input
                         type="text"
                         onChange={handleInputChange}
-                        placeholder="KHUNAPOJ SUTTENON"
+                        placeholder='Display Name'
                         className="w-full px-4 py-2 rounded-lg bg-[#40404099] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
                         display_name = 'display_name'
                         style={{ color: "white" }} // Set text color to white
@@ -146,7 +148,7 @@ export const AccountSettingsFrame = ({ handleDiscardAction, handleSaveAction, ha
                     <input
                         type="text"
                         onChange={handleInputChange}
-                        placeholder="KHUNAPOJ"
+                        placeholder={"Username"}
                         className="w-full px-4 py-2 rounded-lg bg-[#40404099] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
                         username = 'username'
                         style={{ color: "white" }} // Set text color to white

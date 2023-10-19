@@ -13,6 +13,7 @@ const authCheck = require('./routes/auth-check');
 
 const userData = require('./routes/user-info');
 // const picUpload = require('./routes/pic-upload');
+const profData = require('./routes/prof-data');
 const profEdit = require('./routes/prof-edit');
 const profDelete = require('./routes/prof-delete');
 
@@ -29,6 +30,8 @@ const itemListExpD = require('./routes/item-list-expiry');      //(Sort by neare
 const itemListRecAdd = require('./routes/item-list-rec-add');   //(Sort by recently add)
 const itemListQtyAsc = require('./routes/item-list-qty-asc');   //(Sort by quantity 1-10)
 const itemListQtyDes = require('./routes/item-list-qty-des');   //(Sort by quantity 10-1)
+
+const feedbackData = require('./routes/feedback-add');
 
 const app = express();
 const port = 1500;
@@ -79,6 +82,7 @@ app.use('/auth/check', authCheck);
 // Profile info
 app.use('/user/info', userData);
 app.use('/prof/edit', profEdit);
+app.use('/prof/data', profData);
 app.use('/prof/delete', profDelete);
 // app.use('/pic/upload', picUpload);
 
@@ -99,6 +103,9 @@ app.use('/item/list/qtydes', itemListQtyDes);
 app.use('/item/add', itemAdd);
 app.use('/item/edit', itemEdit);
 app.use('/item/delete', itemDelete);
+
+// Feedback send routing
+app.use('/feedback/add', feedbackData);
 
 // Global Error Handler
 app.use((err, req, res, next) => {
