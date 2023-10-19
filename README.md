@@ -54,7 +54,7 @@ The myFridge Expiry Date Reminder and Notification Web Application is a user-fri
 
 ## Usage
 
-Users can read our user manual in Thai [here]([https://kmutnbacth-my.sharepoint.com/:b:/g/personal/s6501012630034_kmutnb_ac_th/EYvtqLk4DQRFv-_01YBCDDIBDRUUMFn85sZgED1hineHHw?e=WcrNo6])
+Users can read our user manual in Thai [here](https://kmutnbacth-my.sharepoint.com/:b:/g/personal/s6501012630034_kmutnb_ac_th/EYvtqLk4DQRFv-_01YBCDDIBDRUUMFn85sZgED1hineHHw?e=WcrNo6).
 
 <img align="center" src="https://github.com/NickKhunapoj/myFridge/assets/93870412/1af7bab8-7905-476c-bb20-081f09ba23fc">
 
