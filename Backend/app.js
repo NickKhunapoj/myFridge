@@ -48,8 +48,8 @@ var corsOptionsDelegate = function (req, callback) {
 }
 
 app.use('*', cors({
-    origin: 'http://myfridgevm.southeastasia.cloudapp.azure.com:3000',
-    methods: ['POST', 'PUT', 'GET', 'OPTIONS', 'HEAD', 'DELETE'],
+    origin: 'https://myfridgevm.southeastasia.cloudapp.azure.com',
+    methods: ['POST', 'PUT', 'GET', 'UPDATE', 'OPTIONS', 'HEAD', 'DELETE'],
     credentials: true,
 }));
 app.use('/imageData',express.static('uploads'))

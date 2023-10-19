@@ -48,7 +48,7 @@ export const Box = () => {
       <div className="text-group">
         <div className="w-[516px] h-[116px]">
           <div className="flex flex-col items-start gap-[10px] relative w-[516px] h-[116px]">
-            <p className="relative self-stretch [font-family:'Manrope-Bold',Helvetica] font-bold text-white text-[60px] text-center tracking-[0] leading-[normal]">
+            <div className="relative self-stretch [font-family:'Manrope-Bold',Helvetica] font-bold text-white text-[60px] text-center tracking-[0] leading-[normal]">
               <div className="flex justify-center">
                 {/* Image */}
                 <img
@@ -61,7 +61,7 @@ export const Box = () => {
                   <br />
                 </span>
               </div>
-            </p>
+            </div>
             <p className="relative self-stretch [font-family:'Manrope',Helvetica] font-medium text-white text-[25px] text-center tracking-[0] leading-[normal]">
               <span className="text-[25px]">Your personal fridge management website.</span>
             </p>
@@ -70,7 +70,7 @@ export const Box = () => {
       </div>
 
       {/* Spacing */}
-      <div className="mt-10"></div>
+      <div className="mt-10"/>
 
       {/* Login Box Group */}
       <div className="login-box-group">
@@ -115,10 +115,10 @@ export const Box = () => {
               </button>
             </div>
           </div>
-          {/* Forgot Password Text */}
+          {/* Forgot Password Text
           <div className="absolute top-[240px] left-[58px] font-family:'Manrope',Helvetica font-light text-[20px] text-[#4950f9] cursor-pointer">
             <a href="#" onClick={handleForgot}>Forgot Password?</a>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

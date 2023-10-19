@@ -1,9 +1,11 @@
 // components DeletePopup.jsx
 'use client'
 import React, { useRef, useEffect, useState } from 'react';
+import { useSearchParams } from 'next/navigation'
 import { useRouter } from 'next/navigation';
+var cookie = require('js-cookie');
 
-const DeletePopup = ({ onClose }) => {
+const DeletePopup = ({ onClose, userId }) => {
   const router = useRouter();
   const popupRef = useRef(null);
   const [inputValue, setInputValue] = useState('');
@@ -29,9 +31,28 @@ const DeletePopup = ({ onClose }) => {
     setIsButtonEnabled(typedValue === 'DELETE');
   };
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     // Redirect to the login page when the "Proceed" button is pressed
-    router.push('/');
+    try {
+      console.log(userId)
+      const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/prof/delete?user_id=" + userId, {
+        method: 'DELETE',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + `${cookie.get('token')}`
+        }
+      });
+      if (!response.ok) {
+        throw new Error('Failed to delete profile!');
+      }
+
+      const { ok } = await response.json();
+      if (ok) router.push('/');
+    } catch (error) {
+      console.log("Error deleting user!");
+      console.error(error);
+    }
   };
 
   return (
@@ -63,9 +84,8 @@ const DeletePopup = ({ onClose }) => {
         <div className="absolute bottom-5 left-0 right-0 flex justify-center items-center space-x-4">
           <button
             onClick={handleLogin}
-            className={`p-2 w-28 h-full ${
-              isButtonEnabled ? 'bg-[#871d1d]' : 'bg-gray-500 cursor-not-allowed'
-            } text-white font-medium rounded-md text-[18px] hover:bg-[#b85757] transition-all duration-300 ease-in-out`}
+            className={`p-2 w-28 h-full ${isButtonEnabled ? 'bg-[#871d1d]' : 'bg-gray-500 cursor-not-allowed'
+              } text-white font-medium rounded-md text-[18px] hover:bg-[#b85757] transition-all duration-300 ease-in-out`}
             disabled={!isButtonEnabled}
           >
             <span className="mb-1">Proceed</span>

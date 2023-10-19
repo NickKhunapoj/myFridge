@@ -50,12 +50,12 @@ router.post('/',upload.single('image'), async (req, res, next) => {
                 });
             }
             const userId = data.user_id;
-            fileName = process.env.NEXT_PUBLIC_API_URL + "/imageData/" + fileName;
+            fileName = process.env.NEXT_PUBLIC_API_URL_2 + "/imageData/" + fileName;
 
             // Check if the item already exists
             const existingItem = await database.executeQuery({
-                query: 'SELECT * FROM items_info WHERE item_name = ?',
-                values: [item_name]
+                query: 'SELECT * FROM items_info WHERE user_id = ? AND item_name = ?',
+                values: [userId, item_name]
             });
 
             if (existingItem.length > 0) {

@@ -60,17 +60,22 @@ export const DashboardFrame = () => {
             if (!response.ok) {
                 throw new Error('Failed to fetch expire count');
             }
-
+    
             const responseData = await response.json();
             console.log("Trying to get expire count");
             console.log(responseData);
-            setExpireCount(responseData.expireCount);
-
+    
+            // Check if responseData.expireCount is null
+            if (responseData.expireCount == null) {
+                setExpireCount('0');
+            } else {
+                setExpireCount(responseData.expireCount);
+            }
         } catch (error) {
-            console.log("Error while fetching expirecount");
+            console.log("Error while fetching expire count");
             console.error(error);
         }
-    };    
+    };
     
     const fetchData = async () => {
         try {

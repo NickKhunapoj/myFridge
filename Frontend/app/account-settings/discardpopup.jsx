@@ -21,7 +21,7 @@ const DiscardPopup = ({ onClose }) => {
 
   const handleDiscard = () => {
     // Redirect to the /items page when the "Yes" button is pressed
-    router.push('/account-settings');
+    router.push('/dashboard');
   };
 
   return (
@@ -40,7 +40,7 @@ const DiscardPopup = ({ onClose }) => {
           Are you sure you want to discard this change?
         </p>
         <div className="absolute bottom-5 left-0 right-0 flex justify-center items-center space-x-4">
-          <button onClick={onClose} className="p-2 w-28 h-full bg-[#871d1d] text-white font-medium rounded-md text-[18px] hover:bg-[#b85757] transition-all duration-300 ease-in-out">
+          <button onClick={handleDiscard} className="p-2 w-28 h-full bg-[#871d1d] text-white font-medium rounded-md text-[18px] hover:bg-[#b85757] transition-all duration-300 ease-in-out">
             <span className="mb-1">Yes</span>
           </button>
           <button onClick={onClose} className="p-2 w-28 h-full bg-[#1d2387] text-white font-medium rounded-md text-[18px] hover:bg-[#286fb5] transition-all duration-300 ease-in-out">

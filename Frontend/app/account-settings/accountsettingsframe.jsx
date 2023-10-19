@@ -5,20 +5,21 @@ var cookie = require('js-cookie')
 
 export const AccountSettingsFrame = ({ handleDiscardAction, handleSaveAction, handleDeleteAction }) => {
     const router = useRouter();
-    const [userData, setUserData] = useState(null);
 
     useEffect(() => {
         fetchUserData()
-    });
+    }, []);
 
     const [formData, setFormData] = useState({
-        email: "",
-        display_name: "",
-        username: "",
+        email: '',
+        display_name: '',
+        username: '',
     });
 
     const handleInputChange = (e) => {
         const { name, value } = e.target;
+        console.log(name, value)
+        if (!value) return;
         setFormData({ ...formData, [name]: value });
     };
 
@@ -26,42 +27,48 @@ export const AccountSettingsFrame = ({ handleDiscardAction, handleSaveAction, ha
         setOption(option);
     };
 
-    const handleChangeClick = () => {
-    };
+    // const handleChangeClick = () => {
+    // };
 
     const handleChangePass = () => {
         router.push('/change-password'); // Redirect to /change-password
     };
 
     const handleSave = async () => {
-        try {
-          console.log('Change Saved');
-          const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/prof/edit", {
-            headers: { 'Content-Type': 'application/json' },
-            credentials: "include",
-            method: 'PATCH',
-            body: JSON.stringify({ email: formData.email, display_name: formData.display_name, username: formData.username })
-          });
-      
-          if (response.ok) {
-            // Save successful, you can handle the response here if needed
-            handleSaveAction();
-          } else {
-            console.error('Failed to save:', response.status, response.statusText);
-            // Handle save failure here, display an error message, etc.
-          }
-        } catch (error) {
-          console.error('An error occurred during save:', error);
-          // Handle network errors or other exceptions here
+        const formDataToSend = new FormData();
+        const data = new URLSearchParams();
+        for (const [key, value] of Object.entries(formData)) {
+            data.append(key, value);
         }
-      };
+        console.log(formDataToSend)
+        try {
+            console.log('Change Saved');
+            console.log("XDDDDD", formDataToSend)
+            const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/prof/edit", {
+                headers: { 'Authorization': 'Bearer ' + `${cookie.get('token')}`, 'Content-Type': 'application/json' },
+                method: 'PUT',
+                body: JSON.stringify(formData)
+            });
+
+            if (response.ok) {
+                // Save successful, you can handle the response here if needed
+                handleSaveAction();
+            } else {
+                console.error('Failed to save:', response.status, response.statusText);
+                // Handle save failure here, display an error message, etc.
+            }
+        } catch (error) {
+            console.error('An error occurred during save:', error);
+            // Handle network errors or other exceptions here
+        }
+    };
 
     const handleDiscard = () => {
         handleDiscardAction();
     };
 
     const handleDelete = () => {
-        handleDeleteAction();
+        handleDeleteAction(formData.user_id);
     };
 
     const fetchUserData = async () => {
@@ -71,18 +78,17 @@ export const AccountSettingsFrame = ({ handleDiscardAction, handleSaveAction, ha
                 headers: {
                     'Accept': 'application/json',
                     'Content-Type': 'application/json',
-                    'Authorization': 'Bearer ' + `${cookie.get('token')}`,
-                    'Host': 'api.producthunt.com'
+                    'Authorization': 'Bearer ' + `${cookie.get('token')}`
                 }
             });
             if (!response.ok) {
                 throw new Error('Failed to fetch profile data');
             }
 
-            const responseData = await response.json();
+            const { userData:responseData } = await response.json();
             console.log("Trying to get user data");
             console.log(responseData);
-            setUserData(responseData.userData);
+            setFormData({ ...formData, ...responseData });
 
         } catch (error) {
             console.log("Error while fetching userData");
@@ -103,7 +109,7 @@ export const AccountSettingsFrame = ({ handleDiscardAction, handleSaveAction, ha
                 Display Name
             </a>
             <a style={{ color: "white", position: "absolute", left: "270px", top: "200px", fontSize: "32px" }}>
-                {userData ?? 'Loading...'}
+                {formData?.display_name ?? 'Loading...'}
             </a>
             <div className="flex items-center p-10">
                 <img
@@ -112,23 +118,23 @@ export const AccountSettingsFrame = ({ handleDiscardAction, handleSaveAction, ha
                     className="rounded-full w-40 h-40 dark:bg-gray-500 ml-5"
                 />
             </div>
-            <button
+            {/* <button
                 style={{ position: "absolute", left: "80px", top: "310px" }}
                 className="w-30 h-12 text-[21px] hover:text-[23px] bg-green-950 hover:bg-green-600 text-white py-2 px-4 rounded-lg transition-all duration-300 ease-in-out"
                 onClick={handleChangeClick}
             >
                 Change
-            </button>
+            </button> */}
             {/* Forms */}
-            <div className="w-3/5 pl-14 ml-6 mt-20">
+            <div className="w-3/5 pl-14 ml-6">
                 <div className="mb-4">
                     <label className="block text-white text-[21px] mb-2">Email</label>
                     <input
                         type="text"
+                        name="email"
                         onChange={handleInputChange}
-                        placeholder='example@email.com'
+                        placeholder={formData?.email ?? 'Loading...'}                        
                         className="w-full px-4 py-2 rounded-lg bg-[#40404099] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
-                        email = 'email'
                         style={{ color: "white" }} // Set text color to white
                     />
                 </div>
@@ -136,10 +142,10 @@ export const AccountSettingsFrame = ({ handleDiscardAction, handleSaveAction, ha
                     <label className="block text-white text-[21px] mb-2">Display Name</label>
                     <input
                         type="text"
+                        name="display_name"
                         onChange={handleInputChange}
-                        placeholder='Display Name'
+                        placeholder={formData?.display_name ?? 'Loading...'}
                         className="w-full px-4 py-2 rounded-lg bg-[#40404099] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
-                        display_name = 'display_name'
                         style={{ color: "white" }} // Set text color to white
                     />
                 </div>
@@ -147,27 +153,27 @@ export const AccountSettingsFrame = ({ handleDiscardAction, handleSaveAction, ha
                     <label className="block text-white text-[21px] mb-2">Username</label>
                     <input
                         type="text"
+                        name="username"
                         onChange={handleInputChange}
-                        placeholder={"Username"}
+                        placeholder={formData?.userData ?? 'Loading...'}
                         className="w-full px-4 py-2 rounded-lg bg-[#40404099] backdrop-blur-[50px] backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(50px)_brightness(100%)] dark:text-gray-100  hover:bg-[#41465680] transition-all duration-300 ease-in-out"
-                        username = 'username'
                         style={{ color: "white" }} // Set text color to white
                     />
                 </div>
                 {/* Buttons */}
                 <div className="mb-4">
-                    <a style={{ color: "white", position: "absolute", left: "80px", top: "690px", fontSize: "21px" }}>
+                    {/* <a style={{ color: "white", position: "absolute", left: "80px", top: "690px", fontSize: "21px" }}>
                         Password
                     </a>
                     <button className="text-white text-[20px] mt-8 mb-4 hover:underline"
                         onClick={handleChangePass}>
                         Change password?
-                    </button>
+                    </button> */}
                     {/* Save and Discard buttons */}
-                    <div className="flex mt-4 space-x-10">
+                    <div className="flex mt-10 space-x-10">
                         <button
                             className="sticky w-44 bg-[#1d2387] text-[20px] hover:bg-[#286fb5] text-white py-2 px-4 transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
-                            onClick = {handleSave}
+                            onClick={handleSave}
                         >
                             <div className="flex items-center"> {/* Added this div */}
                                 <img
@@ -180,7 +186,7 @@ export const AccountSettingsFrame = ({ handleDiscardAction, handleSaveAction, ha
                         </button>
                         <button
                             className="sticky w-44 bg-[#871d1d] text-[20px] hover:bg-[#b85757] text-white py-2 px-4 transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
-                            onClick = {handleDiscard}
+                            onClick={handleDiscard}
                         >
                             <div className="flex items-center"> {/* Added this div */}
                                 <img
@@ -197,7 +203,7 @@ export const AccountSettingsFrame = ({ handleDiscardAction, handleSaveAction, ha
                         <p className="text-[#ff7e7e] text-[20px]">Danger Zone</p>
                         <button
                             className="sticky w-64 pb- text-white text-[20px] mt-2 bg-[#871d1d] hover:bg-[#b85757] py-2 px-4 transition-all duration-300 ease-in-out rounded-[10px] flex justify-center items-center"
-                            onClick = {handleDelete}
+                            onClick={handleDelete}
                         >
                             <div className="flex items-center"> {/* Added this div */}
                                 <img

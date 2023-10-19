@@ -16,6 +16,7 @@ export default function AccountSettings() {
   const [isDiscardPopupOpen, setIsDiscardPopupOpen] = useState(false);
   const [isSavePopupOpen, setIsSavePopupOpen] = useState(false);
   const [isDeletePopupOpen, setIsDeletePopupOpen] = useState(false);
+  const [userId, setUserId] = useState();
 
   useEffect(() => {
     // Function to check the screen width and set the state
@@ -67,7 +68,8 @@ export default function AccountSettings() {
     openSavePopup();
   };
 
-  const handleDeleteAction = () => {
+  const handleDeleteAction = (user_id) => {
+    setUserId(user_id);
     openDeletePopup();
   };
 
@@ -123,7 +125,7 @@ export default function AccountSettings() {
           {/* Display the popup if isPopupOpen is true */}
           {isDiscardPopupOpen && <DiscardPopup onClose={closeDiscardPopup} />}
           {isSavePopupOpen && <SavePopup onClose={closeSavePopup} />}
-          {isDeletePopupOpen && <DeletePopup onClose={closeDeletePopup} />}
+          {isDeletePopupOpen && <DeletePopup userId={userId} onClose={closeDeletePopup} />}
           {isLogoutPopupOpen && <LogoutPopup onClose={closeLogoutPopup} />}
         </>
       )}

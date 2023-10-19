@@ -2,105 +2,109 @@ const express = require('express');
 const router = express.Router();
 
 const database = require('../shared/database');
+const jwt = require('jsonwebtoken');
+const { json } = require('body-parser');
+const multer = require('multer');
+const upload = multer();
+require('dotenv').config({ path: __dirname + '../../../.env' });
 
-router.patch('/email', async (req, res, next) => {
-    try {
-        // Check if the user is authenticated
-        if (!req.session.userData) {
+router.get('/', async (req, res, next) => {
+    const tokenInput = req.headers.authorization;
+    var user_id = req.query.user_id
+    console.log(user_id);
+    console.log("Request Auth Info from data edit: ", tokenInput);
+    var tokenContent = tokenInput.split(" ")[1];
+
+    jwt.verify(tokenContent, process.env.JWT_SIGN_SECRET, async (err, data) => {
+        if (err) {
             return res.status(401).send({
-                ok: false,
-                error: 'Please login and try again later!'
+                ok: false, error: 'Unauthorized Request'
             });
         }
 
-        const userId = req.session.userData.user_id;
-        const { newEmail } = req.body;
+        try {
+            const userData = await database.executeQuery({
+                query: 'SELECT user_id, email, display_name, username AS userData FROM user_info WHERE user_id = ?',
+                values: [data.user_id]
+            });
+            console.log(data.user_id)
 
-        // Update the email in the database
-        const updateEmail = await database.executeQuery({
-            query: 'UPDATE user_info SET email = ? WHERE user_id = ?',
-            values: [newEmail, userId]
-        });
+            if ('error' in userData) {
+                return res.status(500).send({
+                    ok: false, error: userData.error.userError
+                });
+            }
 
-        if ('error' in updateEmail) {
+            if (userData.length === 0) {
+                return res.status(404).send({
+                    ok: false, error: 'Data not found'
+                });
+            }
+
+            return res.json({
+                ok: true,
+                data: userData[0],
+            });
+        } catch (error) {
+            console.error(error);
             return res.status(500).send({
-                ok: false, error: updateEmail.error.userError
+                ok: false, error: 'Internal Server Error'
             });
         }
-
-        req.session.userData.email = newEmail;
-        return res.status(200).send({
-            ok: true
-        });
-    } catch (error) {
-        next(error);
-    }
+    });
+    // return res.status(500).send({
+    //     ok: false, error: 'How it jumps here'
+    // });
 });
 
-router.patch('/displayname', async (req, res, next) => {
-    try {
-        const { newDisplayName } = req.body;
+router.put('/', upload.none(), async (req, res, next) => {
+    const tokenInput = req.headers.authorization;
+    const updatedData = req.body;
 
-        if (!req.session.userData) {
+    console.log("Request Auth Info: ", tokenInput);
+    var tokenContent = tokenInput.split(" ")[1];
+
+    console.log('updatedData : ',req.body)
+
+    jwt.verify(tokenContent, process.env.JWT_SIGN_SECRET, async (err, data) => {
+        if (err) {
             return res.status(401).send({
-                ok: false, error: 'Please login and try again later!'
+                ok: false, error: 'Unauthorized Request'
             });
         }
 
-        const userId = req.session.userData.user_id;
+        console.log(data.user_id);
 
-        // Update the display name in the database
-        const updateDisplayName = await database.executeQuery({
-            query: 'UPDATE user_info SET display_name = ? WHERE user_id = ?',
-            values: [newDisplayName, userId]
-        });
+        try {
+            const updateResult = await database.executeQuery({
+                query: 'UPDATE user_info SET email = ?, display_name = ?, username = ? WHERE user_id = ?',
+                values: [updatedData.email, updatedData.display_name, updatedData.username, data.user_id]
+            });
+            console.log(updatedData.email, updatedData.display_name, updatedData.username, data.user_id)
 
-        if ('error' in updateDisplayName) {
+            if ('error' in updateResult) {
+                return res.status(500).send({
+                    ok: false, error: updateResult.error.userError
+                });
+            }
+
+            if (updateResult.affectedRows === 0) {
+                return res.status(404).send({
+                    ok: false, error: 'Data not found'
+                });
+            }
+
+            return res.json({
+                ok: true,
+                message: 'Data updated successfully',
+            });
+        } catch (error) {
+            console.error(error);
             return res.status(500).send({
-                ok: false, error: updateDisplayName.error.userError
+                ok: false, error: 'Internal Server Error'
             });
         }
-
-        req.session.userData.display_name = newDisplayName;
-        return res.status(200).send({
-            ok: true
-        });
-    } catch (error) {
-        next(error);
-    }
-});
-
-router.patch('/username', async (req, res, next) => {
-    try {
-        const { newUsername } = req.body;
-
-        if (!req.session.userData) {
-            return res.status(401).send({
-                ok: false, error: 'Please login and try again later!'
-            });
-        }
-
-        const userId = req.session.userData.user_id;
-
-        // Update the display name in the database
-        const updateDisplayName = await database.executeQuery({
-            query: 'UPDATE user_info SET username = ? WHERE user_id = ?',
-            values: [newUsername, userId]
-        });
-
-        if ('error' in updateDisplayName) {
-            return res.status(500).send({
-                ok: false, error: updateUserame.error.userError
-            });
-        }
-
-        req.session.userData.username = newUsername;
-        return res.status(200).send({
-            ok: true
-        });
-    } catch (error) {
-        next(error);
-    }
-});
+    });
+})
 
 module.exports = router;

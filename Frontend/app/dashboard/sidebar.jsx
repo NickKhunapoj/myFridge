@@ -7,8 +7,8 @@ export const Sidebar = ({handleLogoutAction}) => {
   const [userData, setUserData] = useState(null);
 
     useEffect(() => {
-        fetchUserData();
-    });
+      fetchUserData()
+  },[]);
 
 
   const handleLogout = () => {
@@ -78,7 +78,7 @@ export const Sidebar = ({handleLogoutAction}) => {
                 style={{ color: "white" }} // Set text color to white
                 onClick={handleAccountSettings} // Add onClick handler for Account Settings
             >
-              {userData ?? 'Loading...'}
+              {userData?.display_name ?? 'Loading...'}
             </a>
           </span>
           </div>

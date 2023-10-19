@@ -8,7 +8,7 @@ export const Sidebar = ({handleLogoutAction}) => {
 
     useEffect(() => {
         fetchUserData();
-    });
+    }, []);
 
 
   const handleLogout = () => {
@@ -76,7 +76,7 @@ export const Sidebar = ({handleLogoutAction}) => {
                 className="hover:underline dark:text-gray-400"
                 style={{ color: "#E59393" }} // Set text color to white
             >
-              {userData ?? 'Loading...'}
+              {userData?.display_name ?? 'Loading...'}
             </a>
           </span>
           </div>

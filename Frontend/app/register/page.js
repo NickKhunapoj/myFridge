@@ -49,8 +49,7 @@ export default function Home() {
     openAlreadyExistedPopup();
   };
 
-  const handleLogin = async () => {
-    // Check if all required fields are filled
+  const handleRegistration = async () => {
     if (
       formData.email &&
       formData.displayName &&
@@ -74,6 +73,18 @@ export default function Home() {
       if (response.ok) {
         // Registration was successful, call handleRegisAction()
         handleRegisAction();
+  
+        // Fetch user settings or perform other actions
+        const settingsResponse = await fetch(process.env.NEXT_PUBLIC_API_URL + "/user/settings", {
+          // Add headers and options as needed
+        });
+  
+        if (settingsResponse.ok) {
+          // Process and set userDataSettings here
+          const userDataSettings = await settingsResponse.json();
+  
+          // You can set userDataSettings in your state or perform further actions
+        }
       } else if (response.status === 409) {
         // Email already exists, call handleAlreadyExistedAction()
         handleAlreadyExistedAction();
@@ -82,18 +93,15 @@ export default function Home() {
         alert("Registration failed. Please try again later.");
       }
     } else {
-      // Display an error message or take other actions to handle the incomplete form
       alert("Please fill in all required fields.");
     }
   };
-  
-  
 
   // Function to bypass form and go to login
   const bypassForm = () => {
     router.push('/'); // Replace 'login' with the actual login page URL
   };
-
+  
   return (
     <div className="font-Manrope">
       <div className="gradient-background flex relative w-full h-full justify-center items-center">
@@ -180,7 +188,7 @@ export default function Home() {
               <button
                 className="w-full bg-[#1d2387] font-family:'Manrope-Regular',Helvetica font-normal text-white text-[30px] text-center tracking-[0] rounded-md py-2 text-xl hover:bg-blue-900 transition duration-300 mt-2"
                 type="button"
-                onClick={handleLogin}
+                onClick={handleRegistration}
               >
                 Continue
               </button>
