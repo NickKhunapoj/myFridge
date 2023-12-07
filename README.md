@@ -22,7 +22,7 @@
 **Project Description:**
 
 **Introduction:**
-The myFridge Expiry Date Reminder and Notification Web Application is a user-friendly and efficient solution designed to help individuals manage their fridge contents by reminding them of the impending expiration dates of stored products. The application aims to reduce food wastage and improve household organization by providing timely alerts and notifications for items approaching their expiration dates.
+The myFridge Expiry Date Reminder and Notification Web Application is a user-friendly and efficient solution designed to help individuals manage their fridge contents by reminding them of the impending expiration dates of stored products. The application aims to reduce food wastage and improve household organisation by providing timely alerts and notifications for items approaching their expiration dates.
 
 **Features:**
 
@@ -38,9 +38,6 @@ The myFridge Expiry Date Reminder and Notification Web Application is a user-fri
 4. **Search and Filtering:**
    Users can easily search for specific products within their inventory and apply filters based on categories, expiration dates, or other attributes.
 
-5. **(Coming Soon) Customizable Notifications:**
-   Users can customize their notification preferences, such as choosing whether to receive reminders daily, every few days, or weekly. They can also set the specific time of day they would like to receive reminders.
-
 ## Built With
 
 - Node JS
@@ -49,12 +46,12 @@ The myFridge Expiry Date Reminder and Notification Web Application is a user-fri
 - Azure Database for MySQL (Database)
 - Azure Virtual Machine (Deployment)
 - Google Apps Script (Automated Email Sending)
-- Visual Studio Code (Preferred IDE)
+- Visual Studio Code (Preferred Editor)
 - Beekeeper (Preferred MySQL Workbench)
 
 ## Usage
 
-Users can read our user manual in Thai [here](https://kmutnbacth-my.sharepoint.com/:b:/g/personal/s6501012630034_kmutnb_ac_th/EYvtqLk4DQRFv-_01YBCDDIBDRUUMFn85sZgED1hineHHw?e=WcrNo6).
+Users can read the user manual in Thai [here](https://kmutnbacth-my.sharepoint.com/:b:/g/personal/s6501012630034_kmutnb_ac_th/EYvtqLk4DQRFv-_01YBCDDIBDRUUMFn85sZgED1hineHHw?e=WcrNo6).
 
 <img align="center" src="https://github.com/NickKhunapoj/myFridge/assets/93870412/1af7bab8-7905-476c-bb20-081f09ba23fc">
 
