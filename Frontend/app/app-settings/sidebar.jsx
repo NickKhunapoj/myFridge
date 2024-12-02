@@ -61,7 +61,7 @@ export const Sidebar = ({handleLogoutAction}) => {
         {/* class picture */}
         <div className="flex items-center p-11">
           <img
-              src="https://media.discordapp.net/attachments/1151835814939078738/1151836796276199434/imp-profilepic.png?width=412&height=412"
+              src="./imp-profilepic.png?width=412&height=412"
               alt=""
               className="rounded-full w-20 h-20 dark:bg-gray-500"
           />
@@ -94,7 +94,7 @@ export const Sidebar = ({handleLogoutAction}) => {
                   onClick={handleDashboard} // Add onClick handler for Dashboard
               >
                 <img
-                    src="https://cdn.discordapp.com/attachments/1151835814939078738/1151836794879496272/icon-dashboard.png"
+                    src="./icon-dashboard.png"
                     viewBox="0 0 512 512"
                     className="w-7 h-7 fill-current dark:text-gray-400"
                 >
@@ -111,7 +111,7 @@ export const Sidebar = ({handleLogoutAction}) => {
                   onClick={handleItems} // Add onClick handler for Items              
               >
                 <img
-                    src="https://cdn.discordapp.com/attachments/1151835814939078738/1151836795110170726/icon-items.png"
+                    src="./icon-items.png"
                     viewBox="0 0 512 512"
                     className="w-7 h-7 fill-current dark:text-gray-400"
                 >
@@ -128,7 +128,7 @@ export const Sidebar = ({handleLogoutAction}) => {
                   onClick={handleAppSettings} // Add onClick handler for App Settings 
               >
                 <img
-                    src="https://cdn.discordapp.com/attachments/1151835814939078738/1151836795366019152/icon-settings.png"
+                    src="./icon-settings.png"
                     viewBox="0 0 512 512"
                     className="w-7 h-7 fill-current dark:text-gray-400"
                 >
@@ -150,7 +150,7 @@ export const Sidebar = ({handleLogoutAction}) => {
                   onClick={handleLogout} // Add onClick handler for logout
               >
                 <img
-                    src="https://cdn.discordapp.com/attachments/1151835814939078738/1151836795621888080/icon-signout.png"
+                    src="./icon-signout.png"
                     viewBox="0 0 512 512"
                     className="w-7 h-7 fill-current dark:text-gray-400"
                 >

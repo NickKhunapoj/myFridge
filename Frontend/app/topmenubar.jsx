@@ -13,7 +13,7 @@ export const Topmenubar = () => {
                     className="relative w-16 h-16 pl-10 cursor-pointer"
                 >
                     <img
-                        src="https://cdn.discordapp.com/attachments/1151835814939078738/1156942482500767834/image__1_-removebg-preview_1.png?ex=6516ce26&is=65157ca6&hm=0414d5fa6ea89ee386e33906c3d3018918b4da22d5157dc8607d0dc9b447b51a&" // Replace with the path to your image
+                        src="./image__1_-removebg-preview_1.png" // Replace with the path to your image
                         alt="myFridge Logo"
                         className="w-full h-full object-contain transition-transform transform scale-125"
                     />

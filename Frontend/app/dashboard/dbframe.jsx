@@ -142,7 +142,7 @@ export const DashboardFrame = () => {
                         onChange={(e) => setSearchQuery(e.target.value)}
                     />
                     <img
-                        src="https://cdn.discordapp.com/attachments/1151835814939078738/1151837859939102720/1f5f8f3eb04b33df710ea2026ec3e432.png" // Replace with the actual path to your PNG icon
+                        src="./1f5f8f3eb04b33df710ea2026ec3e432.png" // Replace with the actual path to your PNG icon
                         alt="Search"
                         className="absolute w-6 h-6 left-4 "
                     />

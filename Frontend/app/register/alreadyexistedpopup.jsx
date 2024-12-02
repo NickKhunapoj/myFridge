@@ -28,7 +28,7 @@ const AreadyExistedPopup = ({ onClose }) => {
       >
         <img
           className="w-20 h-20 mx-auto mt-4"
-          src="https://cdn.discordapp.com/attachments/1151835814939078738/1158372555258871808/dc65b7d3af0ed3459dd14a91081b78d6.png?ex=651c0202&is=651ab082&hm=1231bbf1ebf9bd4b94b080ee66f9f64267ac87eff2899cbf003fd6ac413cfaee&"
+          src="./dc65b7d3af0ed3459dd14a91081b78d6.png"
           alt="Icon"
         />
         <p className="mt-7 mx-3 text-[22px] font-medium">

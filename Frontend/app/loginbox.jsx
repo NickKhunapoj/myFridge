@@ -1,10 +1,10 @@
-'use client'
+"use client";
 import React, { useState } from "react";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 
-var cookie = require('js-cookie')
+var cookie = require("js-cookie");
 
-require('dotenv').config({ path: __dirname+'../.env' });
+require("dotenv").config({ path: __dirname + "../.env" });
 
 var CryptoJS = require("crypto-js");
 
@@ -21,24 +21,35 @@ export const Box = () => {
   };
 
   const handleDashboard = async () => {
-    var encrypted = CryptoJS.AES.encrypt(formData.password,formData.emailusername).toString()
-    console.log("URL : ",process.env.NEXT_PUBLIC_API_URL)
-    const response = await fetch(process.env.NEXT_PUBLIC_API_URL + "/auth/login", {
-      headers: {'Authorization': 'Basic' + btoa(`${formData.emailusername}:${CryptoJS.AES.encrypt(formData.password,formData.emailusername).toString()}`)},
-      credentials: "include"
-    });
-    console.log("Key : ",process.env.NEXT_SECRET_AES_KEY)
-    console.log("URL : ",process.env.NEXT_PUBLIC_API_URL)
+    var encrypted = CryptoJS.AES.encrypt(
+      formData.password,
+      formData.emailusername
+    ).toString();
+    console.log("URL : ", process.env.NEXT_PUBLIC_API_URL);
+    const response = await fetch(
+      process.env.NEXT_PUBLIC_API_URL + "/auth/login",
+      {
+        method: "GET",
+        headers: {
+          Authorization: `Basic ${btoa(
+            `${formData.emailusername}:${formData.password}`
+          )}`,
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      }
+    );
+    console.log("Key : ", process.env.NEXT_SECRET_AES_KEY);
+    console.log("URL : ", process.env.NEXT_PUBLIC_API_URL);
     const json = await response.json();
     // token = json.token
-    cookie.set('token',json.token || "");
-    if (json.ok == true) router.push('/dashboard');
-    else
-      alert(json.error);
+    cookie.set("token", json.token || "");
+    if (json.ok == true) router.push("/dashboard");
+    else alert(json.error);
   };
 
   const handleForgot = () => {
-    router.push('/forgot-password'); // Redirect to /forgot-password
+    router.push("/forgot-password"); // Redirect to /forgot-password
   };
 
   return (
@@ -52,7 +63,7 @@ export const Box = () => {
               <div className="flex justify-center">
                 {/* Image */}
                 <img
-                  src="https://cdn.discordapp.com/attachments/1151835814939078738/1157157604334784583/image-modified_2.png?ex=6517967f&is=651644ff&hm=e3a9049bb08e459547a253d830725fdf466d7296098f295a5d907b94e76105b1&" // Replace with the actual path to your image
+                  src="./image-modified_2.png" // Replace with the actual path to your image
                   alt="Fridge Image"
                   className="w-20 h- mr-4" // Adjust the width and height as needed
                 />
@@ -63,14 +74,16 @@ export const Box = () => {
               </div>
             </div>
             <p className="relative self-stretch [font-family:'Manrope',Helvetica] font-medium text-white text-[25px] text-center tracking-[0] leading-[normal]">
-              <span className="text-[25px]">Your personal fridge management website.</span>
+              <span className="text-[25px]">
+                Your personal fridge management website.
+              </span>
             </p>
           </div>
         </div>
       </div>
 
       {/* Spacing */}
-      <div className="mt-10"/>
+      <div className="mt-10" />
 
       {/* Login Box Group */}
       <div className="login-box-group">

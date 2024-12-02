@@ -125,7 +125,7 @@ export const ItemsFrame = () => {
                             onChange={handleSearchChange} // Handle input changes
                         />
                         <img
-                            src="https://cdn.discordapp.com/attachments/1151835814939078738/1151837859939102720/1f5f8f3eb04b33df710ea2026ec3e432.png"
+                            src="./1f5f8f3eb04b33df710ea2026ec3e432.png"
                             alt="Search"
                             className="absolute w-6 h-6 left-4 "
                         />
@@ -182,7 +182,7 @@ export const ItemsFrame = () => {
                                     <img
                                         className="w-10 h-10 p-1"
                                         alt="Edit"
-                                        src="https://cdn.discordapp.com/attachments/1151835814939078738/1156153038503952454/0d622ecf015f0b97491b26ed4f4d9e38.png?ex=6513eeec&is=65129d6c&hm=6c3d177f07d4df5e0e8914df198e3b1fdf9cc04e5d16a8926b4428e3c51a4bb7&"
+                                        src="./0d622ecf015f0b97491b26ed4f4d9e38.png?ex=6513eeec&is=65129d6c&hm=6c3d177f07d4df5e0e8914df198e3b1fdf9cc04e5d16a8926b4428e3c51a4bb7&"
                                     />
                                 </button>
                                 <div className="absolute top-72 mt-7 ml-10 font-normal text-white text-[20px] tracking-[0] leading-[normal]">

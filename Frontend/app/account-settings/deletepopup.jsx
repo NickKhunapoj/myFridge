@@ -64,7 +64,7 @@ const DeletePopup = ({ onClose, userId }) => {
       >
         <img
           className="w-20 h-20 mx-auto mt-4"
-          src="https://cdn.discordapp.com/attachments/1151835814939078738/1158372554810069053/02467da50cc429a1ea1056061d2ffef5.png?ex=651caac2&is=651b5942&hm=72f6c4ec5419e0241730770c1011cb1faab9474c996ea1068357243ba66dd6d2&"
+          src="./02467da50cc429a1ea1056061d2ffef5.png?ex=651caac2&is=651b5942&hm=72f6c4ec5419e0241730770c1011cb1faab9474c996ea1068357243ba66dd6d2&"
           alt="Icon"
         />
         <p className="mt-4 mx-3 text-[21px] font-medium">

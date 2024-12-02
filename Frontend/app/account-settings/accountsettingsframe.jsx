@@ -113,7 +113,7 @@ export const AccountSettingsFrame = ({ handleDiscardAction, handleSaveAction, ha
             </a>
             <div className="flex items-center p-10">
                 <img
-                    src="https://media.discordapp.net/attachments/1151835814939078738/1151836796276199434/imp-profilepic.png?width=412&height=412"
+                    src="./imp-profilepic.png?width=412&height=412"
                     alt=""
                     className="rounded-full w-40 h-40 dark:bg-gray-500 ml-5"
                 />
@@ -179,7 +179,7 @@ export const AccountSettingsFrame = ({ handleDiscardAction, handleSaveAction, ha
                                 <img
                                     className="w-10 h-10 p-1"
                                     alt="discard"
-                                    src="https://cdn.discordapp.com/attachments/1151835814939078738/1156637223408648332/6960dd4be832615dbf7fc16139c09381.png?ex=6515b1db&is=6514605b&hm=003f0fa2ea16c2b2aaed6d196421e86c8ceac05bda820d8230228fec2d756eb1&"
+                                    src="./6960dd4be832615dbf7fc16139c09381.png?ex=6515b1db&is=6514605b&hm=003f0fa2ea16c2b2aaed6d196421e86c8ceac05bda820d8230228fec2d756eb1&"
                                 />
                                 <span className="text-[21px] hover:text-[23px] transition-all duration-300 ease-in-out"> Save</span> {/* Added text here */}
                             </div>
@@ -192,7 +192,7 @@ export const AccountSettingsFrame = ({ handleDiscardAction, handleSaveAction, ha
                                 <img
                                     className="w-10 h-10 p-1"
                                     alt="discard"
-                                    src="https://cdn.discordapp.com/attachments/1151835814939078738/1156637223144394792/44030054813dd4a0f69338ff98f91177.png?ex=6515b1db&is=6514605b&hm=5686ab81a99728b67569d45a02294058f1df8e740911d86f58572b774e5993f1&"
+                                    src="./44030054813dd4a0f69338ff98f91177.png?ex=6515b1db&is=6514605b&hm=5686ab81a99728b67569d45a02294058f1df8e740911d86f58572b774e5993f1&"
                                 />
                                 <span className="text-[21px] hover:text-[23px] transition-all duration-300 ease-in-out">Discard</span> {/* Added text here */}
                             </div>
@@ -209,7 +209,7 @@ export const AccountSettingsFrame = ({ handleDiscardAction, handleSaveAction, ha
                                 <img
                                     className="w-10 h-10 p-1"
                                     alt="discard"
-                                    src="https://cdn.discordapp.com/attachments/1151835814939078738/1156809109019054120/icons8-trash-96.png?ex=651651f0&is=65150070&hm=8c16af1e311472535246adc8103d10e6854b848ef586c0e7e186d5d7227a8553&"
+                                    src="./icons8-delete-96.png"
                                 />
                                 <span className="text-[20px] hover:text-[22px] transition-all duration-300 ease-in-out">Delete Account</span> {/* Added text here */}
                             </div>

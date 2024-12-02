@@ -76,7 +76,7 @@ export const AddFrame = ({ handleDiscardAction, handleAddAction, handleAlreadyEx
                                 <img
                                     className="w-10 h-10 pl-1 mr-5"
                                     alt="Edit"
-                                    src="https://cdn.discordapp.com/attachments/1151835814939078738/1156153038503952454/0d622ecf015f0b97491b26ed4f4d9e38.png?ex=6513eeec&is=65129d6c&hm=6c3d177f07d4df5e0e8914df198e3b1fdf9cc04e5d16a8926b4428e3c51a4bb7&"
+                                    src="./0d622ecf015f0b97491b26ed4f4d9e38.png?ex=6513eeec&is=65129d6c&hm=6c3d177f07d4df5e0e8914df198e3b1fdf9cc04e5d16a8926b4428e3c51a4bb7&"
                                 />
                                 Adding Item
                             </div>
@@ -145,7 +145,7 @@ export const AddFrame = ({ handleDiscardAction, handleAddAction, handleAlreadyEx
                                     <img
                                         className="w-10 h-10 p-1"
                                         alt="Add"
-                                        src="https://cdn.discordapp.com/attachments/1151835814939078738/1156637223408648332/6960dd4be832615dbf7fc16139c09381.png?ex=6515b1db&is=6514605b&hm=003f0fa2ea16c2b2aaed6d196421e86c8ceac05bda820d8230228fec2d756eb1&"
+                                        src="./6960dd4be832615dbf7fc16139c09381.png?ex=6515b1db&is=6514605b&hm=003f0fa2ea16c2b2aaed6d196421e86c8ceac05bda820d8230228fec2d756eb1&"
                                     />
                                     <span className="text-[21px] hover:text-[23px] text-white font-medium transition-all duration-300 ease-in-out">
                                         Add
@@ -161,7 +161,7 @@ export const AddFrame = ({ handleDiscardAction, handleAddAction, handleAlreadyEx
                                     <img
                                         className="w-10 h-10 p-1"
                                         alt="discard"
-                                        src="https://cdn.discordapp.com/attachments/1151835814939078738/1156637223144394792/44030054813dd4a0f69338ff98f91177.png?ex=6515b1db&is=6514605b&hm=5686ab81a99728b67569d45a02294058f1df8e740911d86f58572b774e5993f1&"
+                                        src="./44030054813dd4a0f69338ff98f91177.png?ex=6515b1db&is=6514605b&hm=5686ab81a99728b67569d45a02294058f1df8e740911d86f58572b774e5993f1&"
                                     />
                                     <span className="text-[21px] hover:text-[23px] text-white font-medium transition-all duration-300 ease-in-out">Discard</span> {/* Added text here */}
                                 </div>

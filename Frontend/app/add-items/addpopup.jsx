@@ -33,7 +33,7 @@ const AddPopup = () => {
       >
         <img
           className="w-20 h-20 mx-auto mt-4"
-          src="https://cdn.discordapp.com/attachments/1151835814939078738/1158372554352902194/4a2a20cf6de57d6e91f380bb2b169df2.png?ex=651c0202&is=651ab082&hm=09341d9061b627ff04331f7a2105155686b8958d657c4d4613e785a481850415&"
+          src="./4a2a20cf6de57d6e91f380bb2b169df2.png?ex=651c0202&is=651ab082&hm=09341d9061b627ff04331f7a2105155686b8958d657c4d4613e785a481850415&"
           alt="Icon"
         />
         <p className="mt-7 mx-3 text-[22px] font-medium">
