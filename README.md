@@ -13,9 +13,13 @@
     <img src="https://img.shields.io/github/contributors/NickKhunapoj/myFridge?color=dark-green"> <img src="https://img.shields.io/github/stars/NickKhunapoj/myFridge?style=social"> <img src="https://img.shields.io/github/license/NickKhunapoj/myFridge">
 
 <p align="center">
-  <h2 align="center">👁️ Sneak Peak 👁️</h2>
-  <img align="center" src="https://github.com/NickKhunapoj/myFridge/assets/93870412/6f23771d-eb08-4c7d-85f9-1d9861cc33ee">
-
+  <h2 align="center">👁️ Preview 👁️</h2>
+  <img align="center" alt="Screenshot 2567-12-03 at 17 06 32" src="https://github.com/user-attachments/assets/8d3bd13d-8fa4-4457-8c12-125f3cc24eab">
+  <img align="center" alt="Screenshot 2567-12-03 at 17 06 36" src="https://github.com/user-attachments/assets/6ba85792-84bf-4118-a0e2-8a59f5323aad">
+  <img align="center" alt="Screenshot 2567-12-03 at 17 06 07" src="https://github.com/user-attachments/assets/1230639d-50fa-4f3a-9679-bacacf7dd4b2">
+  <img align="center" alt="Screenshot 2567-12-03 at 17 06 10" src="https://github.com/user-attachments/assets/f8a76bd1-6221-4c2c-8c83-f982a5f75f34">
+  <img align="center" alt="Screenshot 2567-12-03 at 17 06 15" src="https://github.com/user-attachments/assets/489b223d-e119-423d-bcd3-b9f7c1309a30">
+  <img align="center" alt="Screenshot 2567-12-03 at 17 06 20" src="https://github.com/user-attachments/assets/eca3661c-2b01-4106-9e0a-391822cd9675">
 
 ## 📌 | About The Project
 
