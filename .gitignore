@@ -42,3 +42,4 @@ next-env.d.ts
 /Backend/node_modules
 /Frontend/node_modules
 Backend/shared/myFridge.db
+/Backend/uploads
