@@ -1,75 +1,77 @@
-const express = require('express');
-const bcrypt = require('bcrypt');
-
-const database = require('../shared/database');
-
-const redis = require('redis')
-const jwt = require('jsonwebtoken')
-
-require('dotenv').config({ path: './env' });
+const express = require("express");
+const bcrypt = require("bcrypt");
+const database = require("../shared/database");
+const { createClient } = require("redis");
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
 
 const router = express.Router();
-var CryptoJS = require("crypto-js");
 
-const redisClient = redis.createClient()  
-    .on('error', err => console.log('Redis Client Error', err))
-    .connect();
+// Initialize Redis client
+const redisClient = createClient();
+redisClient.on("error", (err) => console.error("Redis Client Error:", err));
 
-router.get('/', async (req, res, next) => {
-    try {
-        // console.log("Sign secret : ",process.env.JWT_SIGN_SECRET)
-        const auth = req.headers.authorization;
-        const decode = atob(auth.slice(5));
-        const credentials = decode.split(":");
-        console.log(credentials);
-        const userId = credentials[0].trim();
-        const password = CryptoJS.AES.decrypt(credentials[1],credentials[0]).toString(CryptoJS.enc.Utf8);
-        // console.log(process.env.SECRET_AES_KEY)
-        console.log(`userID : ${userId} , password : ${password.toString()}`);
+(async () => {
+  await redisClient.connect();
+})();
 
-        // get user data from database
-        const userData = await database.executeQuery({
-            query: 'SELECT * FROM user_info WHERE email = ? or username = ?',
-            values: [userId, userId]
-        });
-        
-        // console.log("secret : ",process.env.JWT_SIGN_SECRET)
-        // console.log("web : ",process.env.NEXT_PUBLIC_API_URL)
-        // console.log("dir : ",__dirname)
+router.get("/", async (req, res, next) => {
+  try {
+    const auth = req.headers.authorization;
 
-        if (userData.length == 0) {
-            return res.status(404).send({
-                ok: false,
-                error: 'user not found'
-            });
-        }
-
-        // check if password is matched from user input & database
-        const match = await bcrypt.compare(password, userData[0].password);
-        if (match) {
-            // remove key from object
-            delete userData[0].password;
-            var userSigned = jwt.sign(JSON.stringify(userData[0]),process.env.JWT_SIGN_SECRET)
-            console.log(userSigned)
-            ;(await redisClient).set(userId,userSigned)
-            // set user session & send result as success
-            req.session.userData = userData[0];
-            return res.status(200).send({
-                ok: true,
-                token : userSigned,
-                message: 'Successfully Login!'
-            });
-        }
-
-        // destroy any session & send result as fail
-        req.session.destroy();
-        return res.status(401).send({
-            ok: false,
-            error: 'Password incorect, Please try again later!'
-        });
-    } catch (error) {
-        next(error);
+    // Validate the Authorization header
+    if (!auth || !auth.startsWith("Basic ")) {
+      return res.status(400).send({ error: "Invalid Authorization header" });
     }
+
+    // Decode Base64 credentials
+    const base64Credentials = auth.slice(6); // Remove 'Basic ' prefix
+    const decodedCredentials = Buffer.from(
+      base64Credentials,
+      "base64"
+    ).toString("utf8");
+    const [userId, password] = decodedCredentials.split(":");
+
+    // Query the database for the user
+    const userData = await database.executeQuery({
+      query: "SELECT * FROM user_info WHERE email = ? OR username = ?",
+      values: [userId, userId],
+    });
+
+    if (userData.length === 0) {
+      return res.status(404).send({ error: "User not found" });
+    }
+
+    // Verify the password using bcrypt
+    const match = await bcrypt.compare(password, userData[0].password);
+    if (!match) {
+      return res
+        .status(401)
+        .send({ error: "Incorrect password. Please try again later." });
+    }
+
+    // Remove sensitive data before signing the JWT
+    delete userData[0].password;
+
+    // Sign the JWT
+    const jwtSecret = process.env.JWT_SIGN_SECRET || "default_secret_key";
+    const userSigned = jwt.sign(JSON.stringify(userData[0]), jwtSecret);
+
+    console.log("JWT Signed:", userSigned);
+
+    // Save JWT in Redis
+    await redisClient.set(userId, userSigned);
+
+    // Respond with success
+    return res.status(200).send({
+      ok: true,
+      token: userSigned,
+      message: "Successfully logged in!",
+    });
+  } catch (error) {
+    console.error("Unhandled error during login:", error.message, error.stack);
+    next(error); // Pass the error to the Express error handler
+  }
 });
 
 module.exports = router;

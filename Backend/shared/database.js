@@ -1,49 +1,48 @@
-const fs = require('fs')
-const mysql = require('serverless-mysql');
+const sqlite3 = require('sqlite3').verbose();
+const path = require('path');
 
-const serverCa = [fs.readFileSync("./DigiCertGlobalRootCA.crt.pem", "utf8")];
-const db = mysql({
-    config: {
-        host: 'mysqlmyfridge.mysql.database.azure.com',
-        user: 'myfridge',
-        password: 'Mysql1234',
-        database: 'myFridge',
-        port: '3306',
-        ssl: {
-            rejectUnauthorized: true,
-            ca: serverCa
-        }
+// Path to your SQLite database file
+const dbPath = path.resolve(__dirname, './myFridge.db');
+
+// Create a new database connection
+const db = new sqlite3.Database(dbPath, (err) => {
+    if (err) {
+        console.error('Error opening database:', err.message);
+    } else {
+        console.log('Connected to SQLite database.');
     }
-})
+});
 
 module.exports = {
     db,
     executeQuery: async function ({ query, values }) {
-        try {
-            const results = await db.query(query, values);
-            await db.end();
-            return results;
-        } catch (error) {
-            let errMsg = error.message.toString();
-            let friendlyMessage = 'There are problem talking to database.';
-
-            if (errMsg.includes('Error: connect ECONNREFUSED')) {
-                friendlyMessage += ' (ECONNREFUSED)';
-            } else if (errMsg.includes('Error: connect ENOENT')) {
-                friendlyMessage += ' (ENOENT)';
-            } else if (errMsg.includes('ER_EMPTY_QUERY')) {
-                return [];
-            } else if (errMsg.includes('ER_DUP_ENTRY')) {
-                friendlyMessage = 'Data already exists!';
-            } else if (errMsg.includes('ER_PARSE_ERROR: You have an error in your SQL syntax;')) {
-                friendlyMessage += ' (SQL Syntax Error ):)';
-            } else if (errMsg.includes('ER_BAD_NULL_ERROR')) {
-                friendlyMessage += ' (Data cannot be NULL!)';
+        return new Promise((resolve, reject) => {
+            try {
+                // If it's a SELECT query
+                if (query.trim().toUpperCase().startsWith('SELECT')) {
+                    db.all(query, values, (err, rows) => {
+                        if (err) {
+                            console.error('Error executing query:', err.message);
+                            reject({ error: 'There was a problem executing the query.' });
+                        } else {
+                            resolve(rows);
+                        }
+                    });
+                } else {
+                    // For INSERT, UPDATE, DELETE queries
+                    db.run(query, values, function (err) {
+                        if (err) {
+                            console.error('Error executing query:', err.message);
+                            reject({ error: 'There was a problem executing the query.' });
+                        } else {
+                            resolve({ changes: this.changes, lastID: this.lastID });
+                        }
+                    });
+                }
+            } catch (error) {
+                console.error('Unexpected error:', error);
+                reject({ error: 'An unexpected error occurred.' });
             }
-
-            error.userError = friendlyMessage;
-            console.error(error);
-            return { error };
-        }
+        });
     }
-}
+};

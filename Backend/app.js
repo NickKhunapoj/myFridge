@@ -48,7 +48,7 @@ var corsOptionsDelegate = function (req, callback) {
 }
 
 app.use('*', cors({
-    origin: 'https://myfridgevm.southeastasia.cloudapp.azure.com',
+    origin: 'http://localhost:3000',
     methods: ['POST', 'PUT', 'GET', 'UPDATE', 'OPTIONS', 'HEAD', 'DELETE'],
     credentials: true,
 }));
